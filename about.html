@@ -20,9 +20,10 @@
     .nft-track-wrap{display:flex;width:max-content;animation:nftScroll 45s linear infinite;}
     .nft-track-wrap:hover{animation-play-state:paused;}
     .nft-track{display:flex;gap:16px;padding:32px 8px;}
-    .nft-card{width:160px;height:160px;border-radius:var(--r-lg);background:var(--surface);border:1px solid var(--border);flex-shrink:0;overflow:hidden;transition:transform .3s,border-color .3s;}
+    .nft-card{width:160px;height:auto;min-height:160px;border-radius:var(--r-lg);background:var(--surface);border:1px solid var(--border);flex-shrink:0;overflow:hidden;transition:transform .3s,border-color .3s;display:flex;flex-direction:column;}
     .nft-card:hover{transform:translateY(-8px) scale(1.05);}
-    .nft-card img{width:100%;height:100%;object-fit:cover;display:block;}
+    .nft-card img{width:100%;height:160px;object-fit:cover;display:block;flex-shrink:0;}
+    .nft-card-label{font-family:'Syne',sans-serif;font-size:.55rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--dim);text-align:center;padding:7px 6px 8px;background:var(--surface);line-height:1.3;}
     .nft-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;background:linear-gradient(135deg,rgba(255,95,186,.07),rgba(168,85,247,.09),rgba(0,229,255,.07));}
     .nft-placeholder-icon{font-size:2.4rem;}
     .nft-placeholder-label{font-family:'Syne',sans-serif;font-size:.56rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);text-align:center;padding:0 8px;}
@@ -96,28 +97,28 @@
   <div class="nft-scroll-section">
     <div class="nft-track-wrap" id="js-nft-wrap">
       <div class="nft-track" id="js-nft-track">
-<div class="nft-card"><img src="green-cubyboo.jpg" alt="Guardian of Green"></div>
-<div class="nft-card"><img src="blue-cubyboo.jpg" alt="Guardian of Blue"></div>
-<div class="nft-card"><img src="red-cubyboo.jpg" alt="Guardian of Red"></div>
-<div class="nft-card"><img src="yellow-cubyboo.jpg" alt="Guardian of Yellow"></div>
-<div class="nft-card"><img src="purple-cubyboo.jpg" alt="Guardian of Purple"></div>
-<div class="nft-card"><img src="rainbow-cubyboo.jpg" alt="Guardian of Rainbow"></div>
-<div class="nft-card"><img src="water-cubyboo.jpg" alt="Guardian of Water"></div>
-<div class="nft-card"><img src="fire-cubyboo.jpg" alt="Guardian of Fire"></div>
-<div class="nft-card"><img src="earth-cubyboo.jpg" alt="Guardian of Earth"></div>
+<div class="nft-card"><img src="green-cubyboo.jpg" alt="Guardian of Green"><div class="nft-card-label">Guardian of Green</div></div>
+<div class="nft-card"><img src="blue-cubyboo.jpg" alt="Guardian of Blue"><div class="nft-card-label">Guardian of Blue</div></div>
+<div class="nft-card"><img src="red-cubyboo.jpg" alt="Guardian of Red"><div class="nft-card-label">Guardian of Red</div></div>
+<div class="nft-card"><img src="yellow-cubyboo.jpg" alt="Guardian of Yellow"><div class="nft-card-label">Guardian of Yellow</div></div>
+<div class="nft-card"><img src="purple-cubyboo.jpg" alt="Guardian of Purple"><div class="nft-card-label">Guardian of Purple</div></div>
+<div class="nft-card"><img src="rainbow-cubyboo.jpg" alt="Guardian of Rainbow"><div class="nft-card-label">Guardian of Rainbow</div></div>
+<div class="nft-card"><img src="water-cubyboo.jpg" alt="Guardian of Water"><div class="nft-card-label">Guardian of Water</div></div>
+<div class="nft-card"><img src="fire-cubyboo.jpg" alt="Guardian of Fire"><div class="nft-card-label">Guardian of Fire</div></div>
+<div class="nft-card"><img src="earth-cubyboo.jpg" alt="Guardian of Earth"><div class="nft-card-label">Guardian of Earth</div></div>
 <div class="nft-card"><div class="nft-placeholder"><span class="nft-placeholder-icon">🌪️</span><span class="nft-placeholder-label">Guardian of Air</span></div></div>
 <div class="nft-card"><div class="nft-placeholder"><span class="nft-placeholder-icon">💎</span><span class="nft-placeholder-label">Guardian of Crystal</span></div></div>
-<div class="nft-card"><img src="joy-cubyboo.jpg" alt="Guardian of Joy"></div>
-<div class="nft-card"><img src="courage-cubyboo.jpg" alt="Guardian of Courage"></div>
-<div class="nft-card"><img src="love-cubyboo.jpg" alt="Guardian of Love"></div>
-<div class="nft-card"><img src="hope-cubyboo.jpg" alt="Guardian of Hope"></div>
-<div class="nft-card"><img src="peace-cubyboo.jpg" alt="Guardian of Peace"></div>
-<div class="nft-card"><img src="dreams-cubyboo.jpg" alt="Guardian of Dreams"></div>
+<div class="nft-card"><img src="joy-cubyboo.jpg" alt="Guardian of Joy"><div class="nft-card-label">Guardian of Joy</div></div>
+<div class="nft-card"><img src="courage-cubyboo.jpg" alt="Guardian of Courage"><div class="nft-card-label">Guardian of Courage</div></div>
+<div class="nft-card"><img src="love-cubyboo.jpg" alt="Guardian of Love"><div class="nft-card-label">Guardian of Love</div></div>
+<div class="nft-card"><img src="hope-cubyboo.jpg" alt="Guardian of Hope"><div class="nft-card-label">Guardian of Hope</div></div>
+<div class="nft-card"><img src="peace-cubyboo.jpg" alt="Guardian of Peace"><div class="nft-card-label">Guardian of Peace</div></div>
+<div class="nft-card"><img src="dreams-cubyboo.jpg" alt="Guardian of Dreams"><div class="nft-card-label">Guardian of Dreams</div></div>
 <div class="nft-card"><div class="nft-placeholder"><span class="nft-placeholder-icon">🍂</span><span class="nft-placeholder-label">Guardian of Seasons</span></div></div>
 <div class="nft-card"><div class="nft-placeholder"><span class="nft-placeholder-icon">🎵</span><span class="nft-placeholder-label">Guardian of Music</span></div></div>
-<div class="nft-card"><img src="heroes-cubyboo.jpg" alt="Guardian of Heroes"></div>
-<div class="nft-card"><img src="stars-cubyboo.jpg" alt="Guardian of Stars"></div>
-<div class="nft-card"><img src="myths-cubyboo.jpg" alt="Guardian of Myths"></div>
+<div class="nft-card"><img src="heroes-cubyboo.jpg" alt="Guardian of Heroes"><div class="nft-card-label">Guardian of Heroes</div></div>
+<div class="nft-card"><img src="stars-cubyboo.jpg" alt="Guardian of Stars"><div class="nft-card-label">Guardian of Stars</div></div>
+<div class="nft-card"><img src="myths-cubyboo.jpg" alt="Guardian of Myths"><div class="nft-card-label">Guardian of Myths</div></div>
       </div>
     </div>
   </div>
