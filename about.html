@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — Cubyboo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .page-body{padding-top:var(--nav-h);}
+    .about-hero{padding:80px 0 60px;text-align:center;}
+    .about-hero h1{margin-top:16px;margin-bottom:16px;}
+    .about-hero p{font-size:1rem;color:var(--muted);max-width:520px;margin:0 auto;line-height:1.8;}
+    .nft-scroll-section{padding:0;overflow:hidden;position:relative;}
+    .nft-scroll-section::before,.nft-scroll-section::after{content:'';position:absolute;top:0;bottom:0;width:140px;z-index:2;pointer-events:none;}
+    .nft-scroll-section::before{left:0;background:linear-gradient(90deg,var(--bg),transparent);}
+    .nft-scroll-section::after{right:0;background:linear-gradient(-90deg,var(--bg),transparent);}
+    .nft-track-wrap{display:flex;width:max-content;animation:nftScroll 45s linear infinite;}
+    .nft-track-wrap:hover{animation-play-state:paused;}
+    .nft-track{display:flex;gap:16px;padding:32px 8px;}
+    .nft-card{width:160px;height:160px;border-radius:var(--r-lg);background:var(--surface);border:1px solid var(--border);flex-shrink:0;overflow:hidden;transition:transform .3s,border-color .3s;}
+    .nft-card:hover{transform:translateY(-8px) scale(1.05);}
+    .nft-card img{width:100%;height:100%;object-fit:cover;display:block;}
+    .nft-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;background:linear-gradient(135deg,rgba(255,95,186,.07),rgba(168,85,247,.09),rgba(0,229,255,.07));}
+    .nft-placeholder-icon{font-size:2.4rem;}
+    .nft-placeholder-label{font-family:'Syne',sans-serif;font-size:.56rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);text-align:center;padding:0 8px;}
+    .nft-card:nth-child(6n+1){border-color:rgba(255,95,186,.25);}
+    .nft-card:nth-child(6n+2){border-color:rgba(0,229,255,.22);}
+    .nft-card:nth-child(6n+3){border-color:rgba(255,224,64,.2);}
+    .nft-card:nth-child(6n+4){border-color:rgba(77,255,160,.2);}
+    .nft-card:nth-child(6n+5){border-color:rgba(168,85,247,.22);}
+    .nft-card:nth-child(6n+6){border-color:rgba(255,140,66,.2);}
+    @keyframes nftScroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+    .lore-section{padding:80px 0 60px;}
+    .lore-text{display:flex;flex-direction:column;gap:20px;max-width:700px;margin:0 auto;}
+    .lore-text p{font-size:.97rem;color:var(--muted);line-height:1.9;}
+    .lore-quote{padding:20px 22px;border-left:2px solid var(--purple);background:rgba(168,85,247,.06);border-radius:0 var(--r-md) var(--r-md) 0;}
+    .lore-quote p{font-family:'Syne',sans-serif;font-size:1.02rem;font-weight:600;color:var(--text);font-style:italic;line-height:1.65;}
+    .values-section{padding:80px 0;}
+    .values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+    .value-card{padding:32px 26px;text-align:center;}
+    .value-icon{font-size:2.4rem;margin-bottom:14px;display:block;}
+    .value-title{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;margin-bottom:10px;}
+    .value-desc{font-size:.86rem;color:var(--muted);line-height:1.7;}
+    @media(max-width:680px){.values-grid{grid-template-columns:1fr;}}
+    .oath-teaser{padding:80px 0;text-align:center;background:linear-gradient(180deg,transparent,rgba(168,85,247,.04)50%,transparent);}
+    .oath-box{background:rgba(0,0,0,.26);border:1px solid var(--border);border-radius:var(--r-xl);padding:44px 40px;max-width:600px;margin:0 auto 36px;position:relative;overflow:hidden;}
+    .oath-box::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad);}
+    .oath-box p{font-size:.97rem;line-height:2.2;text-align:center;color:rgba(240,240,255,.87);white-space:pre-line;}
+    .oath-name{font-weight:700;color:var(--cyan);}
+    .oath-sig{font-family:'Syne',sans-serif;font-size:.92rem;font-weight:800;letter-spacing:.14em;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+    @media(max-width:600px){.oath-box{padding:28px 18px;}}
+  </style>
+</head>
+<body>
+<div class="bg-layer"><div class="bg-mesh"></div><div class="bg-grid"></div></div>
+<div class="particles" id="js-particles"></div>
+
+<nav class="navbar solid" id="js-navbar">
+  <a href="index.html" class="nav-logo"><img src="cubyboo-logo.png" alt="Cubyboo"></a>
+  <ul class="nav-links">
+    <li><a href="home.html" data-i18n="nav_oath">The Oath</a></li>
+    <li><a href="whitelist.html" id="nav-wl" style="display:none;" data-i18n="nav_whitelist">Whitelist</a></li>
+    <li><a href="about.html" class="active" data-i18n="nav_about">About</a></li>
+    <li><a href="collection.html" data-i18n="nav_collection">Collection</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="https://twitter.com/Cubyboo_NFT" class="nav-social" target="_blank" rel="noopener">𝕏</a>
+    <a href="#" class="nav-social" data-soon onclick="return false;"><img src="discord-icon.png" alt="Discord"></a>
+    <div id="lang-selector"></div>
+    <a href="home.html" class="nav-cta" id="nav-cta" data-i18n="nav_wl_btn">🎟 Whitelist</a>
+  </div>
+  <div class="nav-burger" id="js-burger"><span></span><span></span><span></span></div>
+</nav>
+<div class="nav-mobile" id="js-mobile-menu">
+  <a href="home.html" data-i18n="nav_oath">The Oath</a>
+  <a href="whitelist.html" id="mob-wl" style="display:none;color:var(--purple);font-weight:700;" data-i18n="nav_wl_btn">🎟 Whitelist</a>
+  <a href="about.html" data-i18n="nav_about">About</a>
+  <a href="collection.html" data-i18n="nav_collection">Collection</a>
+</div>
+
+<div class="wrapper page-body">
+  <section class="about-hero">
+    <div class="container--sm">
+      <div class="reveal">
+        <span class="eyebrow eyebrow--pink" data-i18n="about_eyebrow">The Lore</span>
+        <h1 class="h-lg" data-i18n="about_title">The World of<br><span class="grad-text">Cubyboo</span></h1>
+        <p data-i18n="about_sub">A universe where forgotten essences drift like lost stars.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- NFT SCROLL — replace nft-placeholder with <img src="nft-X.png"> when ready -->
+  <div class="nft-scroll-section">
+    <div class="nft-track-wrap" id="js-nft-wrap">
+      <div class="nft-track" id="js-nft-track">
+        <div class="nft-card"><div class="nft-placeholder"><span class="nft-placeholder-icon">🌿</span><span class="nft-placeholder-label">Guardian of Green</span></div></div>
+        <div class="nft-card"><div class="nft-placeholder"><span class="nft-placeholder-icon">🔵</span><span class="nft-placeholder-label">Guardian of Blue</span></div></div>
+        <div class="nft-card"><div class="nft-placeholder"><span class="nft-placeholder-icon">❤️</span><span class="nft-placeholder-label">Guardian of Red</span></div></div>
+        <div class="nft-card"><div class="nft-placeholder"><span class="nft-placeholder-icon">☀️</span><span class="nft-placeholder-label">Guardian of Yellow</span></div></div>
+        <div class="nft-card"><div class="nft-placeholder"><span class="nft-placeholder-icon">🔮</span><span class="nft-placeholder-label">Guardian of Purple</span></div></div>
+        <div class="nft-card"><div class="nft-placeholder"><span class="nft-placeholder-icon">🌈</span><span class="nft-placeholder-label">Guardian of Rainbow</span></div></div>
+        <div class="nft-card"><div class="nft-placeholder"><span class="nft-placeholder-icon">💧</span><span class="nft-placeholder-label">Guardian of Water</span></div></div>
+        <div class="nft-card"><div class="nft-placeholder"><span class="nft-placeholder-icon">🔥</span><span class="nft-placeholder-label">Guardian of Fire</span></div></div>
+        <div class="nft-card"><div class="nft-placeholder"><span class="nft-placeholder-icon">🏔️</span><span class="nft-placeholder-label">Guardian of Earth</span></div></div>
+        <div class="nft-card"><div class="nft-placeholder"><span class="nft-placeholder-icon">🌪️</span><span class="nft-placeholder-label">Guardian of Air</span></div></div>
+        <div class="nft-card"><div class="nft-placeholder"><span class="nft-placeholder-icon">💎</span><span class="nft-placeholder-label">Guardian of Crystal</span></div></div>
+        <div class="nft-card"><div class="nft-placeholder"><span class="nft-placeholder-icon">😊</span><span class="nft-placeholder-label">Guardian of Joy</span></div></div>
+        <div class="nft-card"><div class="nft-placeholder"><span class="nft-placeholder-icon">🦁</span><span class="nft-placeholder-label">Guardian of Courage</span></div></div>
+        <div class="nft-card"><div class="nft-placeholder"><span class="nft-placeholder-icon">💕</span><span class="nft-placeholder-label">Guardian of Love</span></div></div>
+        <div class="nft-card"><div class="nft-placeholder"><span class="nft-placeholder-icon">🌅</span><span class="nft-placeholder-label">Guardian of Hope</span></div></div>
+        <div class="nft-card"><div class="nft-placeholder"><span class="nft-placeholder-icon">☮️</span><span class="nft-placeholder-label">Guardian of Peace</span></div></div>
+        <div class="nft-card"><div class="nft-placeholder"><span class="nft-placeholder-icon">🌙</span><span class="nft-placeholder-label">Guardian of Dreams</span></div></div>
+        <div class="nft-card"><div class="nft-placeholder"><span class="nft-placeholder-icon">🍂</span><span class="nft-placeholder-label">Guardian of Seasons</span></div></div>
+        <div class="nft-card"><div class="nft-placeholder"><span class="nft-placeholder-icon">🎵</span><span class="nft-placeholder-label">Guardian of Music</span></div></div>
+        <div class="nft-card"><div class="nft-placeholder"><span class="nft-placeholder-icon">🦸</span><span class="nft-placeholder-label">Guardian of Heroes</span></div></div>
+        <div class="nft-card"><div class="nft-placeholder"><span class="nft-placeholder-icon">⭐</span><span class="nft-placeholder-label">Guardian of Stars</span></div></div>
+        <div class="nft-card"><div class="nft-placeholder"><span class="nft-placeholder-icon">🐉</span><span class="nft-placeholder-label">Guardian of Myths</span></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <section class="lore-section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="eyebrow eyebrow--pink" data-i18n="origin_eyebrow">The Origin</span>
+        <h2 class="h-lg" style="margin-top:16px;" data-i18n="origin_title">The <span class="grad-text">Genesis</span></h2>
+      </div>
+      <div class="lore-text reveal rd-1">
+        <p data-i18n="lore_p1"></p>
+        <p data-i18n="lore_p2"></p>
+        <div class="lore-quote"><p data-i18n="lore_q1"></p></div>
+        <p data-i18n="lore_p3"></p>
+        <p data-i18n="lore_p4"></p>
+        <div class="lore-quote"><p data-i18n="lore_q2"></p></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="values-section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="eyebrow eyebrow--purple" data-i18n="values_eyebrow">Core Values</span>
+        <h2 class="h-lg" style="margin-top:16px;" data-i18n="values_title">What We <span class="grad-text">Stand For</span></h2>
+        <p data-i18n="values_sub">Three pillars that define every Guardian's commitment.</p>
+      </div>
+      <div class="values-grid">
+        <div class="card value-card reveal"><span class="value-icon">👁️</span><div class="value-title" data-i18n="val1_title">Presence</div><div class="value-desc" data-i18n="val1_desc"></div></div>
+        <div class="card value-card reveal rd-1"><span class="value-icon">🌈</span><div class="value-title" data-i18n="val2_title">Color</div><div class="value-desc" data-i18n="val2_desc"></div></div>
+        <div class="card value-card reveal rd-2"><span class="value-icon">🤝</span><div class="value-title" data-i18n="val3_title">Community</div><div class="value-desc" data-i18n="val3_desc"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="oath-teaser">
+    <div class="container--sm">
+      <div class="reveal">
+        <span class="eyebrow eyebrow--purple" style="margin-bottom:20px;display:inline-flex;" data-i18n="oath_teaser_eyebrow">Sacred Ritual</span>
+        <h2 class="h-lg" style="margin-bottom:34px;" data-i18n="oath_teaser_title">The Guardian's <span class="grad-text">Oath</span></h2>
+      </div>
+      <div class="oath-box reveal rd-1">
+        <p id="js-oath-text"></p>
+      </div>
+      <div class="reveal rd-2" id="cta-zone">
+        <a href="home.html" class="btn btn-primary btn-lg" data-i18n="cta_oath">⚔️ Accept the Oath</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="divider" style="margin-bottom:36px;"></div>
+    <div class="container">
+      <ul class="social-list" style="margin-bottom:22px;">
+        <li><a href="https://twitter.com/Cubyboo_NFT" class="social-link" target="_blank" rel="noopener">𝕏</a></li>
+        <li><a href="#" class="social-link" data-soon onclick="return false;"><img src="discord-icon.png" alt="Discord"></a></li>
+        <li><a href="#" class="social-link" data-soon onclick="return false;"><img src="opensea-icon.png" alt="OpenSea"></a></li>
+      </ul>
+      <div class="footer-bottom">
+        <p data-i18n="footer_copy">© 2026 Cubyboo · What we cherish exists.</p>
+        <span class="chain-badge"><img src="abstract-icon.png" alt="Abstract" onerror="this.style.display='none'"> Abstract</span>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<script src="i18n.js"></script>
+<script>
+(function(){const el=document.getElementById('js-particles');const c=['#FF5FBA','#00E5FF','#FFE040','#4DFFA0','#A855F7'];for(let i=0;i<28;i++){const p=document.createElement('div');p.className='particle';const s=Math.random()*4+2;p.style.cssText=`width:${s}px;height:${s}px;left:${Math.random()*100}%;background:${c[Math.floor(Math.random()*c.length)]};animation-delay:${Math.random()*20}s;animation-duration:${Math.random()*12+10}s;`;el.appendChild(p);}})();
+window.addEventListener('scroll',()=>document.getElementById('js-navbar').classList.toggle('scrolled',window.scrollY>10),{passive:true});
+document.getElementById('js-burger').addEventListener('click',()=>document.getElementById('js-mobile-menu').classList.toggle('open'));
+document.querySelectorAll('.nav-mobile a').forEach(a=>a.addEventListener('click',()=>document.getElementById('js-mobile-menu').classList.remove('open')));
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible');}),{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+function buildOath(){
+  const body=LangManager.get('oath_body');
+  const name=LangManager.get('oath_guardian');
+  const sig=LangManager.get('oath_sig');
+  document.getElementById('js-oath-text').innerHTML=body
+    .replace('[GUARDIAN]',`<span class="oath-name">${name}</span>`)
+    .replace('[SIG]',`<span class="oath-sig">${sig}</span>`);
+}
+LangManager.init(); buildOath();
+const _s=LangManager.set.bind(LangManager);
+LangManager.set=function(l){_s(l);buildOath();};
+
+(function(){
+  const track=document.getElementById('js-nft-track');
+  const wrap=document.getElementById('js-nft-wrap');
+  const clone=track.cloneNode(true); clone.id='';
+  wrap.appendChild(clone);
+})();
+
+if(localStorage.getItem('cubyboo_oath_signed')==='true'){
+  document.getElementById('nav-wl').style.display='';
+  document.getElementById('mob-wl').style.display='';
+  document.getElementById('nav-cta').href='whitelist.html';
+  document.getElementById('cta-zone').innerHTML=`<a href="whitelist.html" class="btn btn-primary btn-lg" data-i18n="cta_wl">${LangManager.get('cta_wl')}</a>`;
+}
+</script>
+</body>
+</html>

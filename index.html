@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cubyboo — Guardians of Color</title>
+  <meta name="description" content="2,222 Cubyboo NFTs on Abstract. What we cherish exists.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* NO navbar, NO footer — pure landing */
+    body { overflow: hidden; margin: 0; }
+
+    .hero-landing {
+      width: 100vw; height: 100vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center; position: relative;
+      padding: 0;
+      gap: 0;
+    }
+
+    /* Glows */
+    .glow { position: absolute; border-radius: 50%; filter: blur(100px); pointer-events: none; }
+    .glow-a { width: 700px; height: 700px; background: rgba(255,95,186,.09);  top:50%; left:50%; transform:translate(-50%,-50%); }
+    .glow-b { width: 500px; height: 500px; background: rgba(0,229,255,.07);   top:10%; right:0%; }
+    .glow-c { width: 500px; height: 500px; background: rgba(168,85,247,.08);  bottom:0%; left:0%; }
+
+    /* Mascot */
+    .mascot-wrap { position: relative; display: inline-block; margin-bottom: 44px; }
+    .mascot-body {
+      width: min(220px, 44vw, 44vh); height: min(220px, 44vw, 44vh);
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(255,95,186,.09), rgba(168,85,247,.09), rgba(0,229,255,.09));
+      border: 1px solid rgba(255,255,255,.08);
+      display: flex; align-items: center; justify-content: center;
+      font-size: min(86px, 18vw, 18vh);
+      animation: float 4s ease-in-out infinite;
+      position: relative; z-index: 2;
+      backdrop-filter: blur(8px);
+      object-fit: cover;
+      overflow: hidden;
+    }
+    /* Replace emoji with img when asset ready:
+       <img src="cubyboo-hero.png" style="width:72%;height:72%;object-fit:contain;"> */
+
+    /* Rings */
+    .ring { position: absolute; top:50%; left:50%; border-radius:50%; border:1px solid; transform:translate(-50%,-50%); pointer-events:none; }
+    .ring-1 { width:calc(100% + 44px);  height:calc(100% + 44px);  border-color:rgba(255,95,186,.32); animation:ringPulse 3.2s ease-in-out 0s   infinite; }
+    .ring-2 { width:calc(100% + 96px);  height:calc(100% + 96px);  border-color:rgba(168,85,247,.20); animation:ringPulse 3.2s ease-in-out .8s  infinite; }
+    .ring-3 { width:calc(100% + 160px); height:calc(100% + 160px); border-color:rgba(0,229,255,.12);  animation:ringPulse 3.2s ease-in-out 1.6s infinite; }
+    @keyframes ringPulse { 0%,100%{transform:translate(-50%,-50%) scale(1);   opacity:1; }
+                           50%     {transform:translate(-50%,-50%) scale(1.07);opacity:.4;} }
+
+    /* Orbiting sparks */
+    .orbit { position:absolute; top:50%; left:50%; border-radius:50%; pointer-events:none; }
+    .orbit-1 { width:calc(100% + 130px); height:calc(100% + 130px); margin-left:calc(-50% - 65px); margin-top:calc(-50% - 65px); animation:rotate 9s linear infinite; }
+    .orbit-2 { width:calc(100% + 130px); height:calc(100% + 130px); margin-left:calc(-50% - 65px); margin-top:calc(-50% - 65px); animation:rotate 13s linear reverse infinite; }
+    .spark { position:absolute; width:10px; height:10px; border-radius:50%; top:0; left:50%; transform:translateX(-50%); box-shadow:0 0 14px 5px currentColor; }
+    .spark-b { top:auto; bottom:0; }
+    .spark-pink   { color:var(--pink); }
+    .spark-cyan   { color:var(--cyan); }
+    .spark-yellow { color:var(--yellow); }
+    .spark-purple { color:var(--purple); }
+
+    /* Dust canvas */
+    .dust-canvas { position:absolute; top:0; left:0; pointer-events:none; z-index:3; }
+
+    /* ENTER button — big & magnetic */
+    .btn-enter {
+      display: inline-flex; align-items:center; gap:12px;
+      padding: 22px 72px;
+      border-radius: var(--r-full);
+      background: var(--grad);
+      color: #fff; font-family:'Syne',sans-serif; font-size:1.1rem; font-weight:800;
+      letter-spacing:.08em; text-transform:uppercase; text-decoration:none;
+      box-shadow: 0 12px 50px rgba(168,85,247,.45), 0 0 0 0 rgba(168,85,247,.3);
+      transition: all .3s cubic-bezier(.34,1.56,.64,1);
+      animation: enterPulse 3s ease-in-out 1.2s infinite;
+      position: relative; overflow:hidden;
+    }
+    .btn-enter::before {
+      content:''; position:absolute; inset:0;
+      background:linear-gradient(135deg,rgba(255,255,255,.18),transparent);
+      opacity:0; transition:opacity .3s;
+    }
+    .btn-enter:hover::before { opacity:1; }
+    .btn-enter:hover {
+      transform: translateY(-5px) scale(1.06);
+      box-shadow: 0 24px 72px rgba(168,85,247,.65), 0 0 0 8px rgba(168,85,247,.12);
+      animation: none;
+    }
+    @keyframes enterPulse {
+      0%,100% { box-shadow: 0 12px 50px rgba(168,85,247,.45), 0 0 0 0   rgba(168,85,247,.3); }
+      50%      { box-shadow: 0 12px 50px rgba(168,85,247,.45), 0 0 0 14px rgba(168,85,247,.0); }
+    }
+
+    /* ENTER visible immediately */
+    .lp-cta { opacity:0; animation:fadeUp .7s ease .6s forwards; }
+
+    @media(max-width:480px) {
+      .btn-enter { padding:18px 48px; font-size:.95rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="bg-layer"><div class="bg-mesh"></div><div class="bg-grid"></div></div>
+<div class="particles" id="js-particles"></div>
+
+<div class="hero-landing">
+  <div class="glow glow-a"></div>
+  <div class="glow glow-b"></div>
+  <div class="glow glow-c"></div>
+
+  <div class="mascot-wrap" id="js-mascot-wrap">
+    <div class="ring ring-1"></div>
+    <div class="ring ring-2"></div>
+    <div class="ring ring-3"></div>
+    <div class="orbit orbit-1">
+      <div class="spark spark-pink"></div>
+      <div class="spark spark-b spark-cyan"></div>
+    </div>
+    <div class="orbit orbit-2">
+      <div class="spark spark-yellow"></div>
+      <div class="spark spark-b spark-purple"></div>
+    </div>
+    <!-- 📌 Remplace "cubyboo-hero.mp4" par le nom exact de ta vidéo -->
+    <video class="mascot-body" id="js-mascot" autoplay loop muted playsinline>
+      <source src="cubyboo-hero.mp4" type="video/mp4">
+    </video>
+    <canvas class="dust-canvas" id="js-dust"></canvas>
+  </div>
+
+  <div class="lp-cta">
+    <a href="home.html" class="btn-enter">✦ Enter ✦</a>
+  </div>
+</div>
+
+<script>
+/* Particles */
+(function(){
+  const el=document.getElementById('js-particles');
+  const colors=['#FF5FBA','#00E5FF','#FFE040','#4DFFA0','#FF8C42','#A855F7','#3B82F6'];
+  for(let i=0;i<40;i++){
+    const p=document.createElement('div'); p.className='particle';
+    const s=Math.random()*5+2;
+    p.style.cssText=`width:${s}px;height:${s}px;left:${Math.random()*100}%;background:${colors[Math.floor(Math.random()*colors.length)]};animation-delay:${Math.random()*20}s;animation-duration:${Math.random()*14+10}s;`;
+    el.appendChild(p);
+  }
+})();
+
+/* Magic dust canvas */
+(function(){
+  const canvas=document.getElementById('js-dust');
+  const mascot=document.getElementById('js-mascot');
+  if(!canvas||!mascot) return;
+  const ctx=canvas.getContext('2d');
+  const cols=['#FF5FBA','#00E5FF','#FFE040','#4DFFA0','#A855F7','#FF8C42'];
+  let pts=[];
+  function resize(){
+    const pad=100;
+    canvas.width=mascot.offsetWidth+pad*2;
+    canvas.height=mascot.offsetHeight+pad*2;
+    canvas.style.left=-pad+'px'; canvas.style.top=-pad+'px';
+  }
+  function spawn(){
+    const cx=canvas.width/2, cy=canvas.height/2;
+    const a=Math.random()*Math.PI*2;
+    const r=mascot.offsetWidth/2+10+Math.random()*24;
+    pts.push({x:cx+Math.cos(a)*r,y:cy+Math.sin(a)*r,
+      vx:(Math.random()-.5)*1.6,vy:(Math.random()-.5)*1.6,
+      size:Math.random()*3.5+1,color:cols[Math.floor(Math.random()*cols.length)],
+      life:1,decay:Math.random()*.018+.007});
+  }
+  function frame(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    if(Math.random()<.45) spawn();
+    pts=pts.filter(p=>{
+      p.x+=p.vx; p.y+=p.vy; p.life-=p.decay;
+      ctx.globalAlpha=p.life*.8;
+      ctx.fillStyle=p.color; ctx.shadowColor=p.color; ctx.shadowBlur=8;
+      ctx.beginPath(); ctx.arc(p.x,p.y,p.size,0,Math.PI*2); ctx.fill();
+      return p.life>0;
+    });
+    ctx.globalAlpha=1; ctx.shadowBlur=0;
+    requestAnimationFrame(frame);
+  }
+  resize(); window.addEventListener('resize',resize); frame();
+})();
+</script>
+</body>
+</html>

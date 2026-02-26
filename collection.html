@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Collection & Roadmap — Cubyboo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .page-body{padding-top:var(--nav-h);}
+    .collection-section{padding:80px 0;}
+    .traits-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+    .trait-card{padding:24px 18px;text-align:center;}
+    .trait-icon{font-size:2rem;margin-bottom:10px;display:block;}
+    .trait-name{font-family:'Syne',sans-serif;font-size:.87rem;font-weight:700;margin-bottom:4px;}
+    .trait-count{font-size:.74rem;color:var(--muted);}
+    .trait-bar-wrap{margin-top:10px;height:4px;background:rgba(255,255,255,.06);border-radius:99px;overflow:hidden;}
+    .trait-bar{height:100%;border-radius:99px;background:var(--grad);}
+    @media(max-width:560px){.traits-grid{grid-template-columns:repeat(2,1fr);}}
+    .roadmap-section{padding:80px 0;}
+    .faq-section{padding:80px 0 110px;}
+    .final-cta{padding:80px 0 110px;text-align:center;background:linear-gradient(180deg,transparent,rgba(168,85,247,.04)50%,transparent);}
+    .final-cta p{font-size:.97rem;color:var(--muted);max-width:460px;margin:16px auto 38px;line-height:1.8;}
+    .cta-cluster{display:flex;gap:13px;justify-content:center;flex-wrap:wrap;}
+  </style>
+</head>
+<body>
+<div class="bg-layer"><div class="bg-mesh"></div><div class="bg-grid"></div></div>
+<div class="particles" id="js-particles"></div>
+
+<nav class="navbar solid" id="js-navbar">
+  <a href="index.html" class="nav-logo"><img src="cubyboo-logo.png" alt="Cubyboo"></a>
+  <ul class="nav-links">
+    <li><a href="home.html" data-i18n="nav_oath">The Oath</a></li>
+    <li><a href="whitelist.html" id="nav-wl" style="display:none;" data-i18n="nav_whitelist">Whitelist</a></li>
+    <li><a href="about.html" data-i18n="nav_about">About</a></li>
+    <li><a href="collection.html" class="active" data-i18n="nav_collection">Collection</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="https://twitter.com/Cubyboo_NFT" class="nav-social" target="_blank" rel="noopener">𝕏</a>
+    <a href="#" class="nav-social" data-soon onclick="return false;"><img src="discord-icon.png" alt="Discord"></a>
+    <div id="lang-selector"></div>
+    <a href="home.html" class="nav-cta" id="nav-cta" data-i18n="nav_wl_btn">🎟 Whitelist</a>
+  </div>
+  <div class="nav-burger" id="js-burger"><span></span><span></span><span></span></div>
+</nav>
+<div class="nav-mobile" id="js-mobile-menu">
+  <a href="home.html" data-i18n="nav_oath">The Oath</a>
+  <a href="whitelist.html" id="mob-wl" style="display:none;color:var(--purple);font-weight:700;" data-i18n="nav_wl_btn">🎟 Whitelist</a>
+  <a href="about.html" data-i18n="nav_about">About</a>
+  <a href="collection.html" data-i18n="nav_collection">Collection</a>
+</div>
+
+<div class="wrapper page-body">
+
+  <!-- COLLECTION -->
+  <section class="collection-section" id="collection">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="eyebrow eyebrow--purple" data-i18n="coll_eyebrow">The Collection</span>
+        <h1 class="h-lg" style="margin-top:16px;" data-i18n="coll_title">Meet the <span class="grad-text">Cubyboo</span></h1>
+        <p data-i18n="coll_sub">Each Cubyboo is a unique combination of traits.</p>
+      </div>
+      <div class="traits-grid">
+        <div class="card trait-card reveal"><span class="trait-icon">🎨</span><div class="trait-name">Color Aura</div><div class="trait-count">12 variants</div><div class="trait-bar-wrap"><div class="trait-bar" style="width:85%"></div></div></div>
+        <div class="card trait-card reveal rd-1"><span class="trait-icon">👁️</span><div class="trait-name">Eyes</div><div class="trait-count">18 variants</div><div class="trait-bar-wrap"><div class="trait-bar" style="width:72%"></div></div></div>
+        <div class="card trait-card reveal rd-2"><span class="trait-icon">✨</span><div class="trait-name">Sparkle Type</div><div class="trait-count">9 variants</div><div class="trait-bar-wrap"><div class="trait-bar" style="width:60%"></div></div></div>
+        <div class="card trait-card reveal rd-3"><span class="trait-icon">🎀</span><div class="trait-name">Accessory</div><div class="trait-count">24 variants</div><div class="trait-bar-wrap"><div class="trait-bar" style="width:90%"></div></div></div>
+        <div class="card trait-card reveal rd-1"><span class="trait-icon">🌟</span><div class="trait-name">Background</div><div class="trait-count">15 variants</div><div class="trait-bar-wrap"><div class="trait-bar" style="width:66%"></div></div></div>
+        <div class="card trait-card reveal rd-2"><span class="trait-icon">💎</span><div class="trait-name">Rarity</div><div class="trait-count">5 tiers</div><div class="trait-bar-wrap"><div class="trait-bar" style="width:40%"></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ROADMAP -->
+  <section class="roadmap-section" id="roadmap">
+    <div class="container--md">
+      <div class="section-header reveal">
+        <span class="eyebrow eyebrow--pink" data-i18n="rm_eyebrow">Roadmap</span>
+        <h2 class="h-lg" style="margin-top:16px;" data-i18n="rm_title">The Guardian's <span class="grad-text">Journey</span></h2>
+        <p data-i18n="rm_sub">Four phases to build a thriving ecosystem.</p>
+      </div>
+      <div class="roadmap-line">
+        <div class="rm-items">
+          <div class="rm-item is-done reveal">
+            <div class="rm-content">
+              <span class="pill pill--green rm-tag" data-i18n="rm1_tag">Completed ✓</span>
+              <h3 data-i18n="rm1_title">Phase 1 — Genesis</h3>
+              <p data-i18n="rm1_desc">The Guardians of Color awaken first.</p>
+            </div>
+            <div class="rm-node"><div class="rm-dot">🌱</div><div class="rm-phase">Phase 1</div></div>
+            <div class="rm-empty"></div>
+          </div>
+          <div class="rm-item is-active reveal rd-1">
+            <div class="rm-empty"></div>
+            <div class="rm-node"><div class="rm-dot">🔥</div><div class="rm-phase">Phase 2</div></div>
+            <div class="rm-content">
+              <span class="pill pill--orange rm-tag" data-i18n="rm2_tag">In Progress</span>
+              <h3 data-i18n="rm2_title">Phase 2 — Whitelist</h3>
+              <p data-i18n="rm2_desc">Whitelist campaign and Discord launch.</p>
+            </div>
+          </div>
+          <div class="rm-item reveal rd-2">
+            <div class="rm-content">
+              <span class="pill pill--cyan rm-tag" data-i18n="rm3_tag">Coming Soon</span>
+              <h3 data-i18n="rm3_title">Phase 3 — Mint</h3>
+              <p data-i18n="rm3_desc">Public mint on Abstract blockchain.</p>
+            </div>
+            <div class="rm-node"><div class="rm-dot">🚀</div><div class="rm-phase">Phase 3</div></div>
+            <div class="rm-empty"></div>
+          </div>
+          <div class="rm-item reveal rd-3">
+            <div class="rm-empty"></div>
+            <div class="rm-node"><div class="rm-dot">🌈</div><div class="rm-phase">Phase 4</div></div>
+            <div class="rm-content">
+              <span class="pill pill--purple rm-tag" data-i18n="rm4_tag">Future</span>
+              <h3 data-i18n="rm4_title">Phase 4 — Sanctuary</h3>
+              <p data-i18n="rm4_desc">Holder dashboard and Prismatic Sanctuary DAO.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- FAQ -->
+  <section class="faq-section" id="faq">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="eyebrow eyebrow--cyan" data-i18n="faq_eyebrow">FAQ</span>
+        <h2 class="h-lg" style="margin-top:16px;" data-i18n="faq_title">Everything you <span class="grad-text2">need to know</span></h2>
+      </div>
+      <div class="faq-list reveal" id="js-faq-list"><!-- built by JS --></div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <div class="final-cta">
+    <div class="container--sm reveal">
+      <span class="eyebrow eyebrow--pink" style="margin-bottom:20px;display:inline-flex;"><span class="eyebrow-dot"></span><span data-i18n="final_eyebrow">Limited Spots — Act Now</span></span>
+      <h2 class="h-lg" data-i18n="final_title">Ready to become<br>a <span class="grad-text">Guardian?</span></h2>
+      <p data-i18n="final_sub">200 Whitelist spots available this session.</p>
+      <div class="cta-cluster" id="final-cta-btns">
+        <a href="home.html" class="btn btn-primary btn-xl" data-i18n="final_btn1">⚔️ Accept the Oath</a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="divider" style="margin-bottom:36px;"></div>
+    <div class="container">
+      <ul class="social-list" style="margin-bottom:22px;">
+        <li><a href="https://twitter.com/Cubyboo_NFT" class="social-link" target="_blank" rel="noopener">𝕏</a></li>
+        <li><a href="#" class="social-link" data-soon onclick="return false;"><img src="discord-icon.png" alt="Discord"></a></li>
+        <li><a href="#" class="social-link" data-soon onclick="return false;"><img src="opensea-icon.png" alt="OpenSea"></a></li>
+      </ul>
+      <div class="footer-bottom">
+        <p data-i18n="footer_copy">© 2026 Cubyboo · What we cherish exists.</p>
+        <span class="chain-badge"><img src="abstract-icon.png" alt="Abstract" onerror="this.style.display='none'"> Abstract</span>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<script src="i18n.js"></script>
+<script>
+(function(){const el=document.getElementById('js-particles');const c=['#FF5FBA','#00E5FF','#FFE040','#4DFFA0','#A855F7'];for(let i=0;i<28;i++){const p=document.createElement('div');p.className='particle';const s=Math.random()*4+2;p.style.cssText=`width:${s}px;height:${s}px;left:${Math.random()*100}%;background:${c[Math.floor(Math.random()*c.length)]};animation-delay:${Math.random()*20}s;animation-duration:${Math.random()*12+10}s;`;el.appendChild(p);}})();
+window.addEventListener('scroll',()=>document.getElementById('js-navbar').classList.toggle('scrolled',window.scrollY>10),{passive:true});
+document.getElementById('js-burger').addEventListener('click',()=>document.getElementById('js-mobile-menu').classList.toggle('open'));
+document.querySelectorAll('.nav-mobile a').forEach(a=>a.addEventListener('click',()=>document.getElementById('js-mobile-menu').classList.remove('open')));
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible');}),{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+function buildFAQ(){
+  const keys=[['faq_q1','faq_a1'],['faq_q2','faq_a2'],['faq_q3','faq_a3'],['faq_q4','faq_a4'],['faq_q5','faq_a5'],['faq_q6','faq_a6'],['faq_q7','faq_a7'],['faq_q8','faq_a8']];
+  document.getElementById('js-faq-list').innerHTML=keys.map(([q,a])=>`
+    <div class="faq-item">
+      <button class="faq-q">${LangManager.get(q)} <span class="faq-arrow">▾</span></button>
+      <div class="faq-a">${LangManager.get(a)}</div>
+    </div>`).join('');
+  document.querySelectorAll('.faq-q').forEach(btn=>{
+    btn.addEventListener('click',function(){
+      const item=this.closest('.faq-item');
+      const wasOpen=item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+      if(!wasOpen) item.classList.add('open');
+    });
+  });
+}
+
+LangManager.init(); buildFAQ();
+const _s=LangManager.set.bind(LangManager);
+LangManager.set=function(l){_s(l);buildFAQ();};
+
+if(localStorage.getItem('cubyboo_oath_signed')==='true'){
+  document.getElementById('nav-wl').style.display='';
+  document.getElementById('mob-wl').style.display='';
+  document.getElementById('nav-cta').href='whitelist.html';
+  document.getElementById('final-cta-btns').innerHTML=`<a href="whitelist.html" class="btn btn-primary btn-xl">${LangManager.get('final_btn2')}</a>`;
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Guardian's Oath — Cubyboo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .page-body { padding-top: var(--nav-h); }
+    .video-section { padding: 80px 0 60px; }
+    .video-header  { text-align:center; margin-bottom:32px; }
+    .video-header h1 { margin-top:16px; }
+    .video-header p  { font-size:.97rem; color:var(--muted); margin-top:10px; }
+    .video-wrap { border-radius:var(--r-xl); overflow:hidden; box-shadow:0 24px 72px rgba(0,0,0,.6); }
+    .video-wrap video { width:100%; display:block; }
+    .oath-section { padding:60px 0 100px; }
+    .oath-card { padding:52px 48px; text-align:center; }
+    .oath-card-head { margin-bottom:34px; }
+    .oath-card-head h2 { margin:14px 0 10px; }
+    .oath-card-head p  { font-size:.9rem; color:var(--muted); }
+    .oath-scroll-box { padding:32px 28px; background:rgba(0,0,0,.28); border:1px solid var(--border); border-radius:var(--r-lg); margin-bottom:26px; position:relative; overflow:hidden; }
+    .oath-scroll-box::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:var(--grad); }
+    .oath-text { font-size:.97rem; line-height:2.2; text-align:center; color:rgba(240,240,255,.87); white-space:pre-line; }
+    .oath-name { font-weight:700; color:var(--cyan); }
+    .oath-sig  { display:inline-block; margin-top:8px; font-family:'Syne',sans-serif; font-size:.92rem; font-weight:800; letter-spacing:.14em; background:var(--grad); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+    .oath-actions { display:flex; flex-direction:column; gap:14px; }
+    .oath-btn-row { display:flex; gap:12px; }
+    .oath-signed-box { display:none; text-align:center; padding:28px 20px; }
+    .oath-signed-box.show { display:block; animation:scaleIn .4s cubic-bezier(.34,1.56,.64,1); }
+    @media(max-width:600px){ .oath-card{padding:32px 18px;} .oath-btn-row{flex-direction:column;} }
+  </style>
+</head>
+<body>
+<div class="bg-layer"><div class="bg-mesh"></div><div class="bg-grid"></div></div>
+<div class="particles" id="js-particles"></div>
+
+<nav class="navbar solid" id="js-navbar">
+  <a href="index.html" class="nav-logo"><img src="cubyboo-logo.png" alt="Cubyboo"></a>
+  <ul class="nav-links">
+    <li><a href="home.html" class="active" data-i18n="nav_oath">The Oath</a></li>
+    <li><a href="whitelist.html" id="nav-wl" style="display:none;" data-i18n="nav_whitelist">Whitelist</a></li>
+    <li><a href="about.html" data-i18n="nav_about">About</a></li>
+    <li><a href="collection.html" data-i18n="nav_collection">Collection</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="https://twitter.com/Cubyboo_NFT" class="nav-social" target="_blank" rel="noopener">𝕏</a>
+    <a href="#" class="nav-social" data-soon onclick="return false;"><img src="discord-icon.png" alt="Discord"></a>
+    <div id="lang-selector"></div>
+    <a href="whitelist.html" class="nav-cta" id="nav-cta" data-i18n="nav_wl_btn">🎟 Whitelist</a>
+  </div>
+  <div class="nav-burger" id="js-burger"><span></span><span></span><span></span></div>
+</nav>
+<div class="nav-mobile" id="js-mobile-menu">
+  <a href="home.html" data-i18n="nav_oath">The Oath</a>
+  <a href="whitelist.html" id="mob-wl" style="display:none;color:var(--purple);font-weight:700;" data-i18n="nav_wl_btn">🎟 Whitelist</a>
+  <a href="about.html" data-i18n="nav_about">About</a>
+  <a href="collection.html" data-i18n="nav_collection">Collection</a>
+</div>
+
+<div class="wrapper page-body">
+  <section class="video-section">
+    <div class="container--md">
+      <div class="video-header reveal">
+        <span class="eyebrow eyebrow--cyan" data-i18n="home_trailer_eyebrow">Official Trailer</span>
+        <h1 class="h-lg" data-i18n="home_trailer_title">🎬 The Secret <span class="grad-text2">Origin</span> of Cubyboo</h1>
+        <p data-i18n="home_trailer_sub">Watch the story unfold.</p>
+      </div>
+      <div class="video-wrap reveal rd-1">
+        <video controls preload="metadata" playsinline>
+          <source src="cubyboo-trailer.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="oath-section">
+    <div class="container--sm">
+      <div class="card oath-card reveal">
+        <div class="oath-card-head">
+          <span class="eyebrow eyebrow--purple" data-i18n="oath_eyebrow">Sacred Ritual</span>
+          <h2 class="h-lg" data-i18n="oath_title"><span class="grad-text">The Guardian's</span><br>Oath</h2>
+          <p data-i18n="oath_sub">Accept the oath to unlock your Whitelist access.</p>
+        </div>
+        <div class="oath-scroll-box">
+          <div class="oath-text" id="js-oath-text"><!-- filled by JS --></div>
+        </div>
+        <div id="js-unsigned">
+          <div class="oath-actions">
+            <label class="check-row">
+              <input type="checkbox" id="js-check">
+              <span id="js-check-label" style="font-size:.88rem;color:var(--muted);line-height:1.5;cursor:pointer;" data-i18n="oath_check">I solemnly accept this oath and commit to my role as Guardian</span>
+            </label>
+            <div class="oath-btn-row">
+              <button class="btn btn-ghost" id="js-decline" data-i18n="oath_decline" style="flex:1;">Decline</button>
+              <button class="btn btn-primary" id="js-accept" disabled data-i18n="oath_accept" style="flex:2;">⚔️ I Accept This Oath</button>
+            </div>
+          </div>
+        </div>
+        <div class="oath-signed-box" id="js-signed">
+          <div style="font-size:2.6rem;margin-bottom:14px;">✅</div>
+          <p id="js-signed-msg" style="font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:700;color:var(--green);margin-bottom:20px;" data-i18n="oath_signed_msg">Oath accepted — Whitelist unlocked!</p>
+          <a href="whitelist.html" class="btn btn-primary btn-lg" data-i18n="oath_signed_btn">🎟 Go to Whitelist</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="divider" style="margin-bottom:36px;"></div>
+    <div class="container">
+      <ul class="social-list" style="margin-bottom:22px;">
+        <li><a href="https://twitter.com/Cubyboo_NFT" class="social-link" target="_blank" rel="noopener">𝕏</a></li>
+        <li><a href="#" class="social-link" data-soon onclick="return false;"><img src="discord-icon.png" alt="Discord"></a></li>
+        <li><a href="#" class="social-link" data-soon onclick="return false;"><img src="opensea-icon.png" alt="OpenSea"></a></li>
+      </ul>
+      <div class="footer-bottom">
+        <p data-i18n="footer_copy">© 2026 Cubyboo · What we cherish exists.</p>
+        <span class="chain-badge"><img src="abstract-icon.png" alt="Abstract" onerror="this.style.display='none'"> Abstract</span>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<script src="i18n.js"></script>
+<script>
+(function(){const el=document.getElementById('js-particles');const c=['#FF5FBA','#00E5FF','#FFE040','#4DFFA0','#A855F7'];for(let i=0;i<28;i++){const p=document.createElement('div');p.className='particle';const s=Math.random()*4+2;p.style.cssText=`width:${s}px;height:${s}px;left:${Math.random()*100}%;background:${c[Math.floor(Math.random()*c.length)]};animation-delay:${Math.random()*20}s;animation-duration:${Math.random()*12+10}s;`;el.appendChild(p);}})();
+window.addEventListener('scroll',()=>document.getElementById('js-navbar').classList.toggle('scrolled',window.scrollY>10),{passive:true});
+document.getElementById('js-burger').addEventListener('click',()=>document.getElementById('js-mobile-menu').classList.toggle('open'));
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible');}),{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+function buildOathText() {
+  const body = LangManager.get('oath_body');
+  const name = LangManager.get('oath_guardian');
+  const sig  = LangManager.get('oath_sig');
+  const el   = document.getElementById('js-oath-text');
+  el.innerHTML = body
+    .replace('[GUARDIAN]', `<span class="oath-name">${name}</span>`)
+    .replace('[SIG]', `<span class="oath-sig">${sig}</span>`);
+}
+
+// Init i18n then build oath
+LangManager.init();
+buildOathText();
+
+// Rebuild oath text on language change
+const _origSet = LangManager.set.bind(LangManager);
+LangManager.set = function(lang) { _origSet(lang); buildOathText(); };
+
+if(localStorage.getItem('cubyboo_oath_signed')==='true'){
+  document.getElementById('js-unsigned').style.display='none';
+  document.getElementById('js-signed').classList.add('show');
+  document.getElementById('nav-wl').style.display='';
+  document.getElementById('mob-wl').style.display='';
+}
+document.getElementById('js-check').addEventListener('change',function(){
+  document.getElementById('js-accept').disabled=!this.checked;
+});
+document.getElementById('js-decline').addEventListener('click',()=>{
+  alert(LangManager.get('oath_decline_alert'));
+});
+document.getElementById('js-accept').addEventListener('click',()=>{
+  localStorage.setItem('cubyboo_oath_signed','true');
+  document.getElementById('js-unsigned').style.display='none';
+  document.getElementById('js-signed').classList.add('show');
+  document.getElementById('nav-wl').style.display='';
+  document.getElementById('mob-wl').style.display='';
+  setTimeout(()=>window.location.href='whitelist.html',800);
+});
+</script>
+</body>
+</html>
