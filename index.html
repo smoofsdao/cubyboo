@@ -46,32 +46,20 @@
       overflow: hidden; /* ← FIX 1: Force le contenu à rester dans le cercle */
     }
     
-    /* FIX 2: Vidéo en cercle parfait avec optimisations GPU */
+    /* Vidéo locale en cercle parfait avec optimisations GPU */
     .mascot-body video {
       width: 100%;
       height: 100%;
-      object-fit: cover; /* ← Couvre tout le cercle sans déformation */
-      border-radius: 50%; /* ← Double sécurité pour le cercle */
+      object-fit: cover;
+      border-radius: 50%;
       display: block;
+      position: relative;
+      z-index: 1;
       /* Optimisations performance */
       will-change: transform;
       transform: translateZ(0);
       backface-visibility: hidden;
       -webkit-backface-visibility: hidden;
-    }
-    
-    /* Vidéo au premier plan */
-    .mascot-body video {
-      position: relative;
-      z-index: 1;
-      /* Transition douce d'apparition */
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-    
-    /* Vidéo chargée */
-    .mascot-body video[style*="opacity: 1"] {
-      opacity: 1;
     }
     
     /* Loading state */
@@ -181,7 +169,7 @@
       <div class="spark spark-b spark-purple"></div>
     </div>
     
-    <!-- FIX 3: Vidéo optimisée avec chargement ultra-fluide -->
+    <!-- Vidéo locale optimisée (hero) -->
     <div class="mascot-body" id="js-mascot-container">
       <video 
         id="js-mascot" 
@@ -205,7 +193,7 @@
   </div>
 </div>
 
-<!-- Preload critique pour fluidité maximale -->
+<!-- Preload vidéo locale pour fluidité -->
 <link rel="preload" as="video" href="cubyboo-hero.mp4" type="video/mp4">
 
 <script>
@@ -221,60 +209,28 @@
   }
 })();
 
-/* FIX 4: Optimisation maximale pour fluidité parfaite */
+/* Optimisation vidéo locale */
 (function(){
   const video = document.getElementById('js-mascot');
   const container = document.getElementById('js-mascot-container');
   
   if (!video || !container) return;
   
-  // Force le chargement immédiat
+  // Force le chargement
   video.load();
   
-  // Optimisation de performance
-  video.setAttribute('playbackRate', '1.0');
-  
-  // Lecture la plus rapide possible
+  // Play dès que possible
   const playVideo = () => {
-    const playPromise = video.play();
-    
-    if (playPromise !== undefined) {
-      playPromise
-        .then(() => {
-          // Vidéo joue avec succès
-          container.classList.remove('loading');
-          video.style.opacity = '1';
-        })
-        .catch(err => {
-          // Si autoplay bloqué, on réessaie au premier clic
-          console.log('Autoplay nécessite interaction utilisateur');
-          document.addEventListener('click', () => {
-            video.play();
-            container.classList.remove('loading');
-          }, { once: true });
-        });
-    }
+    video.play().catch(() => {
+      // Si autoplay bloqué, jouer au clic
+      document.addEventListener('click', () => video.play(), { once: true });
+    });
   };
   
-  // Lancer dès que possible
   if (video.readyState >= 3) {
-    // Vidéo déjà chargée (cache)
     playVideo();
   } else {
-    // Attendre que suffisamment soit chargé
     video.addEventListener('canplay', playVideo, { once: true });
-  }
-  
-  // Optimisation: Supprimer la class loading dès le premier frame
-  video.addEventListener('loadeddata', () => {
-    container.classList.remove('loading');
-  }, { once: true });
-  
-  // Performance: Réduire qualité si nécessaire (experimental)
-  if ('requestVideoFrameCallback' in HTMLVideoElement.prototype) {
-    video.requestVideoFrameCallback(() => {
-      video.style.willChange = 'auto';
-    });
   }
 })();
 
