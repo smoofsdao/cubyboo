@@ -31,28 +31,57 @@
     /* Mascot */
     .mascot-wrap { position: relative; display: inline-block; margin-bottom: 44px; }
     .mascot-body {
-      width: min(220px, 44vw, 44vh); height: min(220px, 44vw, 44vh);
+      width: min(220px, 44vw, 44vh); 
+      height: min(220px, 44vw, 44vh);
       border-radius: 50%;
       background: linear-gradient(135deg, rgba(255,95,186,.09), rgba(168,85,247,.09), rgba(0,229,255,.09));
       border: 1px solid rgba(255,255,255,.08);
-      display: flex; align-items: center; justify-content: center;
-      font-size: min(86px, 18vw, 18vh);
+      display: flex; 
+      align-items: center; 
+      justify-content: center;
       animation: float 4s ease-in-out infinite;
-      position: relative; z-index: 2;
+      position: relative; 
+      z-index: 2;
       backdrop-filter: blur(8px);
-      object-fit: cover;
-      overflow: hidden;
+      overflow: hidden; /* ← FIX 1: Force le contenu à rester dans le cercle */
     }
-    /* Replace emoji with img when asset ready:
-       <img src="cubyboo-hero.png" style="width:72%;height:72%;object-fit:contain;"> */
+    
+    /* FIX 2: Vidéo en cercle parfait */
+    .mascot-body video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* ← Couvre tout le cercle sans déformation */
+      border-radius: 50%; /* ← Double sécurité pour le cercle */
+      display: block;
+    }
+    
+    /* Placeholder pendant le chargement */
+    .mascot-body::before {
+      content: '🐻';
+      position: absolute;
+      font-size: min(86px, 18vw, 18vh);
+      opacity: 0.3;
+      z-index: 0;
+    }
+    
+    .mascot-body video.loaded ~ .mascot-body::before {
+      display: none;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-12px) rotate(2deg); }
+    }
 
     /* Rings */
     .ring { position: absolute; top:50%; left:50%; border-radius:50%; border:1px solid; transform:translate(-50%,-50%); pointer-events:none; }
     .ring-1 { width:calc(100% + 44px);  height:calc(100% + 44px);  border-color:rgba(255,95,186,.32); animation:ringPulse 3.2s ease-in-out 0s   infinite; }
     .ring-2 { width:calc(100% + 96px);  height:calc(100% + 96px);  border-color:rgba(168,85,247,.20); animation:ringPulse 3.2s ease-in-out .8s  infinite; }
     .ring-3 { width:calc(100% + 160px); height:calc(100% + 160px); border-color:rgba(0,229,255,.12);  animation:ringPulse 3.2s ease-in-out 1.6s infinite; }
-    @keyframes ringPulse { 0%,100%{transform:translate(-50%,-50%) scale(1);   opacity:1; }
-                           50%     {transform:translate(-50%,-50%) scale(1.07);opacity:.4;} }
+    @keyframes ringPulse { 
+      0%,100% {transform:translate(-50%,-50%) scale(1);   opacity:1; }
+      50%     {transform:translate(-50%,-50%) scale(1.07);opacity:.4;} 
+    }
 
     /* Orbiting sparks */
     .orbit { position:absolute; top:50%; left:50%; border-radius:50%; pointer-events:none; }
@@ -64,6 +93,11 @@
     .spark-cyan   { color:var(--cyan); }
     .spark-yellow { color:var(--yellow); }
     .spark-purple { color:var(--purple); }
+
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
 
     /* Dust canvas */
     .dust-canvas { position:absolute; top:0; left:0; pointer-events:none; z-index:3; }
@@ -99,9 +133,19 @@
 
     /* ENTER visible immediately */
     .lp-cta { opacity:0; animation:fadeUp .7s ease .6s forwards; }
+    
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
     @media(max-width:480px) {
       .btn-enter { padding:18px 48px; font-size:.95rem; }
+    }
+    
+    /* Loading state */
+    .mascot-body.loading {
+      background: linear-gradient(135deg, rgba(255,95,186,.15), rgba(168,85,247,.15), rgba(0,229,255,.15));
     }
   </style>
 </head>
@@ -126,10 +170,20 @@
       <div class="spark spark-yellow"></div>
       <div class="spark spark-b spark-purple"></div>
     </div>
-    <!-- 📌 Remplace "cubyboo-hero.mp4" par le nom exact de ta vidéo -->
-    <video class="mascot-body" id="js-mascot" autoplay loop muted playsinline>
-      <source src="cubyboo-hero.mp4" type="video/mp4">
-    </video>
+    
+    <!-- FIX 3: Vidéo optimisée avec chargement intelligent -->
+    <div class="mascot-body loading" id="js-mascot-container">
+      <video 
+        id="js-mascot" 
+        autoplay 
+        loop 
+        muted 
+        playsinline
+        preload="auto"
+      >
+        <source src="cubyboo-hero.mp4" type="video/mp4">
+      </video>
+    </div>
     <canvas class="dust-canvas" id="js-dust"></canvas>
   </div>
 
@@ -151,29 +205,68 @@
   }
 })();
 
+/* FIX 4: Gestion intelligente du chargement vidéo */
+(function(){
+  const video = document.getElementById('js-mascot');
+  const container = document.getElementById('js-mascot-container');
+  
+  if (!video || !container) return;
+  
+  // Enlever l'état loading quand la vidéo peut jouer
+  video.addEventListener('canplay', function() {
+    container.classList.remove('loading');
+    video.classList.add('loaded');
+  });
+  
+  // Forcer le play si nécessaire (certains navigateurs bloquent autoplay)
+  video.addEventListener('loadeddata', function() {
+    video.play().catch(err => {
+      console.log('Autoplay bloqué, mais vidéo chargée');
+    });
+  });
+  
+  // Optimisation: réduire la qualité si connexion lente
+  if ('connection' in navigator) {
+    const conn = navigator.connection;
+    if (conn && (conn.effectiveType === 'slow-2g' || conn.effectiveType === '2g')) {
+      video.preload = 'metadata'; // Charger moins de données
+    }
+  }
+})();
+
 /* Magic dust canvas */
 (function(){
   const canvas=document.getElementById('js-dust');
-  const mascot=document.getElementById('js-mascot');
-  if(!canvas||!mascot) return;
+  const mascotWrap=document.getElementById('js-mascot-container');
+  if(!canvas||!mascotWrap) return;
   const ctx=canvas.getContext('2d');
   const cols=['#FF5FBA','#00E5FF','#FFE040','#4DFFA0','#A855F7','#FF8C42'];
   let pts=[];
+  
   function resize(){
     const pad=100;
-    canvas.width=mascot.offsetWidth+pad*2;
-    canvas.height=mascot.offsetHeight+pad*2;
-    canvas.style.left=-pad+'px'; canvas.style.top=-pad+'px';
+    canvas.width=mascotWrap.offsetWidth+pad*2;
+    canvas.height=mascotWrap.offsetHeight+pad*2;
+    canvas.style.left=-pad+'px'; 
+    canvas.style.top=-pad+'px';
   }
+  
   function spawn(){
     const cx=canvas.width/2, cy=canvas.height/2;
     const a=Math.random()*Math.PI*2;
-    const r=mascot.offsetWidth/2+10+Math.random()*24;
-    pts.push({x:cx+Math.cos(a)*r,y:cy+Math.sin(a)*r,
-      vx:(Math.random()-.5)*1.6,vy:(Math.random()-.5)*1.6,
-      size:Math.random()*3.5+1,color:cols[Math.floor(Math.random()*cols.length)],
-      life:1,decay:Math.random()*.018+.007});
+    const r=mascotWrap.offsetWidth/2+10+Math.random()*24;
+    pts.push({
+      x:cx+Math.cos(a)*r,
+      y:cy+Math.sin(a)*r,
+      vx:(Math.random()-.5)*1.6,
+      vy:(Math.random()-.5)*1.6,
+      size:Math.random()*3.5+1,
+      color:cols[Math.floor(Math.random()*cols.length)],
+      life:1,
+      decay:Math.random()*.018+.007
+    });
   }
+  
   function frame(){
     ctx.clearRect(0,0,canvas.width,canvas.height);
     if(Math.random()<.45) spawn();
@@ -187,7 +280,19 @@
     ctx.globalAlpha=1; ctx.shadowBlur=0;
     requestAnimationFrame(frame);
   }
-  resize(); window.addEventListener('resize',resize); frame();
+  
+  resize(); 
+  window.addEventListener('resize',resize); 
+  
+  // Attendre que la vidéo soit chargée avant de lancer les particules
+  const video = document.getElementById('js-mascot');
+  if (video) {
+    video.addEventListener('canplay', () => {
+      setTimeout(frame, 300);
+    });
+  } else {
+    frame();
+  }
 })();
 </script>
 </body>
