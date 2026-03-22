@@ -55,28 +55,23 @@
       display: block;
     }
     
-    /* Placeholder pendant le chargement - CACHÉ quand vidéo chargée */
-    .mascot-body.loading::before {
-      content: '🐻';
-      position: absolute;
-      font-size: min(86px, 18vw, 18vh);
-      opacity: 0.3;
-      z-index: 0;
-    }
-    
     /* Vidéo au premier plan */
     .mascot-body video {
       position: relative;
       z-index: 1;
     }
-
+    
+    /* Loading state */
+    .mascot-body.loading {
+      background: linear-gradient(135deg, rgba(255,95,186,.15), rgba(168,85,247,.15), rgba(0,229,255,.15));
+    }
+    
     @keyframes float {
       0%, 100% { transform: translateY(0) rotate(0deg); }
       50% { transform: translateY(-12px) rotate(2deg); }
     }
 
     /* Rings */
-    .ring { position: absolute; top:50%; left:50%; border-radius:50%; border:1px solid; transform:translate(-50%,-50%); pointer-events:none; }
     .ring-1 { width:calc(100% + 44px);  height:calc(100% + 44px);  border-color:rgba(255,95,186,.32); animation:ringPulse 3.2s ease-in-out 0s   infinite; }
     .ring-2 { width:calc(100% + 96px);  height:calc(100% + 96px);  border-color:rgba(168,85,247,.20); animation:ringPulse 3.2s ease-in-out .8s  infinite; }
     .ring-3 { width:calc(100% + 160px); height:calc(100% + 160px); border-color:rgba(0,229,255,.12);  animation:ringPulse 3.2s ease-in-out 1.6s infinite; }
