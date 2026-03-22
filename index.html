@@ -55,8 +55,8 @@
       display: block;
     }
     
-    /* Placeholder pendant le chargement */
-    .mascot-body::before {
+    /* Placeholder pendant le chargement - CACHÉ quand vidéo chargée */
+    .mascot-body.loading::before {
       content: '🐻';
       position: absolute;
       font-size: min(86px, 18vw, 18vh);
@@ -64,8 +64,10 @@
       z-index: 0;
     }
     
-    .mascot-body video.loaded ~ .mascot-body::before {
-      display: none;
+    /* Vidéo au premier plan */
+    .mascot-body video {
+      position: relative;
+      z-index: 1;
     }
 
     @keyframes float {
