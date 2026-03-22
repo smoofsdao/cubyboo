@@ -47,7 +47,7 @@
   </ul>
   <div class="nav-right">
     <a href="https://twitter.com/Cubyboo_NFT" class="nav-social" target="_blank" rel="noopener">𝕏</a>
-    <a href="#" class="nav-social" data-soon onclick="return false;"><img src="discord-icon.png" alt="Discord"></a>
+    <a href="#" class="nav-social" data-soon onclick="alert('💬 Discord opening soon! Follow @Cubyboo_NFT for the announcement.'); return false;"><img src="discord-icon.png" alt="Discord"></a>
     <div id="lang-selector"></div>
     <a href="whitelist.html" class="nav-cta" id="nav-cta" data-i18n="nav_wl_btn">🎟 Whitelist</a>
   </div>
@@ -115,8 +115,8 @@
     <div class="container">
       <ul class="social-list" style="margin-bottom:22px;">
         <li><a href="https://twitter.com/Cubyboo_NFT" class="social-link" target="_blank" rel="noopener">𝕏</a></li>
-        <li><a href="#" class="social-link" data-soon onclick="return false;"><img src="discord-icon.png" alt="Discord"></a></li>
-        <li><a href="#" class="social-link" data-soon onclick="return false;"><img src="opensea-icon.png" alt="OpenSea"></a></li>
+        <li><a href="#" class="social-link" data-soon onclick="alert('💬 Discord opening soon! Follow @Cubyboo_NFT for updates.'); return false;"><img src="discord-icon.png" alt="Discord"></a></li>
+        <li><a href="#" class="social-link" data-soon onclick="alert('🌊 Collection not revealed yet. Mint opening soon!'); return false;"><img src="opensea-icon.png" alt="OpenSea"></a></li>
       </ul>
       <div class="footer-bottom">
         <p data-i18n="footer_copy">© 2026 Cubyboo · What we cherish exists.</p>
@@ -128,12 +128,20 @@
 
 <script src="i18n.js"></script>
 <script>
+// Particles
 (function(){const el=document.getElementById('js-particles');const c=['#FF5FBA','#00E5FF','#FFE040','#4DFFA0','#A855F7'];for(let i=0;i<28;i++){const p=document.createElement('div');p.className='particle';const s=Math.random()*4+2;p.style.cssText=`width:${s}px;height:${s}px;left:${Math.random()*100}%;background:${c[Math.floor(Math.random()*c.length)]};animation-delay:${Math.random()*20}s;animation-duration:${Math.random()*12+10}s;`;el.appendChild(p);}})();
+
+// Navbar scroll
 window.addEventListener('scroll',()=>document.getElementById('js-navbar').classList.toggle('scrolled',window.scrollY>10),{passive:true});
+
+// Mobile menu
 document.getElementById('js-burger').addEventListener('click',()=>document.getElementById('js-mobile-menu').classList.toggle('open'));
+
+// Reveal animations
 const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible');}),{threshold:.1});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
+// Build oath text
 function buildOathText() {
   const body = LangManager.get('oath_body');
   const name = LangManager.get('oath_guardian');
@@ -144,7 +152,7 @@ function buildOathText() {
     .replace('[SIG]', `<span class="oath-sig">${sig}</span>`);
 }
 
-// Init i18n then build oath
+// Initialize i18n
 LangManager.init();
 buildOathText();
 
@@ -152,25 +160,34 @@ buildOathText();
 const _origSet = LangManager.set.bind(LangManager);
 LangManager.set = function(lang) { _origSet(lang); buildOathText(); };
 
+// Check if already signed
 if(localStorage.getItem('cubyboo_oath_signed')==='true'){
   document.getElementById('js-unsigned').style.display='none';
   document.getElementById('js-signed').classList.add('show');
   document.getElementById('nav-wl').style.display='';
   document.getElementById('mob-wl').style.display='';
 }
+
+// Checkbox toggles accept button
 document.getElementById('js-check').addEventListener('change',function(){
   document.getElementById('js-accept').disabled=!this.checked;
 });
+
+// Decline button
 document.getElementById('js-decline').addEventListener('click',()=>{
-  alert(LangManager.get('oath_decline_alert'));
+  alert('⚠️ You must accept the Guardian\'s Oath to access the whitelist.\n\nFollow @Cubyboo_NFT to stay updated!');
 });
+
+// Accept button
 document.getElementById('js-accept').addEventListener('click',()=>{
   localStorage.setItem('cubyboo_oath_signed','true');
   document.getElementById('js-unsigned').style.display='none';
   document.getElementById('js-signed').classList.add('show');
   document.getElementById('nav-wl').style.display='';
   document.getElementById('mob-wl').style.display='';
-  setTimeout(()=>window.location.href='whitelist.html',800);
+  
+  // Redirect to whitelist after short delay
+  setTimeout(()=>window.location.href='whitelist.html', 1200);
 });
 </script>
 </body>
