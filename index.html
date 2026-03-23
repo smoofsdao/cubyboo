@@ -127,10 +127,13 @@
       <div class="spark spark-yellow"></div>
       <div class="spark spark-b spark-purple"></div>
     </div>
-    <!-- 📌 Remplace "cubyboo-hero.mp4" par le nom exact de ta vidéo -->
-    <video class="mascot-body" id="js-mascot" autoplay loop muted playsinline>
+    <!-- Hero video -->
+    <video class="mascot-body" id="js-mascot" autoplay loop muted playsinline
+      onerror="this.style.display='none';document.getElementById('js-mascot-fallback').style.display='flex';">
       <source src="cubyboo-hero.mp4" type="video/mp4">
     </video>
+    <img id="js-mascot-fallback" src="cubyboo-logo.png"
+      style="display:none;width:min(220px,44vw,44vh);height:min(220px,44vw,44vh);border-radius:50%;object-fit:contain;padding:20%;background:linear-gradient(135deg,rgba(255,95,186,.09),rgba(168,85,247,.09),rgba(0,229,255,.09));border:1px solid rgba(255,255,255,.08);">
     <canvas class="dust-canvas" id="js-dust"></canvas>
   </div>
 
@@ -155,18 +158,25 @@
 /* Magic dust canvas */
 (function(){
   const canvas=document.getElementById('js-dust');
-  const mascot=document.getElementById('js-mascot');
-  if(!canvas||!mascot) return;
+  // Use whichever element is visible — video or fallback img
+  const getTarget=()=>document.getElementById('js-mascot-fallback').style.display==='none'
+    ? document.getElementById('js-mascot')
+    : document.getElementById('js-mascot-fallback');
+  if(!canvas) return;
   const ctx=canvas.getContext('2d');
   const cols=['#FF5FBA','#00E5FF','#FFE040','#4DFFA0','#A855F7','#FF8C42'];
   let pts=[];
   function resize(){
+    const mascot=getTarget();
+    if(!mascot||!mascot.offsetWidth) return;
     const pad=100;
     canvas.width=mascot.offsetWidth+pad*2;
     canvas.height=mascot.offsetHeight+pad*2;
     canvas.style.left=-pad+'px'; canvas.style.top=-pad+'px';
   }
   function spawn(){
+    const mascot=getTarget();
+    if(!mascot||!mascot.offsetWidth) return;
     const cx=canvas.width/2, cy=canvas.height/2;
     const a=Math.random()*Math.PI*2;
     const r=mascot.offsetWidth/2+10+Math.random()*24;
