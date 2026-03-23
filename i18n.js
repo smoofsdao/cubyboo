@@ -509,9 +509,17 @@ const LangManager = {
     this.current = lang;
     localStorage.setItem('cubyboo_lang', lang);
     this.apply(lang);
-    // Update selector button label
+    // Update desktop selector button label
     const btn = document.getElementById('lang-btn');
     if (btn) btn.textContent = this.getFlag(lang);
+    // Refresh mobile selector
+    const mobileSlot = document.getElementById('lang-selector-mobile');
+    if (mobileSlot) {
+      mobileSlot.querySelectorAll('button').forEach(b => {
+        const isActive = b.textContent.trim().startsWith(this.getFlag(lang));
+        b.style.color = isActive ? 'var(--text)' : 'var(--muted)';
+      });
+    }
   },
 
   get(key) {
@@ -555,6 +563,13 @@ const LangManager = {
           ${langs.map(l => `<button class="lang-opt ${l.code === this.current ? 'active':''}" onclick="LangManager.set('${l.code}');LangManager.closeDropdown();">${this.getFlag(l.code)} ${l.label}</button>`).join('')}
         </div>
       </div>`;
+    // Inject a flat list of language buttons in the mobile menu slot
+    const mobileSlot = document.getElementById('lang-selector-mobile');
+    if (mobileSlot) {
+      mobileSlot.innerHTML = `<div style="display:flex;flex-wrap:wrap;gap:8px;">
+        ${langs.map(l => `<button style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r-full);padding:6px 14px;font-size:.8rem;font-weight:700;color:${l.code===this.current?'var(--text)':'var(--muted)'};cursor:pointer;transition:all .2s;" onclick="LangManager.set('${l.code}');document.getElementById('js-mobile-menu').classList.remove('open');">${this.getFlag(l.code)} ${l.label}</button>`).join('')}
+      </div>`;
+    }
     // Close on outside click
     document.addEventListener('click', e => {
       if (!container.contains(e.target)) this.closeDropdown();
