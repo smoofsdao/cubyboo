@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Whitelist — Cubyboo</title>
+  <link rel="icon" href="cubyboo-logo.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -36,7 +37,7 @@
   </ul>
   <div class="nav-right">
     <a href="https://twitter.com/Cubyboo_NFT" class="nav-social" target="_blank" rel="noopener">𝕏</a>
-    <a href="#" class="nav-social" data-soon onclick="alert('Discord opening soon! Follow @Cubyboo_NFT for updates.'); return false;"><img src="discord-icon.png" alt="Discord"></a>
+    <a href="#" class="nav-social" data-soon onclick="return false;"><img src="discord-icon.png" alt="Discord"></a>
     <div id="lang-selector"></div>
     <a href="home.html" class="btn btn-ghost" style="font-size:.82rem;padding:8px 18px;" data-i18n="nav_oath">⚔️ The Oath</a>
   </div>
@@ -47,6 +48,7 @@
   <a href="whitelist.html" style="color:var(--purple);font-weight:700;" data-i18n="nav_whitelist">🎟 Whitelist</a>
   <a href="about.html" data-i18n="nav_about">About</a>
   <a href="collection.html" data-i18n="nav_collection">Collection</a>
+  <div id="lang-selector-mobile" style="padding:10px 4px;"></div>
 </div>
 
 <div class="wrapper page-body">
@@ -55,11 +57,11 @@
       <div class="wl-header reveal">
         <span class="eyebrow eyebrow--purple"><span class="eyebrow-dot"></span><span data-i18n="wl_eyebrow">Phase 2 — In Progress</span></span>
         <h1 class="h-lg" data-i18n="wl_title">Join the <span class="grad-text">Guardians</span></h1>
-        <p data-i18n="wl_subtitle">200 WL Spots · Limited Access · First Come First Served</p>
+        <p data-i18n="wl_subtitle">2,222 NFTs · 22 Batches · 4 Phases</p>
       </div>
       <div class="wl-grid">
         <div class="card wl-card reveal" style="padding:24px 32px;">
-          <div class="card-label" data-i18n="wl_progress_label">Whitelist Filling Up</div>
+          <div class="card-label" data-i18n="wl_progress_label">Spots claimed this session</div>
           <div class="progress-wrap">
             <div class="progress-meta">
               <span class="progress-label" data-i18n="wl_progress_label">Spots claimed</span>
@@ -82,7 +84,7 @@
             <div class="step-item" id="step2">
               <div class="step-num">2</div>
               <div class="step-body">
-                <h3 data-i18n="step2_title">Repost the pinned tweet</h3>
+                <h3 data-i18n="step2_title">Like & Repost the pinned tweet</h3>
                 <p data-i18n="step2_desc">Help us spread the Guardians' mission</p>
                 <a href="https://twitter.com/Cubyboo_NFT" target="_blank" rel="noopener" data-i18n="step2_link">→ View tweet</a>
               </div>
@@ -91,7 +93,7 @@
               <div class="step-num">3</div>
               <div class="step-body">
                 <h3 data-i18n="step3_title">Tag 3 friends for Bonus WL priority 🎁</h3>
-                <p data-i18n="step3_desc">Mention 3 friends in the pinned tweet, then paste your tweet link below</p>
+                <p data-i18n="step3_desc">Mention 3 friends in the pinned tweet</p>
                 <a href="https://twitter.com/Cubyboo_NFT" target="_blank" rel="noopener" data-i18n="step3_link">→ View pinned tweet</a>
               </div>
             </div>
@@ -106,7 +108,7 @@
         </div>
         <div class="card wl-card reveal rd-2">
           <div class="card-label" data-i18n="wl_register">Register</div>
-          <div class="notice notice--warning" style="margin-bottom:22px;" data-i18n="wl_notice"><strong>All actions will be manually verified.</strong> Incomplete submissions will be disqualified.</div>
+          <div class="notice notice--warning" style="margin-bottom:22px;" data-i18n="wl_notice"><strong>All actions will be manually verified.</strong></div>
           <form id="js-wl-form">
             <div class="form-stack">
               <div class="field-group">
@@ -128,7 +130,7 @@
           <div class="success-box" id="js-success">
             <div class="success-box__icon">✨</div>
             <h3 class="success-box__title" data-i18n="wl_success_title">Welcome, Guardian!</h3>
-            <p class="success-box__text" data-i18n="wl_success_text">Your Whitelist request has been successfully registered. We'll verify your actions and confirm your spot soon.</p>
+            <p class="success-box__text" data-i18n="wl_success_text">Your Whitelist request has been successfully registered.</p>
           </div>
         </div>
       </div>
@@ -140,8 +142,8 @@
     <div class="container">
       <ul class="social-list" style="margin-bottom:22px;">
         <li><a href="https://twitter.com/Cubyboo_NFT" class="social-link" target="_blank" rel="noopener">𝕏</a></li>
-        <li><a href="#" class="social-link" data-soon onclick="alert('Discord opening soon! Follow @Cubyboo_NFT for updates.'); return false;"><img src="discord-icon.png" alt="Discord"></a></li>
-        <li><a href="#" class="social-link" data-soon onclick="alert('Collection not revealed yet. Join the whitelist!'); return false;"><img src="opensea-icon.png" alt="OpenSea"></a></li>
+        <li><a href="#" class="social-link" data-soon onclick="return false;"><img src="discord-icon.png" alt="Discord"></a></li>
+        <li><a href="#" class="social-link" data-soon onclick="return false;"><img src="opensea-icon.png" alt="OpenSea"></a></li>
       </ul>
       <div class="footer-bottom">
         <p data-i18n="footer_copy">© 2026 Cubyboo · What we cherish exists.</p>
@@ -153,128 +155,48 @@
 
 <script src="i18n.js"></script>
 <script>
-// ============================================
-// CONFIGURATION - MODIFY THESE VALUES
-// ============================================
-const WL_CONFIG = {
-  maxSpots: 200,           // Total WL spots available
-  currentSpots: 0,         // ← CHANGE THIS NUMBER as people join (0 to 200)
-  minPercent: 25,          // Starting percentage display (creates urgency)
-  maxPercent: 100          // Full percentage display
-};
-
-// Protection: Redirect if oath not signed
-if(localStorage.getItem('cubyboo_oath_signed')!=='true') {
-  window.location.replace('home.html');
-}
-
-// Particles
+if(localStorage.getItem('cubyboo_oath_signed')!=='true') window.location.replace('home.html');
 (function(){const el=document.getElementById('js-particles');const c=['#FF5FBA','#00E5FF','#FFE040','#4DFFA0','#A855F7'];for(let i=0;i<28;i++){const p=document.createElement('div');p.className='particle';const s=Math.random()*4+2;p.style.cssText=`width:${s}px;height:${s}px;left:${Math.random()*100}%;background:${c[Math.floor(Math.random()*c.length)]};animation-delay:${Math.random()*20}s;animation-duration:${Math.random()*12+10}s;`;el.appendChild(p);}})();
-
-// Navbar scroll
 window.addEventListener('scroll',()=>document.getElementById('js-navbar').classList.toggle('scrolled',window.scrollY>10),{passive:true});
-
-// Mobile menu
 document.getElementById('js-burger').addEventListener('click',()=>document.getElementById('js-mobile-menu').classList.toggle('open'));
-
-// Reveal animations
+document.querySelectorAll('.nav-mobile a').forEach(a=>a.addEventListener('click',()=>document.getElementById('js-mobile-menu').classList.remove('open')));
 const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible');}),{threshold:.1});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-
-// Initialize i18n
 LangManager.init();
-
-// Check if already submitted
 if(localStorage.getItem('cubyboo_wl_submitted')==='true'){
   document.getElementById('js-wl-form').style.display='none';
   document.getElementById('js-success').classList.add('is-visible');
   ['step1','step2','step3'].forEach(id=>document.getElementById(id).classList.add('is-done'));
 }
-
-// ============================================
-// PROGRESS BAR - PRESSURE SYSTEM (25-100%)
-// ============================================
-function updateProgressBar() {
-  const { currentSpots, maxSpots, minPercent, maxPercent } = WL_CONFIG;
-  
-  // Calculate display percentage (25% to 100% scale)
-  const realPercent = (currentSpots / maxSpots) * 100;
-  const displayPercent = Math.min(
-    minPercent + (realPercent * (maxPercent - minPercent) / 100),
-    maxPercent
-  );
-  
-  const targetPercent = Math.round(displayPercent);
-  const bar = document.getElementById('js-pbar');
-  const val = document.getElementById('js-pval');
-  
-  // Animate counter
-  let current = 0;
-  const interval = setInterval(() => {
-    if (current >= targetPercent) {
-      clearInterval(interval);
-      return;
-    }
-    current++;
-    bar.style.width = current + '%';
-    val.textContent = current + '%';
-  }, 24);
-}
-
-// Run progress animation
-updateProgressBar();
-
-// ============================================
-// FORM SUBMISSION
-// ============================================
-const SCRIPT = 'https://script.google.com/macros/s/AKfycbxeflwORN7mzkx5CEx5Ul1vOvxklTQ0oYl1TIs2qa415G2VptyKG2zyBkEWws6zzLfSoA/exec';
-
-document.getElementById('js-wl-form').addEventListener('submit', async function(e) {
+(function(){const target=25,bar=document.getElementById('js-pbar'),val=document.getElementById('js-pval');let cur=0;const iv=setInterval(()=>{if(cur>=target){clearInterval(iv);return;}cur++;bar.style.width=cur+'%';val.textContent=cur+'%';},24);})();
+const SCRIPT='https://script.google.com/macros/s/AKfycbxeflwORN7mzkx5CEx5Ul1vOvxklTQ0oYl1TIs2qa415G2VptyKG2zyBkEWws6zzLfSoA/exec';
+document.getElementById('js-wl-form').addEventListener('submit',async function(e){
   e.preventDefault();
-  
-  const tw = document.getElementById('twitter').value;
-  const wa = document.getElementById('wallet').value;
-  const tl = document.getElementById('tweetLink').value;
-  const btn = document.getElementById('js-submit');
-  
-  // Validation
-  if (!wa.match(/^0x[a-fA-F0-9]{40}$/)) {
-    alert('❌ Invalid wallet format. Must be 0x followed by 40 characters.');
-    return;
-  }
-  if (!tw.startsWith('@')) {
-    alert('❌ Twitter handle must start with @');
-    return;
-  }
-  
-  btn.disabled = true;
-  btn.innerHTML = '⏳ Submitting...';
-  
-  try {
-    const fd = new FormData();
-    fd.append('twitter', tw);
-    fd.append('wallet', wa);
-    fd.append('tweetLink', tl);
-    fd.append('oath_signed', 'true');
-    fd.append('timestamp', new Date().toISOString());
-    
-    const r = await fetch(SCRIPT, {method: 'POST', body: fd});
-    const res = await r.json();
-    
-    if (res.status === 'success') {
-      document.getElementById('js-wl-form').style.display = 'none';
+  const tw=document.getElementById('twitter').value;
+  const wa=document.getElementById('wallet').value;
+  const btn=document.getElementById('js-submit');
+  if(!wa.match(/^0x[a-fA-F0-9]{40}$/)){alert(LangManager.get('wl_err_wallet'));return;}
+  if(!tw.startsWith('@')){alert(LangManager.get('wl_err_twitter'));return;}
+  btn.disabled=true;btn.innerHTML=LangManager.get('wl_submitting');
+  try{
+    const fd=new FormData();
+    fd.append('twitter',tw);fd.append('wallet',wa);
+    fd.append('tweetLink',document.getElementById('tweetLink').value);
+    fd.append('oath_signed','true');fd.append('timestamp',new Date().toISOString());
+    const controller=new AbortController();
+    const timer=setTimeout(()=>controller.abort(),8000);
+    const r=await fetch(SCRIPT,{method:'POST',body:fd,signal:controller.signal});
+    clearTimeout(timer);
+    const res=await r.json();
+    if(res.status==='success'){
+      document.getElementById('js-wl-form').style.display='none';
       document.getElementById('js-success').classList.add('is-visible');
-      ['step1','step2','step3'].forEach(id => document.getElementById(id).classList.add('is-done'));
-      localStorage.setItem('cubyboo_wl_submitted', 'true');
-      localStorage.setItem('cubyboo_wl_twitter', tw);
-    } else {
-      throw new Error(res.message || 'Submission failed');
-    }
-  } catch(err) {
-    console.error(err);
-    alert('❌ An error occurred. Please try again or contact support.');
-    btn.disabled = false;
-    btn.innerHTML = LangManager.get('wl_submit') || '🐻 Join the Guardians';
+      ['step1','step2','step3'].forEach(id=>document.getElementById(id).classList.add('is-done'));
+      localStorage.setItem('cubyboo_wl_submitted','true');
+    } else throw new Error(res.message||'Failed');
+  }catch(err){
+    console.error(err);alert(LangManager.get('wl_err_generic'));
+    btn.disabled=false;btn.innerHTML=LangManager.get('wl_submit');
   }
 });
 </script>
