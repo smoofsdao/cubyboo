@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Cubyboo — Dashboard</title>
+  <link rel="icon" href="cubyboo-logo.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .page-body { padding-top: var(--nav-h); }
+
+    /* ══ Connect screen ══ */
+    .connect-screen {
+      min-height: calc(100vh - var(--nav-h));
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center; padding: 40px 20px;
+    }
+    .connect-card { max-width: 460px; width: 100%; padding: 52px 44px; position: relative; }
+    .connect-card::before {
+      content:''; position:absolute; inset:0; border-radius:var(--r-lg); padding:1px;
+      background:var(--grad);
+      -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+      -webkit-mask-composite:xor; mask-composite:exclude; pointer-events:none;
+    }
+    .connect-icon {
+      width:72px; height:72px; border-radius:50%;
+      background:linear-gradient(135deg,rgba(168,85,247,.15),rgba(0,229,255,.1));
+      border:1px solid rgba(168,85,247,.3);
+      display:flex; align-items:center; justify-content:center;
+      font-size:2rem; margin:0 auto 28px;
+    }
+    .connect-card h1 { font-family:'Syne',sans-serif; font-size:1.7rem; font-weight:800; margin-bottom:12px; line-height:1.15; }
+    .connect-card > p { font-size:.9rem; color:var(--muted); line-height:1.75; margin-bottom:32px; }
+    .wallet-hint { font-size:.75rem; color:var(--dim); margin-top:14px; line-height:1.5; }
+    .wallet-hint a { color:var(--cyan); text-decoration:none; }
+    .wallet-hint a:hover { color:var(--pink); }
+
+    /* ══ Dashboard ══ */
+    .dashboard { display:none; padding:60px 0 100px; }
+    .dashboard.show { display:block; }
+    .wallet-badge {
+      display:inline-flex; align-items:center; gap:8px;
+      padding:6px 16px 6px 8px; background:var(--surface);
+      border:1px solid var(--border); border-radius:var(--r-full);
+      font-size:.78rem; margin-bottom:20px;
+    }
+    .wallet-dot { width:8px; height:8px; border-radius:50%; background:var(--green); box-shadow:0 0 8px var(--green); flex-shrink:0; }
+    .wallet-addr { font-family:monospace; color:var(--muted); }
+    .btn-disconnect {
+      background:transparent; border:1px solid var(--border);
+      color:var(--muted); font-size:.75rem; font-weight:600;
+      padding:6px 14px; border-radius:var(--r-full);
+      cursor:pointer; transition:all .2s; margin-left:10px;
+    }
+    .btn-disconnect:hover { border-color:rgba(255,95,186,.4); color:var(--pink); }
+
+    /* ══ State panels ══ */
+    .state-panel { display:none; }
+    .state-panel.active { display:block; }
+
+    /* Pre-mint banner */
+    .premint-banner {
+      padding:28px 32px;
+      background:linear-gradient(135deg,rgba(168,85,247,.06),rgba(0,229,255,.04));
+      border:1px solid rgba(168,85,247,.2); border-radius:var(--r-lg);
+      display:flex; align-items:flex-start; gap:20px; margin-bottom:32px;
+    }
+    .premint-banner .icon { font-size:1.8rem; flex-shrink:0; margin-top:2px; }
+    .premint-banner h3 { font-family:'Syne',sans-serif; font-size:.95rem; font-weight:700; margin-bottom:6px; color:var(--purple); }
+    .premint-banner p  { font-size:.83rem; color:var(--muted); line-height:1.65; }
+    .premint-banner a  { color:var(--cyan); text-decoration:none; }
+
+    /* ══ Awakening Oath card ══ */
+    .oath2-card { padding:44px 40px; text-align:center; margin-bottom:32px; position:relative; overflow:hidden; }
+    .oath2-card::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:var(--grad); }
+    .oath2-seal {
+      width:80px; height:80px; border-radius:50%; margin:0 auto 24px;
+      background:linear-gradient(135deg,rgba(168,85,247,.15),rgba(255,95,186,.1));
+      border:1px solid rgba(168,85,247,.35);
+      display:flex; align-items:center; justify-content:center;
+      font-size:2.2rem; animation:float 4s ease-in-out infinite;
+    }
+    .oath2-card h2 { font-family:'Syne',sans-serif; font-size:1.5rem; font-weight:800; margin-bottom:10px; }
+    .oath2-card .sub { font-size:.85rem; color:var(--muted); margin-bottom:28px; line-height:1.7; }
+    .oath2-scroll {
+      background:rgba(0,0,0,.28); border:1px solid var(--border);
+      border-radius:var(--r-lg); padding:28px 24px; margin-bottom:24px;
+      text-align:center; position:relative; overflow:hidden;
+    }
+    .oath2-scroll::before { content:''; position:absolute; top:0; left:0; right:0; height:1px; background:var(--grad); }
+    .oath2-scroll p { font-size:.9rem; line-height:2.3; color:rgba(240,240,255,.87); white-space:pre-line; font-style:italic; }
+    .oath2-scroll .sig {
+      display:inline-block; margin-top:12px;
+      font-family:'Syne',sans-serif; font-size:.85rem; font-weight:800; letter-spacing:.16em;
+      background:var(--grad); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+    }
+    .token-input-row { display:flex; gap:10px; margin-bottom:20px; }
+    .token-input-row input {
+      flex:1; padding:12px 16px; background:rgba(255,255,255,.04);
+      border:1px solid var(--border); border-radius:var(--r-md);
+      color:var(--text); font-family:'DM Sans',sans-serif; font-size:.93rem;
+    }
+    .token-input-row input:focus { outline:none; border-color:var(--cyan); box-shadow:0 0 0 3px rgba(0,229,255,.1); }
+    .oath2-check {
+      display:flex; align-items:flex-start; gap:12px; padding:14px 16px;
+      background:var(--surface); border:1px solid var(--border); border-radius:var(--r-md);
+      cursor:pointer; margin-bottom:18px; text-align:left;
+    }
+    .oath2-check input { width:18px; height:18px; margin-top:2px; flex-shrink:0; accent-color:var(--purple); cursor:pointer; }
+    .oath2-check span { font-size:.84rem; color:var(--muted); line-height:1.5; }
+    @media(max-width:560px) { .oath2-card{padding:28px 18px;} .token-input-row{flex-direction:column;} .connect-card{padding:36px 22px;} }
+
+    /* ══ Revealed essence ══ */
+    .revealed-hero { text-align:center; margin-bottom:40px; }
+    .essence-orb-lg {
+      width:160px; height:160px; border-radius:50%;
+      display:flex; align-items:center; justify-content:center;
+      font-size:4rem; margin:0 auto 24px; border:2px solid;
+      position:relative; animation:float 4s ease-in-out infinite;
+    }
+    .orb-glow { position:absolute; inset:-20px; border-radius:50%; filter:blur(30px); opacity:.35; pointer-events:none; }
+    .essence-name-big { font-family:'Syne',sans-serif; font-size:2.2rem; font-weight:800; margin-bottom:6px; }
+    .essence-category-badge {
+      display:inline-flex; align-items:center; gap:6px;
+      padding:4px 14px; border-radius:var(--r-full);
+      font-size:.72rem; font-weight:800; letter-spacing:.12em;
+      text-transform:uppercase; margin-bottom:18px;
+    }
+    .essence-desc { font-size:.9rem; color:var(--muted); line-height:1.8; max-width:480px; margin:0 auto; }
+    .essence-details { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:32px; }
+    @media(max-width:560px) { .essence-details{grid-template-columns:1fr;} }
+    .essence-detail-card { padding:22px 20px; }
+    .detail-label { font-size:.7rem; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:var(--dim); margin-bottom:8px; }
+    .detail-value { font-family:'Syne',sans-serif; font-size:1rem; font-weight:700; }
+    .void-banner {
+      padding:32px; text-align:center;
+      background:rgba(0,0,0,.4); border:1px solid rgba(255,255,255,.06);
+      border-radius:var(--r-lg); margin-bottom:32px;
+    }
+    .void-banner .void-icon { font-size:3rem; margin-bottom:16px; }
+    .void-banner h3 { font-family:'Syne',sans-serif; font-size:1.1rem; font-weight:800; margin-bottom:8px; color:rgba(240,240,255,.5); }
+    .void-banner p  { font-size:.85rem; color:var(--dim); line-height:1.75; max-width:400px; margin:0 auto; }
+
+    /* ══ Stats ══ */
+    .stats-row { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:32px; }
+    @media(max-width:560px) { .stats-row{grid-template-columns:1fr 1fr;} }
+    .stat-card { padding:22px 18px; text-align:center; }
+    .stat-val { font-family:'Syne',sans-serif; font-size:1.4rem; font-weight:800; background:var(--grad2); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+    .stat-label { font-size:.72rem; color:var(--dim); font-weight:700; letter-spacing:.08em; text-transform:uppercase; margin-top:4px; }
+
+    /* ══ Journey ══ */
+    .journey-title { font-family:'Syne',sans-serif; font-size:1.1rem; font-weight:800; margin-bottom:18px; }
+    .journey-list { display:flex; flex-direction:column; gap:10px; }
+    .journey-item {
+      display:flex; align-items:center; gap:14px; padding:14px 18px;
+      background:var(--surface); border:1px solid var(--border); border-radius:var(--r-md);
+      font-size:.83rem; color:var(--muted);
+    }
+    .journey-item .j-icon { font-size:1.1rem; flex-shrink:0; }
+    .journey-item .j-label { flex:1; }
+    .journey-item .j-status { font-size:.68rem; font-weight:800; letter-spacing:.1em; text-transform:uppercase; }
+    .journey-item.done   { border-color:rgba(77,255,160,.2); }
+    .journey-item.done   .j-status { color:var(--green); }
+    .journey-item.soon   .j-status { color:var(--orange); }
+    .journey-item.future .j-status { color:var(--dim); }
+
+    /* ══ Buttons ══ */
+    .btn-wallet {
+      display:inline-flex; align-items:center; gap:12px; padding:16px 36px;
+      border-radius:var(--r-full); background:var(--grad); color:#fff;
+      font-family:'Syne',sans-serif; font-size:.9rem; font-weight:800;
+      letter-spacing:.06em; text-transform:uppercase; border:none; cursor:pointer;
+      width:100%; justify-content:center; box-shadow:0 8px 32px rgba(168,85,247,.4);
+      transition:all .3s cubic-bezier(.34,1.56,.64,1);
+    }
+    .btn-wallet:hover { transform:translateY(-3px) scale(1.02); box-shadow:0 16px 48px rgba(168,85,247,.6); }
+    .btn-wallet:disabled { opacity:.5; cursor:not-allowed; transform:none; box-shadow:none; }
+    .spinner {
+      width:18px; height:18px; border:2px solid rgba(255,255,255,.3);
+      border-top-color:#fff; border-radius:50%; animation:spin .7s linear infinite; display:none; flex-shrink:0;
+    }
+
+    /* ══ Reveal animation ══ */
+    @keyframes revealIn { 0%{opacity:0;transform:scale(.7) rotate(-8deg);} 60%{transform:scale(1.08) rotate(2deg);} 100%{opacity:1;transform:scale(1) rotate(0);} }
+    .reveal-animate { animation:revealIn .9s cubic-bezier(.34,1.56,.64,1) forwards; }
+    @keyframes spin  { to{transform:rotate(360deg);} }
+    @keyframes float { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-10px);} }
+  </style>
+</head>
+<body>
+<div class="bg-layer"><div class="bg-mesh"></div><div class="bg-grid"></div></div>
+<div class="particles" id="js-particles"></div>
+
+<nav class="navbar solid" id="js-navbar">
+  <a href="index.html" class="nav-logo"><img src="cubyboo-logo.png" alt="Cubyboo"></a>
+  <ul class="nav-links">
+    <li><a href="home.html" data-i18n="nav_oath">The Oath</a></li>
+    <li><a href="whitelist.html" id="nav-wl" style="display:none;" data-i18n="nav_whitelist">Whitelist</a></li>
+    <li><a href="about.html" data-i18n="nav_about">About</a></li>
+    <li><a href="collection.html" data-i18n="nav_collection">Collection</a></li>
+    <li><a href="dashboard.html" class="active" id="nav-dashboard" style="display:none;">🐻 My Cubyboo</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="https://twitter.com/Cubyboo_NFT" class="nav-social" target="_blank" rel="noopener">𝕏</a>
+    <a href="#" class="nav-social" data-soon onclick="return false;"><img src="discord-icon.png" alt="Discord"></a>
+    <div id="lang-selector"></div>
+    <a href="whitelist.html" class="nav-cta" id="nav-cta" data-i18n="nav_wl_btn">🎟 Whitelist</a>
+  </div>
+  <div class="nav-burger" id="js-burger"><span></span><span></span><span></span></div>
+</nav>
+<div class="nav-mobile" id="js-mobile-menu">
+  <a href="home.html" data-i18n="nav_oath">The Oath</a>
+  <a href="whitelist.html" id="mob-wl" style="display:none;color:var(--purple);font-weight:700;" data-i18n="nav_wl_btn">🎟 Whitelist</a>
+  <a href="about.html" data-i18n="nav_about">About</a>
+  <a href="collection.html" data-i18n="nav_collection">Collection</a>
+  <a href="dashboard.html" id="mob-dashboard" style="display:none;color:var(--cyan);font-weight:700;">🐻 My Cubyboo</a>
+  <div id="lang-selector-mobile" style="padding:10px 4px;"></div>
+</div>
+
+<div class="wrapper page-body">
+
+  <!-- CONNECT SCREEN -->
+  <div class="connect-screen" id="js-connect-screen">
+    <div class="card connect-card">
+      <div class="connect-icon">🔮</div>
+      <h1>Connect your<br><span class="grad-text">Guardian Wallet</span></h1>
+      <p>Connect your Abstract wallet to access your Guardian Dashboard and — after the mint — discover the essence your Cubyboo protects.</p>
+      <button class="btn-wallet" id="js-connect-btn" onclick="connectWallet()">
+        <span class="spinner" id="connect-spinner"></span>
+        <span id="connect-label">⚡ Connect Abstract Wallet</span>
+      </button>
+      <p class="wallet-hint">
+        Compatible with <a href="https://abs.xyz" target="_blank" rel="noopener">Abstract Global Wallet</a> &amp; MetaMask.<br>
+        No wallet yet? <a href="https://abs.xyz" target="_blank" rel="noopener">Create one free →</a>
+      </p>
+    </div>
+  </div>
+
+  <!-- DASHBOARD -->
+  <div class="dashboard" id="js-dashboard">
+    <div class="container--md">
+
+      <!-- Header -->
+      <div style="margin-bottom:40px;" class="reveal">
+        <span class="eyebrow eyebrow--purple" style="margin-bottom:16px;display:inline-flex;"><span class="eyebrow-dot"></span> Guardian Dashboard</span>
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+          <div class="wallet-badge">
+            <span class="wallet-dot"></span>
+            <span class="wallet-addr" id="js-wallet-addr">0x0000…0000</span>
+          </div>
+          <button class="btn-disconnect" onclick="disconnectWallet()">Disconnect</button>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="stats-row reveal rd-1">
+        <div class="card stat-card"><div class="stat-val" id="stat-cubyboo">0</div><div class="stat-label">Cubyboo owned</div></div>
+        <div class="card stat-card"><div class="stat-val">Phase 2</div><div class="stat-label">Current phase</div></div>
+        <div class="card stat-card"><div class="stat-val" id="stat-wl">—</div><div class="stat-label">WL status</div></div>
+      </div>
+
+      <div class="divider" style="margin-bottom:32px;"></div>
+
+      <!-- ── Panel: PRE-MINT ── -->
+      <div class="state-panel active" id="panel-premint">
+        <div class="premint-banner reveal">
+          <div class="icon">⏳</div>
+          <div>
+            <h3>Mint not yet open — Your essence is sealed</h3>
+            <p>Your Guardian wallet is registered. Once the mint goes live on Abstract, return here and sign the <strong style="color:var(--purple);">Awakening Oath</strong> to reveal forever the essence your Cubyboo protects. Follow <a href="https://twitter.com/Cubyboo_NFT" target="_blank" rel="noopener">𝕏 @Cubyboo_NFT</a> for the announcement.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Panel: AWAKENING OATH ── -->
+      <div class="state-panel" id="panel-oath2">
+        <div class="card oath2-card reveal">
+          <div class="oath2-seal">🔮</div>
+          <h2>The <span class="grad-text">Awakening Oath</span></h2>
+          <p class="sub">You hold a Cubyboo. Its essence is sealed, waiting for your voice.<br>Speak the Awakening Oath — your wallet signs it, no gas required.</p>
+          <div class="oath2-scroll">
+            <p>I, Guardian,
+have proven my worth.
+
+I now call upon the Primal Prism
+to reveal the essence entrusted to my Cubyboo.
+
+I accept this bond without condition.
+I vow to carry this essence,
+to show it to the world,
+for as long as I remain its Guardian.
+
+What I now reveal
+shall never be hidden again.</p>
+            <span class="sig">THE ESSENCE AWAKENS</span>
+          </div>
+          <div class="token-input-row">
+            <input type="number" id="js-token-id" placeholder="Your token ID — e.g. 42" min="1" max="2222">
+          </div>
+          <label class="oath2-check">
+            <input type="checkbox" id="js-oath2-check" onchange="document.getElementById('js-reveal-btn').disabled=!this.checked;">
+            <span>I solemnly speak this Awakening Oath and accept the essence of my Cubyboo, whatever it may be, forever.</span>
+          </label>
+          <button class="btn btn-primary btn-full" id="js-reveal-btn" disabled onclick="revealEssence()">
+            🔮 Reveal My Essence
+          </button>
+          <p style="font-size:.75rem;color:var(--dim);margin-top:14px;line-height:1.5;">No transaction — just a wallet signature to prove you are the Guardian.</p>
+        </div>
+      </div>
+
+      <!-- ── Panel: REVEALED ── -->
+      <div class="state-panel" id="panel-revealed">
+        <div class="revealed-hero reveal" id="js-revealed-hero">
+          <div class="essence-orb-lg" id="js-orb">
+            <div class="orb-glow" id="js-orb-glow"></div>
+            <span style="position:relative;z-index:1;" id="js-orb-emoji">✨</span>
+          </div>
+          <div class="essence-name-big grad-text" id="js-essence-name">—</div>
+          <div class="essence-category-badge" id="js-essence-cat-badge">—</div>
+          <div class="essence-desc" id="js-essence-desc">—</div>
+        </div>
+        <div class="void-banner" id="js-void-banner" style="display:none;">
+          <div class="void-icon">⬛</div>
+          <h3>You carry The Void</h3>
+          <p>Your Cubyboo is one of the 22 rare Black Bears — guardians of nothingness itself. No color. No element. No emotion. Just pure, absolute presence beyond all essence.</p>
+        </div>
+        <div class="essence-details reveal rd-1">
+          <div class="card essence-detail-card"><div class="detail-label">Category</div><div class="detail-value" id="js-detail-cat">—</div></div>
+          <div class="card essence-detail-card"><div class="detail-label">Token ID</div><div class="detail-value" id="js-detail-token">—</div></div>
+          <div class="card essence-detail-card"><div class="detail-label">Guardians of this essence</div><div class="detail-value" id="js-detail-count">100</div></div>
+          <div class="card essence-detail-card"><div class="detail-label">Oath signed</div><div class="detail-value" style="color:var(--green);">✓ Awakening Oath</div></div>
+        </div>
+        <div class="divider" style="margin-bottom:32px;"></div>
+      </div>
+
+      <!-- Journey (always visible) -->
+      <div class="reveal rd-2">
+        <div class="journey-title">Your Guardian journey</div>
+        <div class="journey-list">
+          <div class="journey-item done"><span class="j-icon">⚔️</span><span class="j-label">Signed the Guardian's Oath</span><span class="j-status">Done ✓</span></div>
+          <div class="journey-item" id="j-wl"><span class="j-icon">🎟</span><span class="j-label">Registered for Whitelist</span><span class="j-status" id="j-wl-s">Checking…</span></div>
+          <div class="journey-item soon"><span class="j-icon">🔥</span><span class="j-label">Mint on Abstract — secure your Cubyboo</span><span class="j-status">Soon</span></div>
+          <div class="journey-item future" id="j-oath2"><span class="j-icon">🔮</span><span class="j-label">Awakening Oath — reveal your essence</span><span class="j-status" id="j-oath2-s">After mint</span></div>
+          <div class="journey-item future"><span class="j-icon">🌈</span><span class="j-label">Prismatic Sanctuary — holders-only Discord</span><span class="j-status">Phase 4</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer class="site-footer" id="js-footer" style="display:none;">
+    <div class="divider" style="margin-bottom:36px;"></div>
+    <div class="container">
+      <ul class="social-list" style="margin-bottom:22px;">
+        <li><a href="https://twitter.com/Cubyboo_NFT" class="social-link" target="_blank" rel="noopener">𝕏</a></li>
+        <li><a href="#" class="social-link" data-soon onclick="return false;"><img src="discord-icon.png" alt="Discord"></a></li>
+        <li><a href="#" class="social-link" data-soon onclick="return false;"><img src="opensea-icon.png" alt="OpenSea"></a></li>
+      </ul>
+      <div class="footer-bottom">
+        <p data-i18n="footer_copy">© 2026 Cubyboo · What we cherish exists.</p>
+        <span class="chain-badge"><img src="abstract-icon.png" alt="Abstract" onerror="this.style.display='none'"> Abstract</span>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<script>
+// ══ CONFIG — à modifier après déploiement ════════════════════════════════════
+const WORKER_URL  = 'https://cubyboo-essence.cubyboonft.workers.dev';
+const MINT_IS_LIVE = false; // passer à true après le mint
+
+// ══ STATE ════════════════════════════════════════════════════════════════════
+let walletAddress = null;
+
+// ══ UTILS ════════════════════════════════════════════════════════════════════
+const shortAddr = a => a.slice(0,6) + '…' + a.slice(-4);
+
+function showPanel(id) {
+  document.querySelectorAll('.state-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+function revealAnimations() {
+  setTimeout(() => document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible')), 100);
+}
+
+// ══ WALLET ═══════════════════════════════════════════════════════════════════
+window.connectWallet = async function() {
+  const btn      = document.getElementById('js-connect-btn');
+  const spinner  = document.getElementById('connect-spinner');
+  const label    = document.getElementById('connect-label');
+  btn.disabled = true; spinner.style.display = 'block'; label.style.opacity = '.6';
+  try {
+    if (!window.ethereum) { alert('No wallet detected. Please install MetaMask or the Abstract wallet extension.'); return; }
+    const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+    if (accounts?.[0]) showDashboard(accounts[0]);
+  } catch(err) {
+    if (err.code !== 4001) alert('Connection failed. Please try again.');
+  } finally {
+    btn.disabled = false; spinner.style.display = 'none'; label.style.opacity = '1';
+  }
+};
+
+function showDashboard(address) {
+  walletAddress = address;
+  localStorage.setItem('cubyboo_wallet', address);
+  document.getElementById('js-connect-screen').style.display = 'none';
+  document.getElementById('js-dashboard').classList.add('show');
+  document.getElementById('js-footer').style.display = '';
+  document.getElementById('js-wallet-addr').textContent = shortAddr(address);
+  document.getElementById('nav-dashboard').style.display = '';
+  document.getElementById('mob-dashboard').style.display = '';
+
+  // WL status
+  const wlS = document.getElementById('j-wl-s'), wlItem = document.getElementById('j-wl');
+  if (localStorage.getItem('cubyboo_wl_submitted') === 'true') {
+    wlS.textContent = 'Registered ✓'; wlS.style.color = 'var(--green)';
+    wlItem.classList.add('done');
+    document.getElementById('stat-wl').textContent = 'WL ✓';
+  } else {
+    wlS.textContent = 'Not registered'; wlS.style.color = 'var(--orange)';
+    wlItem.classList.add('soon');
+  }
+
+  // Essence déjà révélée ?
+  const proof   = localStorage.getItem('cubyboo_essence_proof');
+  const tokenId = localStorage.getItem('cubyboo_token_id');
+  if (proof && tokenId) { verifyStored(address, tokenId, proof); return; }
+
+  showPanel(MINT_IS_LIVE ? 'panel-oath2' : 'panel-premint');
+  revealAnimations();
+}
+
+window.disconnectWallet = function() {
+  walletAddress = null;
+  localStorage.removeItem('cubyboo_wallet');
+  document.getElementById('js-connect-screen').style.display = '';
+  document.getElementById('js-dashboard').classList.remove('show');
+  document.getElementById('js-footer').style.display = 'none';
+  document.getElementById('nav-dashboard').style.display = 'none';
+  document.getElementById('mob-dashboard').style.display = 'none';
+};
+
+// ══ AWAKENING OATH ═══════════════════════════════════════════════════════════
+window.revealEssence = async function() {
+  const tokenId = document.getElementById('js-token-id').value.trim();
+  if (!tokenId || tokenId < 1 || tokenId > 2222) { alert('Please enter a valid token ID between 1 and 2222.'); return; }
+  const btn = document.getElementById('js-reveal-btn');
+  btn.disabled = true; btn.textContent = '⏳ Awaiting signature…';
+  try {
+    // 1. Signature wallet (pas de gas)
+    const message   = `I reveal my Cubyboo essence. Token: ${tokenId}`;
+    const signature = await window.ethereum.request({ method:'personal_sign', params:[message, walletAddress] });
+    btn.textContent = '🔮 Consulting the Prism…';
+    // 2. Appel Worker
+    const res  = await fetch(WORKER_URL, {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ action:'reveal', wallet:walletAddress, tokenId:Number(tokenId), signature }),
+    });
+    const data = await res.json();
+    if (!data.success) throw new Error(data.error || 'Worker error');
+    // 3. Stocker le proof
+    localStorage.setItem('cubyboo_essence_proof', data.proof);
+    localStorage.setItem('cubyboo_token_id', tokenId);
+    // 4. Afficher
+    displayEssence(data.essence, tokenId, true);
+  } catch(err) {
+    if (err.code === 4001) { alert('Signature refused. You must sign the Awakening Oath to reveal your essence.'); }
+    else { alert('Error: ' + (err.message || 'Unknown')); }
+    btn.disabled = false;
+    btn.textContent = '🔮 Reveal My Essence';
+    document.getElementById('js-oath2-check').checked = false;
+  }
+};
+
+async function verifyStored(wallet, tokenId, proof) {
+  try {
+    const res  = await fetch(WORKER_URL, {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ action:'verify', wallet, tokenId:Number(tokenId), proof }),
+    });
+    const data = await res.json();
+    if (data.success) { displayEssence(data.essence, tokenId, false); return; }
+    localStorage.removeItem('cubyboo_essence_proof');
+    localStorage.removeItem('cubyboo_token_id');
+  } catch { /* réseau indisponible */ }
+  showPanel(MINT_IS_LIVE ? 'panel-oath2' : 'panel-premint');
+  revealAnimations();
+}
+
+function displayEssence(essence, tokenId, animate) {
+  showPanel('panel-revealed');
+  // Orb
+  const orb = document.getElementById('js-orb');
+  orb.style.background  = essence.color + '18';
+  orb.style.borderColor = essence.color + '66';
+  document.getElementById('js-orb-glow').style.background  = essence.color;
+  document.getElementById('js-orb-emoji').textContent       = essence.emoji;
+  // Textes
+  document.getElementById('js-essence-name').textContent    = essence.name;
+  document.getElementById('js-essence-desc').textContent    = essence.description;
+  document.getElementById('js-detail-cat').textContent      = essence.category;
+  document.getElementById('js-detail-token').textContent    = '#' + tokenId;
+  document.getElementById('js-detail-count').textContent    = essence.isVoid ? '22' : '100';
+  // Badge catégorie
+  const badge = document.getElementById('js-essence-cat-badge');
+  badge.textContent        = essence.category;
+  badge.style.background   = essence.color + '20';
+  badge.style.border       = '1px solid ' + essence.color + '44';
+  badge.style.color        = essence.color;
+  // Void
+  document.getElementById('js-void-banner').style.display = essence.isVoid ? '' : 'none';
+  // Stats
+  document.getElementById('stat-cubyboo').textContent = '1';
+  // Journey
+  const j = document.getElementById('j-oath2'), js = document.getElementById('j-oath2-s');
+  j.classList.remove('future','soon'); j.classList.add('done');
+  js.textContent = 'Revealed ✓'; js.style.color = 'var(--green)';
+  // Animation
+  if (animate) {
+    const hero = document.getElementById('js-revealed-hero');
+    hero.classList.add('reveal-animate');
+    setTimeout(() => hero.classList.remove('reveal-animate'), 1000);
+  }
+  revealAnimations();
+}
+
+// ══ INIT ═════════════════════════════════════════════════════════════════════
+(function(){
+  const el = document.getElementById('js-particles');
+  const c  = ['#FF5FBA','#00E5FF','#FFE040','#4DFFA0','#A855F7'];
+  for(let i=0;i<28;i++){
+    const p=document.createElement('div'); p.className='particle';
+    const s=Math.random()*4+2;
+    p.style.cssText=`width:${s}px;height:${s}px;left:${Math.random()*100}%;background:${c[Math.floor(Math.random()*c.length)]};animation-delay:${Math.random()*20}s;animation-duration:${Math.random()*12+10}s;`;
+    el.appendChild(p);
+  }
+  window.addEventListener('scroll',()=>document.getElementById('js-navbar').classList.toggle('scrolled',window.scrollY>10),{passive:true});
+  document.getElementById('js-burger').addEventListener('click',()=>document.getElementById('js-mobile-menu').classList.toggle('open'));
+  document.querySelectorAll('.nav-mobile a').forEach(a=>a.addEventListener('click',()=>document.getElementById('js-mobile-menu').classList.remove('open')));
+  const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible');}),{threshold:.1});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+})();
+</script>
+
+<script src="i18n.js"></script>
+<script>
+LangManager.init();
+if(localStorage.getItem('cubyboo_oath_signed')==='true'){
+  document.getElementById('nav-wl').style.display='';
+  document.getElementById('mob-wl').style.display='';
+  document.getElementById('nav-cta').href='whitelist.html';
+}
+if(localStorage.getItem('cubyboo_wallet')){
+  document.getElementById('nav-dashboard').style.display='';
+  document.getElementById('mob-dashboard').style.display='';
+}
+// Auto-reconnect
+const _saved = localStorage.getItem('cubyboo_wallet');
+if (_saved) showDashboard(_saved);
+</script>
+</body>
+</html>
