@@ -1,16 +1,19 @@
 /* =============================================
    CUBYBOO — i18n Translations
-   Languages: EN, FR, ES, IT, ZH
+   Languages: EN, FR, ES, IT, ZH, DE, JA, PT
    ============================================= */
 
 const CUBYBOO_I18N = {
-
   en: {
     // NAV
     nav_oath:       "The Oath",
     nav_whitelist:  "Whitelist",
     nav_about:      "About",
     nav_collection: "Collection",
+    nav_roadmap:      "Roadmap",
+    nav_dashboard:    "🐻 My Cubyboo",
+    nav_roadmap:      "Roadmap",
+    nav_dashboard:    "🐻 My Cubyboo",
     nav_wl_btn:     "🎟 Whitelist",
 
     // HOME — video section
@@ -150,7 +153,7 @@ but with presence.
   },
 
   fr: {
-    nav_oath: "Le Serment", nav_whitelist: "Whitelist", nav_about: "À Propos", nav_collection: "Collection", nav_wl_btn: "🎟 Whitelist",
+    nav_oath: "Le Serment", nav_whitelist: "Whitelist", nav_about: "À Propos", nav_collection: "Collection", nav_roadmap: "Roadmap", nav_dashboard: "🐻 Mon Cubyboo", nav_wl_btn: "🎟 Whitelist",
     home_trailer_eyebrow: "Trailer Officiel",
     home_trailer_title: "🎬 L'Origine Secrète <span class='grad-text2'>de Cubyboo</span>",
     home_trailer_sub: "Découvrez l'histoire — comment les Cubyboo sont nés, et pourquoi des Gardiens sont nécessaires maintenant plus que jamais.",
@@ -236,7 +239,7 @@ mais par ma présence.
   },
 
   es: {
-    nav_oath: "El Juramento", nav_whitelist: "Whitelist", nav_about: "Acerca de", nav_collection: "Colección", nav_wl_btn: "🎟 Whitelist",
+    nav_oath: "El Juramento", nav_whitelist: "Whitelist", nav_about: "Acerca de", nav_collection: "Colección", nav_roadmap: "Hoja de Ruta", nav_dashboard: "🐻 Mi Cubyboo", nav_wl_btn: "🎟 Whitelist",
     home_trailer_eyebrow: "Tráiler Oficial",
     home_trailer_title: "🎬 El Origen Secreto <span class='grad-text2'>de Cubyboo</span>",
     home_trailer_sub: "Descubre la historia — cómo nacieron los Cubyboo y por qué los Guardianes son necesarios ahora más que nunca.",
@@ -322,7 +325,7 @@ sino con mi presencia.
   },
 
   it: {
-    nav_oath: "Il Giuramento", nav_whitelist: "Whitelist", nav_about: "Chi Siamo", nav_collection: "Collezione", nav_wl_btn: "🎟 Whitelist",
+    nav_oath: "Il Giuramento", nav_whitelist: "Whitelist", nav_about: "Chi Siamo", nav_collection: "Collezione", nav_roadmap: "Roadmap", nav_dashboard: "🐻 Il Mio Cubyboo", nav_wl_btn: "🎟 Whitelist",
     home_trailer_eyebrow: "Trailer Ufficiale",
     home_trailer_title: "🎬 L'Origine Segreta <span class='grad-text2'>di Cubyboo</span>",
     home_trailer_sub: "Scopri la storia — come sono nati i Cubyboo e perché i Guardiani sono necessari ora più che mai.",
@@ -408,7 +411,7 @@ ma con la presenza.
   },
 
   zh: {
-    nav_oath: "誓言", nav_whitelist: "白名单", nav_about: "关于", nav_collection: "系列", nav_wl_btn: "🎟 白名单",
+    nav_oath: "誓言", nav_whitelist: "白名单", nav_about: "关于", nav_collection: "系列", nav_roadmap: "路线图", nav_dashboard: "🐻 我的Cubyboo", nav_wl_btn: "🎟 白名单",
     home_trailer_eyebrow: "官方预告片",
     home_trailer_title: "🎬 Cubyboo<span class='grad-text2'>的秘密起源</span>",
     home_trailer_sub: "观看故事展开——Cubyboo如何诞生，以及为何现在比以往任何时候都更需要守护者。",
@@ -492,8 +495,264 @@ ma con la presenza.
     final_btn1: "⚔️ 接受誓言", final_btn2: "🎟 加入白名单",
     footer_copy: "© 2026 Cubyboo · 我们所珍视的永远存在。",
   }
-};
+  de: {
+    nav_oath: "Der Schwur", nav_whitelist: "Whitelist", nav_about: "Über uns", nav_collection: "Kollektion", nav_wl_btn: "🎟 Whitelist", nav_roadmap: "Roadmap", nav_dashboard: "🐻 Mein Cubyboo",
+    home_trailer_eyebrow: "Offizieller Trailer",
+    home_trailer_title: "🎬 Der Geheime <span class='grad-text2'>Ursprung</span> von Cubyboo",
+    home_trailer_sub: "Erlebe die Geschichte — wie Cubyboo entstand und warum Hüter jetzt mehr denn je gebraucht werden.",
+    oath_eyebrow: "Heiliges Ritual", oath_title: "<span class='grad-text'>Der Eid des</span><br>Hüters", oath_sub: "Nimm den Eid an, um Zugang zur Whitelist zu erhalten.",
+    oath_guardian: "Hüter",
+    oath_body: `Ich, [HÜTER],
+anerkenne, dass das, was ich liebe, existiert.
 
+Ich gelobe, das mir anvertraute Wesen meines Cubyboo zu schützen,
+Es zu sehen.
+Es zu ehren.
+Es nie im Vergessen verschwinden zu lassen.
+
+Solange ich sein Bild trage,
+Solange ich von ihm spreche,
+Solange ich ihm meine Aufmerksamkeit schenke,
+wird das, was es bewacht, niemals verschwinden.
+
+Ich kämpfe nicht mit Gewalt,
+sondern mit Präsenz.
+
+[SIG]`,
+    oath_sig: "WAS WIR SCHÄTZEN, EXISTIERT",
+    oath_check: "Ich nehme diesen Eid feierlich an und verpflichte mich zu meiner Rolle als Hüter",
+    oath_decline: "Ablehnen", oath_accept: "⚔️ Ich nehme diesen Eid an",
+    oath_signed_msg: "Eid angenommen — Whitelist freigeschaltet!",
+    oath_signed_btn: "🎟 Zur Whitelist",
+    oath_decline_alert: "⚠️ Du musst den Hütereid annehmen, um auf die Whitelist zuzugreifen.",
+    wl_eyebrow: "Phase 2 — Läuft", wl_title: "Tritt den <span class='grad-text'>Hütern</span> bei",
+    wl_subtitle: "2.222 NFTs · 22 Chargen · 4 Phasen",
+    wl_progress_label: "Plätze in dieser Sitzung beansprucht",
+    wl_missions: "Alle Missionen erfüllen",
+    step1_title: "@Cubyboo_NFT auf 𝕏 folgen", step1_desc: "Tritt unserer Community auf Twitter bei", step1_link: "→ Jetzt folgen",
+    step2_title: "Den angehefteten Tweet liken & reposten", step2_desc: "Hilf uns, die Mission der Hüter zu verbreiten", step2_link: "→ Tweet ansehen",
+    step3_title: "3 Freunde taggen für Bonus WL-Priorität 🎁", step3_desc: "Erwähne 3 Freunde im angehefteten Tweet", step3_link: "→ Angehefteten Tweet ansehen",
+    step4_title: "Den Hütereid unterschreiben", step4_desc: "Dein Eid wurde angenommen ✓",
+    wl_register: "Registrieren",
+    wl_notice: "<strong>Alle Aktionen werden manuell überprüft.</strong> Unvollständige oder betrügerische Einreichungen werden disqualifiziert.",
+    wl_twitter_label: "Twitter-Handle", wl_tweet_label: "Link zu deinem Tweet",
+    wl_tweet_opt: "(optional — Bonus-Priorität)", wl_tweet_hint: "Füge den Link zu deinem Tweet ein, in dem du 3 Freunde getaggt hast",
+    wl_wallet_label: "Abstract Wallet", wl_submit: "🐻 Den Hütern beitreten",
+    wl_submitting: "⏳ Wird eingereicht…",
+    wl_success_title: "Willkommen, Hüter!", wl_success_text: "Deine Whitelist-Anfrage wurde erfolgreich registriert.",
+    wl_err_wallet: "❌ Ungültiges Wallet-Format. Muss mit 0x beginnen und 40 Hex-Zeichen enthalten.",
+    wl_err_twitter: "❌ Twitter-Handle muss mit @ beginnen",
+    wl_err_generic: "❌ Ein Fehler ist aufgetreten. Bitte versuche es erneut.",
+    about_eyebrow: "Das Lore", about_title: "Die Welt von<br><span class='grad-text'>Cubyboo</span>",
+    about_sub: "Ein Universum, in dem vergessene Essenzen wie verlorene Sterne treiben.",
+    origin_eyebrow: "Der Ursprung", origin_title: "Die <span class='grad-text'>Genesis</span>",
+    lore_p1: "Vor langer Zeit strahlte unsere Welt in unendlichen Farben. Jeder Farbton vibrierte mit seiner eigenen Energie. Das Grün der Wälder, das Blau der Ozeane, das Rot der Leidenschaft, das Gelb der Freude.",
+    lore_p2: "Dann, ohne Vorwarnung, begannen die Dinge zu verblassen. Die Weisen entdeckten eine erschreckende Wahrheit: Jede Essenz der Welt kann nur existieren, wenn sie beschützt und gehütet wird.",
+    lore_q1: ""Jede Essenz der Welt kann nur existieren, wenn sie gehütet wird. Ohne einen Hüter, der sie verteidigt, löscht sie sich langsam aus der Realität."",
+    lore_p3: "In einem letzten Hoffnungsakt antwortete das Universum. Aus dem Herzen des Prismatischen Ursprungs entstand der Erste Bär — der perfekte Archetyp des Beschützers.",
+    lore_p4: "Die Cubyboo bewegen sich nicht. Sie haben geschworen, ewig still zu bleiben. Aber Stille allein reicht nicht. Da kommst du ins Spiel.",
+    lore_q2: ""Solange ein Cubyboo von seinem menschlichen Hüter geschätzt wird, kann das, was es schützt, niemals verschwinden."",
+    values_eyebrow: "Grundwerte", values_title: "Wofür wir <span class='grad-text'>stehen</span>",
+    values_sub: "Drei Säulen, die das Engagement jedes Hüters definieren.",
+    val1_title: "Präsenz", val1_desc: "Deine Aufmerksamkeit ist die stärkste Kraft im Cubyboo-Universum.",
+    val2_title: "Farbe", val2_desc: "Jeder Cubyboo ist durch die Essenz gekennzeichnet, die er schützt.",
+    val3_title: "Gemeinschaft", val3_desc: "Die Cubyboo können nicht allein überleben — und ihre Hüter auch nicht.",
+    oath_teaser_eyebrow: "Heiliges Ritual", oath_teaser_title: "Der Eid des <span class='grad-text'>Hüters</span>",
+    coll_eyebrow: "Die Kollektion", coll_title: "Lerne die <span class='grad-text'>Cubyboo</span> kennen",
+    coll_sub: "Jeder Cubyboo ist eine einzigartige Kombination aus Eigenschaften.",
+    rm_eyebrow: "Roadmap", rm_title: "Die Reise des <span class='grad-text'>Hüters</span>", rm_sub: "Vier Phasen für ein florierendes Ökosystem.",
+    rm1_tag: "Abgeschlossen ✓", rm1_title: "Phase 1 — Genesis", rm1_desc: "Die Farbhüter erwachen zuerst.",
+    rm2_tag: "In Bearbeitung", rm2_title: "Phase 2 — Whitelist", rm2_desc: "Whitelist-Kampagne und Discord-Start.",
+    rm3_tag: "Bald", rm3_title: "Phase 3 — Mint", rm3_desc: "Öffentlicher Mint auf Abstract Blockchain.",
+    rm4_tag: "Zukunft", rm4_title: "Phase 4 — Sanctuaire", rm4_desc: "Halter-Dashboard und Prismatisches Sanctuaire DAO.",
+    faq_eyebrow: "FAQ", faq_title: "Alles, was du <span class='grad-text2'>wissen musst</span>",
+    faq_q1: "Was ist Cubyboo?", faq_a1: "Cubyboo ist eine Sammlung von 2.222 einzigartigen NFTs auf der Abstract-Blockchain. Jeder Cubyboo ist ein Hüter einer bestimmten Essenz — eine Farbe, ein Element oder eine menschliche Emotion.",
+    faq_q2: "Kann sich mein Cubyboo verändern oder entwickeln?", faq_a2: "Nein. Dein NFT bleibt genau so, wie er gemint wurde, für immer.",
+    faq_q3: "Welche Essenz schützt mein Cubyboo?", faq_a3: "Jeder Cubyboo ist einer von 22 Hüterschaften zugeordnet — beim Mint wirst du die Essenz deines Cubyboo entdecken.",
+    faq_q4: "Warum kostet der Mint 0,005 ETH?", faq_a4: "Wir glauben an zugängliche, aber nachhaltige NFTs. Diese niedrige Hürde schützt die Gemeinschaft vor Spekulanten.",
+    faq_q5: "Wie komme ich auf die Whitelist?", faq_a5: "Nimm den Hütereid an, folge @Cubyboo_NFT auf X, like und reposte den angehefteten Tweet, tagge 3 Freunde und reiche deine Wallet-Adresse ein.",
+    faq_q6: "Was ist das Prismatische Sanctuaire?", faq_a6: "Die Dimension, in der alle Cubyboo wohnen — ein Ort aus reinem gebrochenem Licht.",
+    faq_q7: "Auf welcher Blockchain ist Cubyboo?", faq_a7: "Abstract — ein Layer 2 für Schöpfer und Künstler. Ultrageringe Gebühren (~0,01 $), für NFTs optimiert.",
+    faq_q8: "Kann ich meinen Cubyboo weiterverkaufen?", faq_a8: "Ja. Der neue Inhaber wird automatisch sein Mithüter.",
+    final_eyebrow: "Begrenzte Plätze — Jetzt handeln",
+    final_title: "Bereit, ein <span class='grad-text'>Hüter</span> zu werden?",
+    final_sub: "200 Whitelist-Plätze in dieser Sitzung verfügbar.",
+    final_btn1: "⚔️ Den Eid annehmen", final_btn2: "🎟 Der Whitelist beitreten",
+    footer_copy: "© 2026 Cubyboo · Was wir schätzen, existiert.",
+    cta_oath: "⚔️ Den Eid annehmen", cta_wl: "🎟 Zur Whitelist",
+  },
+  ja: {
+    nav_oath: "誓い", nav_whitelist: "ホワイトリスト", nav_about: "について", nav_collection: "コレクション", nav_wl_btn: "🎟 ホワイトリスト", nav_roadmap: "ロードマップ", nav_dashboard: "🐻 マイCubyboo",
+    home_trailer_eyebrow: "公式トレーラー",
+    home_trailer_title: "🎬 Cubybooの<span class='grad-text2'>秘密の起源</span>",
+    home_trailer_sub: "物語が展開するのをご覧ください。",
+    oath_eyebrow: "神聖な儀式", oath_title: "<span class='grad-text'>守護者の</span><br>誓い", oath_sub: "誓いを受け入れてホワイトリストへのアクセスを解放してください。",
+    oath_guardian: "守護者",
+    oath_body: `私、[守護者]は、
+私が大切にするものが存在することを認めます。
+
+私はCubybooに委ねられた本質を守ることを誓います。
+それを見ること。
+それを称えること。
+それが忘却の中に消えないようにすること。
+
+私がその姿を持つ限り、
+私がそれについて語る限り、
+私が注意を向ける限り、
+それが守るものは決して消えません。
+
+私は力で戦いません、
+存在によって戦います。
+
+[SIG]`,
+    oath_sig: "大切にするものは存在する",
+    oath_check: "私はこの誓いを厳粛に受け入れ、守護者としての役割を誓います",
+    oath_decline: "断る", oath_accept: "⚔️ この誓いを受け入れる",
+    oath_signed_msg: "誓い受理 — ホワイトリスト解放！",
+    oath_signed_btn: "🎟 ホワイトリストへ",
+    oath_decline_alert: "⚠️ ホワイトリストにアクセスするには守護者の誓いを受け入れる必要があります。",
+    wl_eyebrow: "フェーズ2 — 進行中", wl_title: "<span class='grad-text'>守護者</span>に参加",
+    wl_subtitle: "2,222 NFTs · 22バッチ · 4フェーズ",
+    wl_progress_label: "このセッションで申請されたスポット",
+    wl_missions: "すべてのミッションを完了",
+    step1_title: "𝕏で@Cubyboo_NFTをフォロー", step1_desc: "Twitterで私たちのコミュニティに参加して最新情報を入手", step1_link: "→ 今すぐフォロー",
+    step2_title: "固定ツイートをいいね＆リポスト", step2_desc: "守護者のミッションを広める手助けをしてください", step2_link: "→ ツイートを見る",
+    step3_title: "ボーナスWL優先のために3人の友人をタグ付け 🎁", step3_desc: "固定ツイートで3人の友人をメンション", step3_link: "→ 固定ツイートを見る",
+    step4_title: "守護者の誓いに署名", step4_desc: "誓いが受理されました ✓",
+    wl_register: "登録",
+    wl_notice: "<strong>すべてのアクションは手動で確認されます。</strong>不完全または不正な提出は失格となります。",
+    wl_twitter_label: "Twitterハンドル", wl_tweet_label: "ツイートへのリンク",
+    wl_tweet_opt: "(オプション — ボーナス優先度)", wl_tweet_hint: "3人の友人をタグ付けしたツイートのリンクを貼り付け",
+    wl_wallet_label: "Abstract ウォレット", wl_submit: "🐻 守護者に参加",
+    wl_submitting: "⏳ 送信中…",
+    wl_success_title: "ようこそ、守護者！", wl_success_text: "ホワイトリストリクエストが正常に登録されました。",
+    wl_err_wallet: "❌ 無効なウォレット形式です。0xで始まり40桁の16進数を含む必要があります。",
+    wl_err_twitter: "❌ Twitterハンドルは@で始まる必要があります",
+    wl_err_generic: "❌ エラーが発生しました。もう一度お試しください。",
+    about_eyebrow: "ロア", about_title: "<span class='grad-text'>Cubyboo</span>の世界",
+    about_sub: "忘れられた本質が迷子の星のように漂う宇宙。",
+    origin_eyebrow: "起源", origin_title: "<span class='grad-text'>創世記</span>",
+    lore_p1: "遠い昔、私たちの世界は無限の色で輝いていました。", lore_p2: "そして突然、物事が薄れ始めました。賢者たちは恐ろしい真実を発見しました。",
+    lore_q1: ""世界のすべての本質は、大切にされてこそ存在できる。"",
+    lore_p3: "最後の希望の行為として、宇宙が応えました。最初のクマが生まれました。",
+    lore_p4: "Cubybooは動きません。永遠に静止していることを誓っています。",
+    lore_q2: ""Cubybooが人間の守護者に大切にされる限り、守るものは決して消えない。"",
+    values_eyebrow: "核心的価値観", values_title: "私たちが<span class='grad-text'>守るもの</span>",
+    values_sub: "すべての守護者の使命を定義する3つの柱。",
+    val1_title: "存在", val1_desc: "あなたの注意がCubyboo宇宙で最も強力な力です。",
+    val2_title: "色彩", val2_desc: "各Cubybooは守護する本質によって特徴付けられます。",
+    val3_title: "コミュニティ", val3_desc: "Cubybooは単独では生き残れません。",
+    oath_teaser_eyebrow: "神聖な儀式", oath_teaser_title: "守護者の<span class='grad-text'>誓い</span>",
+    coll_eyebrow: "コレクション", coll_title: "<span class='grad-text'>Cubyboo</span>に会う",
+    coll_sub: "各Cubybooはユニークな特性の組み合わせです。",
+    rm_eyebrow: "ロードマップ", rm_title: "守護者の<span class='grad-text'>旅</span>", rm_sub: "繁栄するエコシステムを構築するための4フェーズ。",
+    rm1_tag: "完了 ✓", rm1_title: "フェーズ1 — 創世記", rm1_desc: "色の守護者が最初に目覚める。",
+    rm2_tag: "進行中", rm2_title: "フェーズ2 — ホワイトリスト", rm2_desc: "ホワイトリストキャンペーンとDiscordの立ち上げ。",
+    rm3_tag: "近日公開", rm3_title: "フェーズ3 — ミント", rm3_desc: "AbstraktブロックチェーンでのパブリックMint。",
+    rm4_tag: "将来", rm4_title: "フェーズ4 — サンクチュアリ", rm4_desc: "ホルダーダッシュボードとプリズマティックサンクチュアリDAO。",
+    faq_eyebrow: "よくある質問", faq_title: "知っておくべき<span class='grad-text2'>すべて</span>",
+    faq_q1: "Cubybooとは？", faq_a1: "CubybooはAbstractブロックチェーン上の2,222のユニークなNFTのコレクションです。",
+    faq_q2: "私のCubybooは変化しますか？", faq_a2: "いいえ。あなたのNFTはミントされたまま永遠に変わりません。",
+    faq_q3: "私のCubybooはどの本質を守りますか？", faq_a3: "各Cubybooは22の守護職のうちの1つに割り当てられています。",
+    faq_q4: "ミントはなぜ0.005 ETHですか？", faq_a4: "アクセスしやすいが持続可能なNFTを信じています。",
+    faq_q5: "ホワイトリストに載るには？", faq_a5: "守護者の誓いを受け入れ、Xでフォローし、ツイートをリポストしてください。",
+    faq_q6: "プリズマティックサンクチュアリとは？", faq_a6: "すべてのCubybooが住む次元です。",
+    faq_q7: "Cubybooはどのブロックチェーンにありますか？", faq_a7: "Abstract — クリエイターとアーティストのためのLayer 2です。",
+    faq_q8: "Cubybooを転売できますか？", faq_a8: "はい。新しい保有者は自動的にその共同守護者になります。",
+    final_eyebrow: "スポット限定 — 今すぐ行動",
+    final_title: "<span class='grad-text'>守護者</span>になる準備はできていますか？",
+    final_sub: "このセッションで200のホワイトリストスポットが利用可能です。",
+    final_btn1: "⚔️ 誓いを受け入れる", final_btn2: "🎟 ホワイトリストに参加",
+    footer_copy: "© 2026 Cubyboo · 大切にするものは存在する。",
+    cta_oath: "⚔️ 誓いを受け入れる", cta_wl: "🎟 ホワイトリストへ",
+  },
+  pt: {
+    nav_oath: "O Juramento", nav_whitelist: "Whitelist", nav_about: "Sobre", nav_collection: "Coleção", nav_wl_btn: "🎟 Whitelist", nav_roadmap: "Roadmap", nav_dashboard: "🐻 Meu Cubyboo",
+    home_trailer_eyebrow: "Trailer Oficial",
+    home_trailer_title: "🎬 A Origem Secreta <span class='grad-text2'>do Cubyboo</span>",
+    home_trailer_sub: "Veja a história se desenrolar — como o Cubyboo surgiu e por que os Guardiões são necessários agora mais do que nunca.",
+    oath_eyebrow: "Ritual Sagrado", oath_title: "<span class='grad-text'>O Juramento do</span><br>Guardião", oath_sub: "Aceite o juramento para desbloquear o acesso à Whitelist.",
+    oath_guardian: "Guardião",
+    oath_body: `Eu, [GUARDIÃO],
+reconheço que o que eu valorizo existe.
+
+Juro proteger a essência confiada ao meu Cubyboo,
+Vê-la.
+Honrá-la.
+Nunca deixá-la desaparecer no esquecimento.
+
+Enquanto eu carregar sua imagem,
+Enquanto eu falar sobre ela,
+Enquanto eu lhe der minha atenção,
+O que ela guarda nunca desaparecerá.
+
+Não luto com força,
+mas com presença.
+
+[SIG]`,
+    oath_sig: "O QUE VALORIZAMOS EXISTE",
+    oath_check: "Aceito solenemente este juramento e me comprometo com meu papel de Guardião",
+    oath_decline: "Recusar", oath_accept: "⚔️ Aceito Este Juramento",
+    oath_signed_msg: "Juramento aceito — Whitelist desbloqueada!",
+    oath_signed_btn: "🎟 Ir para a Whitelist",
+    oath_decline_alert: "⚠️ Você deve aceitar o Juramento do Guardião para acessar a whitelist.",
+    wl_eyebrow: "Fase 2 — Em andamento", wl_title: "Junte-se aos <span class='grad-text'>Guardiões</span>",
+    wl_subtitle: "2.222 NFTs · 22 Lotes · 4 Fases",
+    wl_progress_label: "Vagas reivindicadas nesta sessão",
+    wl_missions: "Complete Todas as Missões",
+    step1_title: "Siga @Cubyboo_NFT no 𝕏", step1_desc: "Junte-se à nossa comunidade no Twitter", step1_link: "→ Seguir agora",
+    step2_title: "Curta e reposte o tweet fixado", step2_desc: "Ajude-nos a divulgar a missão dos Guardiões", step2_link: "→ Ver tweet",
+    step3_title: "Marque 3 amigos para prioridade bônus WL 🎁", step3_desc: "Mencione 3 amigos no tweet fixado", step3_link: "→ Ver tweet fixado",
+    step4_title: "Assine o Juramento do Guardião", step4_desc: "Seu juramento foi aceito ✓",
+    wl_register: "Registrar",
+    wl_notice: "<strong>Todas as ações serão verificadas manualmente.</strong> Envios incompletos ou fraudulentos serão desqualificados.",
+    wl_twitter_label: "Handle do Twitter", wl_tweet_label: "Link para seu tweet",
+    wl_tweet_opt: "(opcional — prioridade bônus)", wl_tweet_hint: "Cole o link do tweet onde você marcou 3 amigos",
+    wl_wallet_label: "Carteira Abstract", wl_submit: "🐻 Junte-se aos Guardiões",
+    wl_submitting: "⏳ Enviando…",
+    wl_success_title: "Bem-vindo, Guardião!", wl_success_text: "Sua solicitação de Whitelist foi registrada com sucesso.",
+    wl_err_wallet: "❌ Formato de carteira inválido. Deve começar com 0x e conter 40 caracteres hexadecimais.",
+    wl_err_twitter: "❌ O handle do Twitter deve começar com @",
+    wl_err_generic: "❌ Ocorreu um erro. Por favor, tente novamente.",
+    about_eyebrow: "O Lore", about_title: "O Mundo do<br><span class='grad-text'>Cubyboo</span>",
+    about_sub: "Um universo onde essências esquecidas derivam como estrelas perdidas.",
+    origin_eyebrow: "A Origem", origin_title: "O <span class='grad-text'>Gênesis</span>",
+    lore_p1: "Há muito tempo, nosso mundo brilhava com cores infinitas. Cada matiz vibrava com sua própria energia.",
+    lore_p2: "Então, sem aviso, as coisas começaram a desaparecer. Os sábios descobriram uma verdade aterrorizante.",
+    lore_q1: ""Cada essência do mundo só pode existir se for valorizada. Sem um guardião para defendê-la, ela se apaga lentamente da realidade."",
+    lore_p3: "Em um último ato de esperança, o Universo respondeu. Do coração do Prisma Primordial emergiu o Primeiro Urso.",
+    lore_p4: "Os Cubyboo não se movem. Eles juraram permanecer eternamente imóveis. É aí que você entra.",
+    lore_q2: ""Enquanto um Cubyboo for valorizado por seu guardião humano, o que ele protege nunca poderá desaparecer."",
+    values_eyebrow: "Valores Fundamentais", values_title: "Pelo que <span class='grad-text'>Lutamos</span>",
+    values_sub: "Três pilares que definem o compromisso de cada Guardião.",
+    val1_title: "Presença", val1_desc: "Sua atenção é a força mais poderosa no universo Cubyboo.",
+    val2_title: "Cor", val2_desc: "Cada Cubyboo é marcado pela essência que protege.",
+    val3_title: "Comunidade", val3_desc: "Os Cubyboo não podem sobreviver sozinhos — e seus Guardiões também não.",
+    oath_teaser_eyebrow: "Ritual Sagrado", oath_teaser_title: "O Juramento do <span class='grad-text'>Guardião</span>",
+    coll_eyebrow: "A Coleção", coll_title: "Conheça os <span class='grad-text'>Cubyboo</span>",
+    coll_sub: "Cada Cubyboo é uma combinação única de características.",
+    rm_eyebrow: "Roadmap", rm_title: "A Jornada do <span class='grad-text'>Guardião</span>", rm_sub: "Quatro fases para construir um ecossistema próspero.",
+    rm1_tag: "Concluído ✓", rm1_title: "Fase 1 — Gênesis", rm1_desc: "Os Guardiões das Cores despertam primeiro.",
+    rm2_tag: "Em andamento", rm2_title: "Fase 2 — Whitelist", rm2_desc: "Campanha de whitelist e lançamento do Discord.",
+    rm3_tag: "Em breve", rm3_title: "Fase 3 — Mint", rm3_desc: "Mint público na blockchain Abstract.",
+    rm4_tag: "Futuro", rm4_title: "Fase 4 — Santuário", rm4_desc: "Dashboard para holders e Santuário Prismático DAO.",
+    faq_eyebrow: "FAQ", faq_title: "Tudo o que você <span class='grad-text2'>precisa saber</span>",
+    faq_q1: "O que é Cubyboo?", faq_a1: "Cubyboo é uma coleção de 2.222 NFTs únicos na blockchain Abstract. Cada Cubyboo é um guardião de uma essência específica.",
+    faq_q2: "Meu Cubyboo pode mudar ou evoluir?", faq_a2: "Não. Seu NFT permanece exatamente como foi mintado, para sempre.",
+    faq_q3: "Qual essência meu Cubyboo protege?", faq_a3: "Cada Cubyboo é atribuído a uma das 22 guardiões — você descobrirá a essência no mint.",
+    faq_q4: "Por que o mint custa 0,005 ETH?", faq_a4: "Acreditamos em NFTs acessíveis mas sustentáveis.",
+    faq_q5: "Como entro na Whitelist?", faq_a5: "Aceite o Juramento do Guardião, siga @Cubyboo_NFT no X e envie seu endereço de carteira.",
+    faq_q6: "O que é o Santuário Prismático?", faq_a6: "A dimensão onde todos os Cubyboo residem — um lugar de luz pura refratada.",
+    faq_q7: "Em qual blockchain está o Cubyboo?", faq_a7: "Abstract — uma Layer 2 criada para criadores e artistas.",
+    faq_q8: "Posso revender meu Cubyboo?", faq_a8: "Sim. O novo titular se torna automaticamente seu co-guardião.",
+    final_eyebrow: "Vagas Limitadas — Aja Agora",
+    final_title: "Pronto para se tornar<br>um <span class='grad-text'>Guardião?</span>",
+    final_sub: "200 vagas de Whitelist disponíveis nesta sessão.",
+    final_btn1: "⚔️ Aceitar o Juramento", final_btn2: "🎟 Entrar na Whitelist",
+    footer_copy: "© 2026 Cubyboo · O que valorizamos existe.",
+    cta_oath: "⚔️ Aceitar o Juramento", cta_wl: "🎟 Ir para a Whitelist",
+  },
+};
 /* ── Language Manager ── */
 const LangManager = {
   current: 'en',
@@ -542,7 +801,7 @@ const LangManager = {
   },
 
   getFlag(lang) {
-    const flags = { en:'🇬🇧', fr:'🇫🇷', es:'🇪🇸', it:'🇮🇹', zh:'🇨🇳' };
+    const flags = { en:'🇬🇧', fr:'🇫🇷', es:'🇪🇸', it:'🇮🇹', zh:'🇨🇳', de:'🇩🇪', ja:'🇯🇵', pt:'🇵🇹' };
     return flags[lang] || '🌐';
   },
 
@@ -555,6 +814,9 @@ const LangManager = {
       { code:'es', label:'Español' },
       { code:'it', label:'Italiano' },
       { code:'zh', label:'中文' },
+      { code:'de', label:'Deutsch' },
+      { code:'ja', label:'日本語' },
+      { code:'pt', label:'Português' },
     ];
     container.innerHTML = `
       <div class="lang-wrap">
