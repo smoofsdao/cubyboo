@@ -494,7 +494,8 @@ ma con la presenza.
     final_sub: "本次会话200个白名单名额。完成任务，接受誓言，在Cubyboo宇宙中确保您的位置。",
     final_btn1: "⚔️ 接受誓言", final_btn2: "🎟 加入白名单",
     footer_copy: "© 2026 Cubyboo · 我们所珍视的永远存在。",
-  }
+  },
+
   de: {
     nav_oath: "Der Schwur", nav_whitelist: "Whitelist", nav_about: "Lore", nav_collection: "Kollektion", nav_wl_btn: "🎟 Whitelist", nav_roadmap: "Roadmap", nav_dashboard: "🐻 Mein Cubyboo",
     home_trailer_eyebrow: "Offizieller Trailer",
