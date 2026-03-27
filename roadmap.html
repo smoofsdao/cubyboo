@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roadmap — Cubyboo</title>
+  <link rel="icon" href="cubyboo-logo.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .page-body{padding-top:var(--nav-h);}
+
+    /* ── Hero ── */
+    .rm-hero{padding:90px 0 60px;text-align:center;}
+    .rm-hero h1{margin-top:16px;margin-bottom:18px;}
+    .rm-hero p{font-size:1rem;color:var(--muted);max-width:560px;margin:0 auto;line-height:1.85;}
+
+    /* ── Phase sections ── */
+    .phase-section{padding:80px 0;}
+    .phase-header{display:flex;align-items:center;gap:20px;margin-bottom:48px;}
+    .phase-icon{width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.8rem;flex-shrink:0;border:1px solid rgba(255,255,255,.1);}
+    .phase-header-text{}
+    .phase-number{font-size:.72rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;margin-bottom:6px;}
+    .phase-title{font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;}
+    .phase-period{font-size:.83rem;color:var(--muted);margin-top:4px;}
+
+    /* ── Milestone columns ── */
+    .milestone-cols{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+    @media(max-width:700px){.milestone-cols{grid-template-columns:1fr;}}
+
+    .milestone-block{padding:28px 26px;border-radius:var(--r-lg);background:var(--surface);border:1px solid var(--border);position:relative;overflow:hidden;}
+    .milestone-block::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--block-color,var(--grad));}
+    .milestone-block h3{font-family:'Syne',sans-serif;font-size:.9rem;font-weight:800;margin-bottom:16px;color:var(--text);}
+    .milestone-list{list-style:none;display:flex;flex-direction:column;gap:10px;}
+    .milestone-list li{font-size:.84rem;color:var(--muted);line-height:1.6;padding-left:18px;position:relative;}
+    .milestone-list li::before{content:'→';position:absolute;left:0;color:var(--block-color,var(--purple));font-weight:700;}
+
+    /* ── Status table ── */
+    .status-table{width:100%;border-collapse:collapse;margin-top:32px;border-radius:var(--r-lg);overflow:hidden;}
+    .status-table th{text-align:left;padding:12px 18px;background:rgba(255,255,255,.04);font-family:'Syne',sans-serif;font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--border);}
+    .status-table td{padding:13px 18px;font-size:.84rem;color:var(--muted);border-bottom:1px solid var(--border);}
+    .status-table tr:last-child td{border-bottom:none;}
+    .status-table tbody tr:hover td{background:rgba(255,255,255,.02);}
+    .status-badge{display:inline-flex;padding:2px 10px;border-radius:var(--r-full);font-size:.65rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;}
+    .s-planned{background:rgba(240,240,255,.06);color:var(--dim);}
+    .s-inprogress{background:rgba(255,140,66,.12);color:var(--orange);border:1px solid rgba(255,140,66,.3);}
+    .s-done{background:rgba(77,255,160,.08);color:var(--green);border:1px solid rgba(77,255,160,.2);}
+    .s-future{background:rgba(168,85,247,.08);color:var(--purple);border:1px solid rgba(168,85,247,.2);}
+
+    /* ── Summary ── */
+    .summary-section{padding:80px 0 110px;}
+    .summary-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+    @media(max-width:700px){.summary-grid{grid-template-columns:1fr;}}
+    .summary-card{padding:32px 26px;border-radius:var(--r-lg);background:var(--surface);border:1px solid var(--border);text-align:center;}
+    .summary-phase{font-family:'Syne',sans-serif;font-size:.72rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;margin-bottom:10px;}
+    .summary-period{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:800;margin-bottom:14px;}
+    .summary-items{font-size:.82rem;color:var(--muted);line-height:1.8;}
+
+    /* ── Note ── */
+    .note-section{padding:0 0 80px;}
+    .note-box{padding:36px 40px;border-radius:var(--r-lg);background:linear-gradient(135deg,rgba(168,85,247,.06),rgba(0,229,255,.04));border:1px solid rgba(168,85,247,.2);text-align:center;}
+    .note-box h3{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:800;margin-bottom:14px;}
+    .note-box p{font-size:.9rem;color:var(--muted);line-height:1.8;max-width:600px;margin:0 auto;}
+  </style>
+</head>
+<body>
+<div class="bg-layer"><div class="bg-mesh"></div><div class="bg-grid"></div></div>
+<div class="particles" id="js-particles"></div>
+
+<nav class="navbar solid" id="js-navbar">
+  <a href="index.html" class="nav-logo"><img src="cubyboo-logo.png" alt="Cubyboo"></a>
+  <ul class="nav-links">
+    <li><a href="home.html" data-i18n="nav_oath">The Oath</a></li>
+    <li><a href="whitelist.html" id="nav-wl" style="display:none;" data-i18n="nav_whitelist">Whitelist</a></li>
+    <li><a href="about.html" data-i18n="nav_about">About</a></li>
+    <li><a href="collection.html" data-i18n="nav_collection">Collection</a></li>
+    <li><a href="roadmap.html" class="active">Roadmap</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="https://twitter.com/Cubyboo_NFT" class="nav-social" target="_blank" rel="noopener">𝕏</a>
+    <a href="#" class="nav-social" data-soon onclick="return false;"><img src="discord-icon.png" alt="Discord"></a>
+    <div id="lang-selector"></div>
+    <a href="/dashboard" class="nav-cta" style="background:linear-gradient(135deg,#00E5FF,#A855F7);">🐻 My Cubyboo</a>
+    <a href="whitelist.html" class="nav-cta" id="nav-cta" data-i18n="nav_wl_btn">🎟 Whitelist</a>
+  </div>
+  <div class="nav-burger" id="js-burger"><span></span><span></span><span></span></div>
+</nav>
+<div class="nav-mobile" id="js-mobile-menu">
+  <a href="home.html" data-i18n="nav_oath">The Oath</a>
+  <a href="whitelist.html" id="mob-wl" style="display:none;color:var(--purple);font-weight:700;" data-i18n="nav_wl_btn">🎟 Whitelist</a>
+  <a href="about.html" data-i18n="nav_about">About</a>
+  <a href="collection.html" data-i18n="nav_collection">Collection</a>
+  <a href="roadmap.html" style="font-weight:700;">Roadmap</a>
+  <a href="/dashboard" style="color:var(--cyan);font-weight:700;">🐻 My Cubyboo</a>
+  <div id="lang-selector-mobile" style="padding:10px 4px;"></div>
+</div>
+
+<div class="wrapper page-body">
+
+  <!-- HERO -->
+  <section class="rm-hero">
+    <div class="container--sm">
+      <div class="reveal">
+        <span class="eyebrow eyebrow--purple"><span class="eyebrow-dot"></span> <span data-i18n="rm_hero_eyebrow">Roadmap 2025–2027</span></span>
+        <h1 class="h-lg" style="margin-top:16px;" data-i18n="rm_hero_title">The Guardian's <span class="grad-text">Journey</span></h1>
+        <p data-i18n="rm_hero_sub">Built on three principles: transparency, community, and sustainable growth. Every milestone serves the Guardians — not the other way around.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- PHASE 1 — GENESIS -->
+  <section class="phase-section" id="phase1">
+    <div class="container">
+      <div class="phase-header reveal">
+        <div class="phase-icon" style="background:linear-gradient(135deg,rgba(77,255,160,.15),rgba(0,229,255,.1));">🌱</div>
+        <div class="phase-header-text">
+          <div class="phase-number" style="color:var(--green);" data-i18n="rm_p1_num">Phase 1</div>
+          <div class="phase-title" data-i18n="rm_p1_name">Genesis</div>
+          <div class="phase-period" data-i18n="rm_p1_period">Months 1–3 · Pre-launch & Mint</div>
+        </div>
+        <span class="pill pill--green" style="margin-left:auto;" data-i18n="rm_p1_status">In Progress</span>
+      </div>
+
+      <div class="milestone-cols reveal rd-1">
+        <div class="milestone-block" style="--block-color:var(--cyan);">
+          <h3>🌍 Community Building</h3>
+          <ul class="milestone-list">
+            <li>Launch official Twitter/X account — daily content, lore drops, community engagement</li>
+            <li>Open Discord server — dedicated channels for Guardians and governance</li>
+            <li>Publish Whitepaper and Lore Bible publicly</li>
+            <li>Begin Guardian waitlist — early supporters get priority mint access</li>
+            <li>Launch teaser campaign: « What will your essence be? »</li>
+          </ul>
+        </div>
+        <div class="milestone-block" style="--block-color:var(--purple);">
+          <h3>⚙️ Pre-Mint</h3>
+          <ul class="milestone-list">
+            <li>Finalize AI generation of all 2 222 unique Cubyboo NFTs</li>
+            <li>Smart contract audit and deployment on Abstract blockchain</li>
+            <li>Prismatic Sanctuary soft launch — wallet connection and essence reveal ready</li>
+          </ul>
+        </div>
+        <div class="milestone-block" style="--block-color:var(--pink);">
+          <h3>🚀 Mint Day</h3>
+          <ul class="milestone-list">
+            <li>Public mint opens — 2 200 NFTs at 0.005 ETH</li>
+            <li>Prismatic Sanctuary goes fully live — Guardians discover their essence</li>
+            <li>Essence Cards shareable on Twitter/X — community reveal event</li>
+          </ul>
+        </div>
+        <div class="milestone-block" style="--block-color:var(--green);">
+          <h3>📋 Milestones</h3>
+          <table class="status-table">
+            <thead><tr><th>Milestone</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td>Twitter/X launch</td><td><span class="status-badge s-inprogress">In Progress</span></td></tr>
+              <tr><td>Discord launch</td><td><span class="status-badge s-planned">Planned</span></td></tr>
+              <tr><td>Whitepaper published</td><td><span class="status-badge s-inprogress">In Progress</span></td></tr>
+              <tr><td>NFT generation complete</td><td><span class="status-badge s-planned">Planned</span></td></tr>
+              <tr><td>Smart contract audit</td><td><span class="status-badge s-planned">Planned</span></td></tr>
+              <tr><td>Prismatic Sanctuary v1</td><td><span class="status-badge s-inprogress">In Progress</span></td></tr>
+              <tr><td>Public mint</td><td><span class="status-badge s-planned">Planned</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- PHASE 2 — GROWTH -->
+  <section class="phase-section" id="phase2">
+    <div class="container">
+      <div class="phase-header reveal">
+        <div class="phase-icon" style="background:linear-gradient(135deg,rgba(0,229,255,.15),rgba(168,85,247,.1));">🌿</div>
+        <div class="phase-header-text">
+          <div class="phase-number" style="color:var(--cyan);" data-i18n="rm_p2_num">Phase 2</div>
+          <div class="phase-title" data-i18n="rm_p2_name">Growth</div>
+          <div class="phase-period" data-i18n="rm_p2_period">Months 4–12 · Community & Ecosystem</div>
+        </div>
+        <span class="pill pill--cyan" style="margin-left:auto;" data-i18n="rm_p2_status">Coming Soon</span>
+      </div>
+
+      <div class="milestone-cols reveal rd-1">
+        <div class="milestone-block" style="--block-color:var(--purple);">
+          <h3>🏛️ Prismatic Sanctuary V2</h3>
+          <ul class="milestone-list">
+            <li>Guardian progression dashboard — track your level, points, and badges</li>
+            <li>Community essence map — see all essences held by the Guardian community</li>
+            <li>Governance portal — vote on project decisions directly on the site</li>
+            <li>Enhanced Essence Cards with animated reveals</li>
+          </ul>
+        </div>
+        <div class="milestone-block" style="--block-color:var(--yellow);">
+          <h3>🤝 Community & Engagement</h3>
+          <ul class="milestone-list">
+            <li>Launch Guardian Points System — holding, staking, voting, social actions</li>
+            <li>First quarterly burning event — treasury buys back and burns 25–50 NFTs</li>
+            <li>Monthly Guardian Assemblies on Discord — community votes on key decisions</li>
+            <li>Fanart contests and lore writing competitions — 150–200 points rewards</li>
+            <li>IRL Guardian Missions — optional real-world challenges tied to essences</li>
+          </ul>
+        </div>
+        <div class="milestone-block" style="--block-color:var(--cyan);">
+          <h3>🤲 Partnerships</h3>
+          <ul class="milestone-list">
+            <li>Identify and approach aligned NFT collections on Abstract blockchain</li>
+            <li>First cross-collection collaboration — co-guardianship event or joint drop</li>
+            <li>Presence at Web3 and NFT events</li>
+            <li>Onboard at least 2 strategic partners aligned with Cubyboo values</li>
+          </ul>
+        </div>
+        <div class="milestone-block" style="--block-color:var(--pink);">
+          <h3>👕 Physical Merch — First Drop</h3>
+          <ul class="milestone-list">
+            <li>Design and produce first official Cubyboo merchandise collection</li>
+            <li>Exclusive merch for top Guardian point holders — free worldwide shipping</li>
+            <li>Pop-up shop during a Web3 event</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="reveal rd-2" style="margin-top:24px;">
+        <div class="milestone-block" style="--block-color:var(--green);">
+          <h3>📋 Target Milestones</h3>
+          <table class="status-table">
+            <thead><tr><th>Milestone</th><th>Target</th></tr></thead>
+            <tbody>
+              <tr><td>Sanctuary V2 live</td><td>Month 5</td></tr>
+              <tr><td>Points system active</td><td>Month 4</td></tr>
+              <tr><td>First burning event</td><td>Month 6</td></tr>
+              <tr><td>First partnership announced</td><td>Month 7</td></tr>
+              <tr><td>First merch drop</td><td>Month 9</td></tr>
+              <tr><td>500+ active Guardians</td><td>Month 10</td></tr>
+              <tr><td>Second burning event</td><td>Month 12</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- PHASE 3 — TRANSCENDENCE -->
+  <section class="phase-section" id="phase3">
+    <div class="container">
+      <div class="phase-header reveal">
+        <div class="phase-icon" style="background:linear-gradient(135deg,rgba(168,85,247,.15),rgba(255,95,186,.1));">🌳</div>
+        <div class="phase-header-text">
+          <div class="phase-number" style="color:var(--purple);" data-i18n="rm_p3_num">Phase 3</div>
+          <div class="phase-title" data-i18n="rm_p3_name">Transcendence</div>
+          <div class="phase-period" data-i18n="rm_p3_period">Year 2 and beyond · Long-term Vision</div>
+        </div>
+        <span class="pill pill--purple" style="margin-left:auto;" data-i18n="rm_p3_status">Future</span>
+      </div>
+
+      <div class="milestone-cols reveal rd-1">
+        <div class="milestone-block" style="--block-color:var(--pink);">
+          <h3>🎮 The Guardian Game</h3>
+          <ul class="milestone-list">
+            <li>Development of a Cubyboo game — protect essences against the Noir</li>
+            <li>Playable directly on the Prismatic Sanctuary or as a standalone app</li>
+            <li>NFT utility in-game — your Cubyboo and its essence define your role</li>
+            <li>Community-driven game design — Guardians vote on mechanics</li>
+            <li>Seasonal events tied to real-world dates and community milestones</li>
+          </ul>
+        </div>
+        <div class="milestone-block" style="--block-color:var(--purple);">
+          <h3>🌐 Ecosystem Expansion</h3>
+          <ul class="milestone-list">
+            <li>Second Cubyboo collection — new essences, new stories, same universe</li>
+            <li>Cubyboo Lore Universe — expanded written and visual lore by the community</li>
+            <li>Guardian DAO — full community governance of the project treasury</li>
+            <li>Physical Cubyboo — limited edition plush toys for top Guardians</li>
+          </ul>
+        </div>
+        <div class="milestone-block" style="--block-color:var(--cyan);">
+          <h3>🤝 Partnerships & Collaborations</h3>
+          <ul class="milestone-list">
+            <li>Major NFT collection collaborations — cross-universe guardian events</li>
+            <li>Brand partnerships aligned with Cubyboo values — nature, art, wellbeing</li>
+            <li>Potential gallery exhibitions — Cubyboo as fine digital art</li>
+            <li>Educational partnerships — Cubyboo as a tool for mindfulness</li>
+          </ul>
+        </div>
+        <div class="milestone-block" style="--block-color:var(--green);">
+          <h3>📋 Target Milestones</h3>
+          <table class="status-table">
+            <thead><tr><th>Milestone</th><th>Target</th></tr></thead>
+            <tbody>
+              <tr><td>Guardian Game beta</td><td>Q1 Year 2</td></tr>
+              <tr><td>Guardian Game full launch</td><td>Q2 Year 2</td></tr>
+              <tr><td>Second collection announced</td><td>Q3 Year 2</td></tr>
+              <tr><td>Guardian DAO established</td><td>Q4 Year 2</td></tr>
+              <tr><td>Physical plush drop</td><td>Q2 Year 2</td></tr>
+              <tr><td>Major brand partnership</td><td>Year 2</td></tr>
+              <tr><td>1000+ active Guardians</td><td>Year 2</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SUMMARY -->
+  <section class="summary-section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="eyebrow eyebrow--purple" data-i18n="rm_summary_eyebrow">Summary</span>
+        <h2 class="h-lg" style="margin-top:16px;" data-i18n="rm_summary_title">The Full <span class="grad-text">Picture</span></h2>
+      </div>
+      <div class="summary-grid reveal rd-1">
+        <div class="summary-card" style="border-color:rgba(77,255,160,.2);">
+          <div style="font-size:2.2rem;margin-bottom:14px;">🌱</div>
+          <div class="summary-phase" style="color:var(--green);">Phase 1 — Genesis</div>
+          <div class="summary-period">Months 1–3</div>
+          <div class="summary-items">Twitter/X · Discord · Mint · Prismatic Sanctuary V1 · Essence reveal</div>
+        </div>
+        <div class="summary-card" style="border-color:rgba(0,229,255,.2);">
+          <div style="font-size:2.2rem;margin-bottom:14px;">🌿</div>
+          <div class="summary-phase" style="color:var(--cyan);">Phase 2 — Growth</div>
+          <div class="summary-period">Months 4–12</div>
+          <div class="summary-items">Sanctuary V2 · Points system · Partnerships · Merch · Burning events</div>
+        </div>
+        <div class="summary-card" style="border-color:rgba(168,85,247,.2);">
+          <div style="font-size:2.2rem;margin-bottom:14px;">🌳</div>
+          <div class="summary-phase" style="color:var(--purple);">Phase 3 — Transcendence</div>
+          <div class="summary-period">Year 2+</div>
+          <div class="summary-items">Guardian Game · Second collection · DAO · Physical merch · Brand partnerships</div>
+        </div>
+      </div>
+
+      <!-- Note -->
+      <div class="note-box reveal rd-2" style="margin-top:40px;">
+        <h3 data-i18n="rm_note_title">A Note to Our Guardians 🐻</h3>
+        <p>This roadmap represents our vision — not a promise set in stone. The Cubyboo project is built with and for its community. Every major decision will be put to a Guardian vote. We believe in building slowly, building well, and building together.</p>
+        <p style="margin-top:14px;font-family:'Syne',sans-serif;font-weight:700;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;" data-i18n="rm_note_quote">What we cherish exists. Let us never forget.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="divider" style="margin-bottom:36px;"></div>
+    <div class="container">
+      <ul class="social-list" style="margin-bottom:22px;">
+        <li><a href="https://twitter.com/Cubyboo_NFT" class="social-link" target="_blank" rel="noopener">𝕏</a></li>
+        <li><a href="#" class="social-link" data-soon onclick="return false;"><img src="discord-icon.png" alt="Discord"></a></li>
+        <li><a href="#" class="social-link" data-soon onclick="return false;"><img src="opensea-icon.png" alt="OpenSea"></a></li>
+      </ul>
+      <div class="footer-bottom">
+        <p data-i18n="footer_copy">© 2026 Cubyboo · What we cherish exists.</p>
+        <span class="chain-badge"><img src="abstract-icon.png" alt="Abstract" onerror="this.style.display='none'"> Abstract</span>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<script src="i18n.js"></script>
+<script>
+(function(){const el=document.getElementById('js-particles');const c=['#FF5FBA','#00E5FF','#FFE040','#4DFFA0','#A855F7'];for(let i=0;i<28;i++){const p=document.createElement('div');p.className='particle';const s=Math.random()*4+2;p.style.cssText=`width:${s}px;height:${s}px;left:${Math.random()*100}%;background:${c[Math.floor(Math.random()*c.length)]};animation-delay:${Math.random()*20}s;animation-duration:${Math.random()*12+10}s;`;el.appendChild(p);}})();
+window.addEventListener('scroll',()=>document.getElementById('js-navbar').classList.toggle('scrolled',window.scrollY>10),{passive:true});
+document.getElementById('js-burger').addEventListener('click',()=>document.getElementById('js-mobile-menu').classList.toggle('open'));
+document.querySelectorAll('.nav-mobile a').forEach(a=>a.addEventListener('click',()=>document.getElementById('js-mobile-menu').classList.remove('open')));
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible');}),{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+LangManager.init();
+if(localStorage.getItem('cubyboo_oath_signed')==='true'){
+  document.getElementById('nav-wl').style.display='';
+  document.getElementById('mob-wl').style.display='';
+  document.getElementById('nav-cta').href='whitelist.html';
+}
+</script>
+</body>
+</html>
