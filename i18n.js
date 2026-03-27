@@ -8,7 +8,7 @@ const CUBYBOO_I18N = {
     // NAV
     nav_oath:       "The Oath",
     nav_whitelist:  "Whitelist",
-    nav_about:      "About",
+    nav_about:      "Lore",
     nav_collection: "Collection",
     nav_roadmap:      "Roadmap",
     nav_dashboard:    "🐻 My Cubyboo",
@@ -153,7 +153,7 @@ but with presence.
   },
 
   fr: {
-    nav_oath: "Le Serment", nav_whitelist: "Whitelist", nav_about: "À Propos", nav_collection: "Collection", nav_roadmap: "Roadmap", nav_dashboard: "🐻 Mon Cubyboo", nav_wl_btn: "🎟 Whitelist",
+    nav_oath: "Le Serment", nav_whitelist: "Whitelist", nav_about: "Lore", nav_collection: "Collection", nav_roadmap: "Roadmap", nav_dashboard: "🐻 Mon Cubyboo", nav_wl_btn: "🎟 Whitelist",
     home_trailer_eyebrow: "Trailer Officiel",
     home_trailer_title: "🎬 L'Origine Secrète <span class='grad-text2'>de Cubyboo</span>",
     home_trailer_sub: "Découvrez l'histoire — comment les Cubyboo sont nés, et pourquoi des Gardiens sont nécessaires maintenant plus que jamais.",
@@ -239,7 +239,7 @@ mais par ma présence.
   },
 
   es: {
-    nav_oath: "El Juramento", nav_whitelist: "Whitelist", nav_about: "Acerca de", nav_collection: "Colección", nav_roadmap: "Hoja de Ruta", nav_dashboard: "🐻 Mi Cubyboo", nav_wl_btn: "🎟 Whitelist",
+    nav_oath: "El Juramento", nav_whitelist: "Whitelist", nav_about: "Lore", nav_collection: "Colección", nav_roadmap: "Hoja de Ruta", nav_dashboard: "🐻 Mi Cubyboo", nav_wl_btn: "🎟 Whitelist",
     home_trailer_eyebrow: "Tráiler Oficial",
     home_trailer_title: "🎬 El Origen Secreto <span class='grad-text2'>de Cubyboo</span>",
     home_trailer_sub: "Descubre la historia — cómo nacieron los Cubyboo y por qué los Guardianes son necesarios ahora más que nunca.",
@@ -325,7 +325,7 @@ sino con mi presencia.
   },
 
   it: {
-    nav_oath: "Il Giuramento", nav_whitelist: "Whitelist", nav_about: "Chi Siamo", nav_collection: "Collezione", nav_roadmap: "Roadmap", nav_dashboard: "🐻 Il Mio Cubyboo", nav_wl_btn: "🎟 Whitelist",
+    nav_oath: "Il Giuramento", nav_whitelist: "Whitelist", nav_about: "Lore", nav_collection: "Collezione", nav_roadmap: "Roadmap", nav_dashboard: "🐻 Il Mio Cubyboo", nav_wl_btn: "🎟 Whitelist",
     home_trailer_eyebrow: "Trailer Ufficiale",
     home_trailer_title: "🎬 L'Origine Segreta <span class='grad-text2'>di Cubyboo</span>",
     home_trailer_sub: "Scopri la storia — come sono nati i Cubyboo e perché i Guardiani sono necessari ora più che mai.",
@@ -411,7 +411,7 @@ ma con la presenza.
   },
 
   zh: {
-    nav_oath: "誓言", nav_whitelist: "白名单", nav_about: "关于", nav_collection: "系列", nav_roadmap: "路线图", nav_dashboard: "🐻 我的Cubyboo", nav_wl_btn: "🎟 白名单",
+    nav_oath: "誓言", nav_whitelist: "白名单", nav_about: "Lore", nav_collection: "系列", nav_roadmap: "路线图", nav_dashboard: "🐻 我的Cubyboo", nav_wl_btn: "🎟 白名单",
     home_trailer_eyebrow: "官方预告片",
     home_trailer_title: "🎬 Cubyboo<span class='grad-text2'>的秘密起源</span>",
     home_trailer_sub: "观看故事展开——Cubyboo如何诞生，以及为何现在比以往任何时候都更需要守护者。",
@@ -496,7 +496,7 @@ ma con la presenza.
     footer_copy: "© 2026 Cubyboo · 我们所珍视的永远存在。",
   }
   de: {
-    nav_oath: "Der Schwur", nav_whitelist: "Whitelist", nav_about: "Über uns", nav_collection: "Kollektion", nav_wl_btn: "🎟 Whitelist", nav_roadmap: "Roadmap", nav_dashboard: "🐻 Mein Cubyboo",
+    nav_oath: "Der Schwur", nav_whitelist: "Whitelist", nav_about: "Lore", nav_collection: "Kollektion", nav_wl_btn: "🎟 Whitelist", nav_roadmap: "Roadmap", nav_dashboard: "🐻 Mein Cubyboo",
     home_trailer_eyebrow: "Offizieller Trailer",
     home_trailer_title: "🎬 Der Geheime <span class='grad-text2'>Ursprung</span> von Cubyboo",
     home_trailer_sub: "Erlebe die Geschichte — wie Cubyboo entstand und warum Hüter jetzt mehr denn je gebraucht werden.",
@@ -582,7 +582,7 @@ sondern mit Präsenz.
     cta_oath: "⚔️ Den Eid annehmen", cta_wl: "🎟 Zur Whitelist",
   },
   ja: {
-    nav_oath: "誓い", nav_whitelist: "ホワイトリスト", nav_about: "について", nav_collection: "コレクション", nav_wl_btn: "🎟 ホワイトリスト", nav_roadmap: "ロードマップ", nav_dashboard: "🐻 マイCubyboo",
+    nav_oath: "誓い", nav_whitelist: "ホワイトリスト", nav_about: "Lore", nav_collection: "コレクション", nav_wl_btn: "🎟 ホワイトリスト", nav_roadmap: "ロードマップ", nav_dashboard: "🐻 マイCubyboo",
     home_trailer_eyebrow: "公式トレーラー",
     home_trailer_title: "🎬 Cubybooの<span class='grad-text2'>秘密の起源</span>",
     home_trailer_sub: "物語が展開するのをご覧ください。",
@@ -667,7 +667,7 @@ sondern mit Präsenz.
     cta_oath: "⚔️ 誓いを受け入れる", cta_wl: "🎟 ホワイトリストへ",
   },
   pt: {
-    nav_oath: "O Juramento", nav_whitelist: "Whitelist", nav_about: "Sobre", nav_collection: "Coleção", nav_wl_btn: "🎟 Whitelist", nav_roadmap: "Roadmap", nav_dashboard: "🐻 Meu Cubyboo",
+    nav_oath: "O Juramento", nav_whitelist: "Whitelist", nav_about: "Lore", nav_collection: "Coleção", nav_wl_btn: "🎟 Whitelist", nav_roadmap: "Roadmap", nav_dashboard: "🐻 Meu Cubyboo",
     home_trailer_eyebrow: "Trailer Oficial",
     home_trailer_title: "🎬 A Origem Secreta <span class='grad-text2'>do Cubyboo</span>",
     home_trailer_sub: "Veja a história se desenrolar — como o Cubyboo surgiu e por que os Guardiões são necessários agora mais do que nunca.",
