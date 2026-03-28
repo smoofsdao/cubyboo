@@ -15,19 +15,19 @@
     .lore-hero h1{margin-top:16px;margin-bottom:18px;}
     .lore-hero p{font-size:1rem;color:var(--muted);max-width:560px;margin:0 auto;line-height:1.85;}
     .essences-section{padding:80px 0 60px;}
-    .essences-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:52px;}
-    @media(max-width:900px){.essences-grid{grid-template-columns:repeat(2,1fr);}}
+    .essences-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:40px;}
+    @media(max-width:1100px){.essences-grid{grid-template-columns:repeat(2,1fr);}}
     @media(max-width:560px){.essences-grid{grid-template-columns:1fr;}}
-    .essence-card{padding:32px 26px;border-radius:var(--r-lg);background:var(--surface);border:1px solid var(--border);transition:all .3s cubic-bezier(.34,1.56,.64,1);position:relative;overflow:hidden;}
+    .essence-card{padding:28px 22px;border-radius:var(--r-lg);background:var(--surface);border:1px solid var(--border);transition:all .3s cubic-bezier(.34,1.56,.64,1);position:relative;overflow:hidden;}
     .essence-card:hover{transform:translateY(-6px);border-color:var(--card-color,var(--bord2));box-shadow:0 20px 60px rgba(0,0,0,.4);}
     .essence-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--card-color,var(--grad));border-radius:var(--r-lg) var(--r-lg) 0 0;}
     .essence-card-glow{position:absolute;top:-40px;right:-40px;width:120px;height:120px;border-radius:50%;filter:blur(50px);opacity:.12;background:var(--card-color,var(--purple));pointer-events:none;}
-    .essence-icon{font-size:2.4rem;margin-bottom:16px;display:block;}
-    .essence-family{display:inline-flex;align-items:center;padding:3px 10px;border-radius:var(--r-full);font-size:.65rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;margin-bottom:12px;background:var(--card-color-bg,rgba(168,85,247,.1));color:var(--card-color,var(--purple));border:1px solid var(--card-color-border,rgba(168,85,247,.25));}
-    .essence-name{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:800;margin-bottom:10px;color:var(--text);}
-    .essence-desc{font-size:.84rem;color:var(--muted);line-height:1.75;}
-    .essence-guardian{font-size:.75rem;font-weight:700;margin-top:14px;letter-spacing:.06em;text-transform:uppercase;opacity:.5;color:var(--card-color,var(--muted));}
-    .family-header{margin-top:60px;margin-bottom:8px;display:flex;align-items:center;gap:14px;}
+    .essence-icon{font-size:2rem;margin-bottom:14px;display:block;}
+    .essence-family{display:inline-flex;align-items:center;padding:2px 8px;border-radius:var(--r-full);font-size:.6rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px;background:var(--card-color-bg,rgba(168,85,247,.1));color:var(--card-color,var(--purple));border:1px solid var(--card-color-border,rgba(168,85,247,.25));}
+    .essence-name{font-family:'Syne',sans-serif;font-size:1rem;font-weight:800;margin-bottom:8px;color:var(--text);}
+    .essence-desc{font-size:.8rem;color:var(--muted);line-height:1.7;}
+    .essence-guardian{font-size:.7rem;font-weight:700;margin-top:12px;letter-spacing:.06em;text-transform:uppercase;opacity:.45;color:var(--card-color,var(--muted));}
+    .family-header{margin-top:60px;margin-bottom:4px;display:flex;align-items:center;gap:14px;}
     .family-line{flex:1;height:1px;background:linear-gradient(90deg,var(--bord2),transparent);}
     .family-title{font-family:'Syne',sans-serif;font-size:.78rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;white-space:nowrap;}
     .faq-section{padding:80px 0 110px;}
@@ -45,26 +45,26 @@
   <ul class="nav-links">
     <li><a href="home.html" data-i18n="nav_oath">The Oath</a></li>
     <li><a href="whitelist.html" id="nav-wl" style="display:none;" data-i18n="nav_whitelist">Whitelist</a></li>
-    <li><a href="about.html" data-i18n="nav_about">About</a></li>
+    <li><a href="about.html" data-i18n="nav_about">Lore</a></li>
     <li><a href="collection.html" class="active" data-i18n="nav_collection">Collection</a></li>
     <li><a href="roadmap.html">Roadmap</a></li>
   </ul>
   <div class="nav-right">
-    <a href="https://twitter.com/Cubyboo_NFT" class="nav-social" target="_blank" rel="noopener">𝕏</a>
+    <a href="https://twitter.com/Cubyboo_NFT" class="nav-social" target="_blank" rel="noopener">&#x1D54F;</a>
     <a href="#" class="nav-social" data-soon onclick="return false;"><img src="discord-icon.png" alt="Discord"></a>
     <div id="lang-selector"></div>
-    <a href="/dashboard" class="nav-cta" style="background:linear-gradient(135deg,#00E5FF,#A855F7);">🐻 My Cubyboo</a>
-    <a href="whitelist.html" class="nav-cta" id="nav-cta" data-i18n="nav_wl_btn">🎟 Whitelist</a>
+    <a href="/dashboard" class="nav-cta" style="background:linear-gradient(135deg,#00E5FF,#A855F7);">&#x1F43B; My Cubyboo</a>
+    <a href="whitelist.html" class="nav-cta" id="nav-cta" data-i18n="nav_wl_btn">&#x1F39F; Whitelist</a>
   </div>
   <div class="nav-burger" id="js-burger"><span></span><span></span><span></span></div>
 </nav>
 <div class="nav-mobile" id="js-mobile-menu">
   <a href="home.html" data-i18n="nav_oath">The Oath</a>
-  <a href="whitelist.html" id="mob-wl" style="display:none;color:var(--purple);font-weight:700;" data-i18n="nav_wl_btn">🎟 Whitelist</a>
-  <a href="about.html" data-i18n="nav_about">About</a>
+  <a href="whitelist.html" id="mob-wl" style="display:none;color:var(--purple);font-weight:700;" data-i18n="nav_wl_btn">&#x1F39F; Whitelist</a>
+  <a href="about.html" data-i18n="nav_about">Lore</a>
   <a href="collection.html" data-i18n="nav_collection">Collection</a>
   <a href="roadmap.html">Roadmap</a>
-  <a href="/dashboard" style="color:var(--cyan);font-weight:700;">🐻 My Cubyboo</a>
+  <a href="/dashboard" style="color:var(--cyan);font-weight:700;">&#x1F43B; My Cubyboo</a>
   <div id="lang-selector-mobile" style="padding:10px 4px;"></div>
 </div>
 
@@ -73,9 +73,9 @@
   <section class="lore-hero">
     <div class="container--sm">
       <div class="reveal">
-        <span class="eyebrow eyebrow--purple"><span class="eyebrow-dot"></span> <span data-i18n="coll_hero_eyebrow">The 22 Essences</span></span>
-        <h1 class="h-lg" style="margin-top:16px;">The Guardians of <span class="grad-text">the World</span></h1>
-        <p data-i18n="coll_hero_sub">Every Cubyboo carries one sealed essence. 2 200 Guardians, 22 essences, 100 holders each. You do not choose your essence — it chooses you.</p>
+        <span class="eyebrow eyebrow--purple"><span class="eyebrow-dot"></span> <span data-i18n="coll_hero_eyebrow">The 16 Essences</span></span>
+        <h1 class="h-lg" style="margin-top:16px;" data-i18n="coll_hero_title">The Guardians of <span class="grad-text">the World</span></h1>
+        <p data-i18n="coll_hero_sub">Every Cubyboo carries one sealed essence. 2 200 Guardians, 16 essences. You do not choose your essence — it chooses you.</p>
       </div>
     </div>
   </section>
@@ -85,203 +85,169 @@
   <section class="essences-section">
     <div class="container">
 
-      <!-- COLORS -->
       <div class="family-header reveal">
         <div class="family-line"></div>
-        <span class="family-title" style="color:var(--pink);"><span data-i18n="coll_fam_colors">🎨 Colors · 6 essences</span></span>
+        <span class="family-title" style="color:var(--pink);" data-i18n="coll_fam_primal">🌈 Primals · 4 essences</span>
         <div class="family-line"></div>
       </div>
       <div class="essences-grid">
-        <div class="card essence-card reveal" style="--card-color:#4DFFA0;--card-color-bg:rgba(77,255,160,.08);--card-color-border:rgba(77,255,160,.22);">
-          <div class="essence-card-glow"></div><span class="essence-icon">🌿</span>
-          <span class="essence-family">Color</span>
-          <div class="essence-name" data-i18n="ess_green_name">Guardian of Green</div>
-          <div class="essence-desc" data-i18n="ess_green_desc">The living world breathes through you. Forests, growth, the eternal renewal of nature — wherever you walk, green follows. You are the anchor of all living things.</div>
-          <div class="essence-guardian"><span data-i18n="ess_guardians">100 Guardians</span> · Green Essence</div>
+        <div class="card essence-card reveal" style="--card-color:#FF3B5C;--card-color-bg:rgba(255,59,92,.08);--card-color-border:rgba(255,59,92,.22);">
+          <div class="essence-card-glow"></div>
+          <span class="essence-icon">❤️</span>
+          <span class="essence-family" data-i18n="ess_red_family">Primal</span>
+          <div class="essence-name"><span data-i18n="ess_red_name">Red</span> <span style="opacity:.5;font-size:.85em;">· <span data-i18n="ess_red_sub">Impulse</span></span></div>
+          <div class="essence-desc" data-i18n="ess_red_desc">The vital impulse that pulses through all living things. Red protects the raw force that makes hearts beat faster, that drives us to act, to love, to fight for what matters.</div>
+          <div class="essence-guardian"><span data-i18n="ess_count">137–138 Guardians</span></div>
         </div>
         <div class="card essence-card reveal rd-1" style="--card-color:#00E5FF;--card-color-bg:rgba(0,229,255,.08);--card-color-border:rgba(0,229,255,.22);">
-          <div class="essence-card-glow"></div><span class="essence-icon">🔵</span>
-          <span class="essence-family">Color</span>
-          <div class="essence-name" data-i18n="ess_blue_name">Guardian of Blue</div>
-          <div class="essence-desc" data-i18n="ess_blue_desc">The infinite depth of oceans, the infinite expanse of sky — you carry the calm that precedes all storms, and the peace that follows. You are the guardian of vast, silent things.</div>
-          <div class="essence-guardian"><span data-i18n="ess_guardians">100 Guardians</span> · Blue Essence</div>
+          <div class="essence-card-glow"></div>
+          <span class="essence-icon">🔵</span>
+          <span class="essence-family" data-i18n="ess_blue_family">Primal</span>
+          <div class="essence-name"><span data-i18n="ess_blue_name">Blue</span> <span style="opacity:.5;font-size:.85em;">· <span data-i18n="ess_blue_sub">Serenity</span></span></div>
+          <div class="essence-desc" data-i18n="ess_blue_desc">The deep peace that precedes and follows all storms. Blue protects the capacity for calm — the vast silence of oceans, the infinite clarity of sky, serenity as strength.</div>
+          <div class="essence-guardian"><span data-i18n="ess_count">137–138 Guardians</span></div>
         </div>
-        <div class="card essence-card reveal rd-2" style="--card-color:#FF5FBA;--card-color-bg:rgba(255,95,186,.08);--card-color-border:rgba(255,95,186,.22);">
-          <div class="essence-card-glow"></div><span class="essence-icon">❤️</span>
-          <span class="essence-family">Color</span>
-          <div class="essence-name" data-i18n="ess_red_name">Guardian of Red</div>
-          <div class="essence-desc" data-i18n="ess_red_desc">Passion. Strength. The fire of life itself. You protect the raw, untamed force that drives hearts to beat faster, to love harder, to fight for what matters most.</div>
-          <div class="essence-guardian"><span data-i18n="ess_guardians">100 Guardians</span> · Red Essence</div>
+        <div class="card essence-card reveal rd-2" style="--card-color:#4DFFA0;--card-color-bg:rgba(77,255,160,.08);--card-color-border:rgba(77,255,160,.22);">
+          <div class="essence-card-glow"></div>
+          <span class="essence-icon">🌿</span>
+          <span class="essence-family" data-i18n="ess_green_family">Primal</span>
+          <div class="essence-name"><span data-i18n="ess_green_name">Green</span> <span style="opacity:.5;font-size:.85em;">· <span data-i18n="ess_green_sub">Growth</span></span></div>
+          <div class="essence-desc" data-i18n="ess_green_desc">The perpetual renewal of the living world. Green protects growth — not as progress, but as return to life. Every seed that germs, every spring that returns.</div>
+          <div class="essence-guardian"><span data-i18n="ess_count">137–138 Guardians</span></div>
         </div>
-        <div class="card essence-card reveal" style="--card-color:#FFE040;--card-color-bg:rgba(255,224,64,.08);--card-color-border:rgba(255,224,64,.22);">
-          <div class="essence-card-glow"></div><span class="essence-icon">☀️</span>
-          <span class="essence-family">Color</span>
-          <div class="essence-name" data-i18n="ess_yellow_name">Guardian of Yellow</div>
-          <div class="essence-desc" data-i18n="ess_yellow_desc">Joy in its purest form. The warmth of sunlight on skin, the brightness of a morning that promises everything. You keep the light alive when the world grows grey.</div>
-          <div class="essence-guardian"><span data-i18n="ess_guardians">100 Guardians</span> · Yellow Essence</div>
-        </div>
-        <div class="card essence-card reveal rd-1" style="--card-color:#A855F7;--card-color-bg:rgba(168,85,247,.08);--card-color-border:rgba(168,85,247,.22);">
-          <div class="essence-card-glow"></div><span class="essence-icon">🔮</span>
-          <span class="essence-family">Color</span>
-          <div class="essence-name" data-i18n="ess_purple_name">Guardian of Purple</div>
-          <div class="essence-desc" data-i18n="ess_purple_desc">Mystery. Wisdom. The cosmos behind closed eyes. You are the keeper of everything unseen — the intuition that whispers in the dark, the knowing that goes beyond knowing.</div>
-          <div class="essence-guardian"><span data-i18n="ess_guardians">100 Guardians</span> · Purple Essence</div>
-        </div>
-        <div class="card essence-card reveal rd-2" style="--card-color:#FF8C42;--card-color-bg:rgba(255,140,66,.08);--card-color-border:rgba(255,140,66,.22);">
-          <div class="essence-card-glow"></div><span class="essence-icon">🌈</span>
-          <span class="essence-family">Color</span>
-          <div class="essence-name" data-i18n="ess_rainbow_name">Guardian of Rainbow</div>
-          <div class="essence-desc" data-i18n="ess_rainbow_desc">All colors. All essences. The bridge after the storm, the promise that every separation leads to reunion. You are the rarest guardian — the one who carries everything at once.</div>
-          <div class="essence-guardian"><span data-i18n="ess_guardians">100 Guardians</span> · Rainbow Essence</div>
+        <div class="card essence-card reveal rd-3" style="--card-color:#FFE040;--card-color-bg:rgba(255,224,64,.08);--card-color-border:rgba(255,224,64,.22);">
+          <div class="essence-card-glow"></div>
+          <span class="essence-icon">☀️</span>
+          <span class="essence-family" data-i18n="ess_yellow_family">Primal</span>
+          <div class="essence-name"><span data-i18n="ess_yellow_name">Yellow</span> <span style="opacity:.5;font-size:.85em;">· <span data-i18n="ess_yellow_sub">Joy</span></span></div>
+          <div class="essence-desc" data-i18n="ess_yellow_desc">Joy in its purest and most indefensible form. Yellow protects the capacity to feel happiness — even when nothing justifies it, even in darkness.</div>
+          <div class="essence-guardian"><span data-i18n="ess_count">137–138 Guardians</span></div>
         </div>
       </div>
-
-      <!-- ELEMENTS -->
       <div class="family-header reveal">
         <div class="family-line"></div>
-        <span class="family-title" style="color:var(--cyan);"><span data-i18n="coll_fam_elements">🌊 Elements · 6 essences</span></span>
+        <span class="family-title" style="color:var(--cyan);" data-i18n="coll_fam_force">⚡ Forces · 4 essences</span>
         <div class="family-line"></div>
       </div>
       <div class="essences-grid">
-        <div class="card essence-card reveal" style="--card-color:#3B82F6;--card-color-bg:rgba(59,130,246,.08);--card-color-border:rgba(59,130,246,.22);">
-          <div class="essence-card-glow"></div><span class="essence-icon">💧</span>
-          <span class="essence-family">Element</span>
-          <div class="essence-name" data-i18n="ess_water_name">Guardian of Water</div>
-          <div class="essence-desc" data-i18n="ess_water_desc">Flow. Adaptation. The relentless cycle that sustains all life. You carry the wisdom of rivers — always finding a way forward, always nourishing what grows beside you.</div>
-          <div class="essence-guardian"><span data-i18n="ess_guardians">100 Guardians</span> · Water Essence</div>
+        <div class="card essence-card reveal" style="--card-color:#FF8C42;--card-color-bg:rgba(255,140,66,.08);--card-color-border:rgba(255,140,66,.22);">
+          <div class="essence-card-glow"></div>
+          <span class="essence-icon">🔥</span>
+          <span class="essence-family" data-i18n="ess_fire_family">Force</span>
+          <div class="essence-name"><span data-i18n="ess_fire_name">Fire</span> <span style="opacity:.5;font-size:.85em;">· <span data-i18n="ess_fire_sub">Transformation</span></span></div>
+          <div class="essence-desc" data-i18n="ess_fire_desc">The flame that destroys to create anew. Fire protects radical change — the forge in which all things are tested, broken, and reborn stronger.</div>
+          <div class="essence-guardian"><span data-i18n="ess_count">137–138 Guardians</span></div>
         </div>
-        <div class="card essence-card reveal rd-1" style="--card-color:#FF8C42;--card-color-bg:rgba(255,140,66,.08);--card-color-border:rgba(255,140,66,.22);">
-          <div class="essence-card-glow"></div><span class="essence-icon">🔥</span>
-          <span class="essence-family">Element</span>
-          <div class="essence-name" data-i18n="ess_fire_name">Guardian of Fire</div>
-          <div class="essence-desc" data-i18n="ess_fire_desc">Transformation. The flame that destroys to create anew. You protect the sacred force of change — the forge in which all things are tested, broken, and reborn stronger.</div>
-          <div class="essence-guardian"><span data-i18n="ess_guardians">100 Guardians</span> · Fire Essence</div>
+        <div class="card essence-card reveal rd-1" style="--card-color:#3B82F6;--card-color-bg:rgba(59,130,246,.08);--card-color-border:rgba(59,130,246,.22);">
+          <div class="essence-card-glow"></div>
+          <span class="essence-icon">💧</span>
+          <span class="essence-family" data-i18n="ess_water_family">Force</span>
+          <div class="essence-name"><span data-i18n="ess_water_name">Water</span> <span style="opacity:.5;font-size:.85em;">· <span data-i18n="ess_water_sub">Adaptation</span></span></div>
+          <div class="essence-desc" data-i18n="ess_water_desc">The wisdom of rivers that always find their way. Water protects adaptability — not through weakness, but through intelligence. To flow around obstacles, to nourish what grows.</div>
+          <div class="essence-guardian"><span data-i18n="ess_count">137–138 Guardians</span></div>
         </div>
-        <div class="card essence-card reveal rd-2" style="--card-color:#4DFFA0;--card-color-bg:rgba(77,255,160,.08);--card-color-border:rgba(77,255,160,.22);">
-          <div class="essence-card-glow"></div><span class="essence-icon">🏔️</span>
-          <span class="essence-family">Element</span>
-          <div class="essence-name" data-i18n="ess_earth_name">Guardian of Earth</div>
-          <div class="essence-desc" data-i18n="ess_earth_desc">Stability. The deep roots that hold everything upright. You carry the patience of mountains, the memory of soil, the foundation upon which all civilizations rise and rest.</div>
-          <div class="essence-guardian"><span data-i18n="ess_guardians">100 Guardians</span> · Earth Essence</div>
+        <div class="card essence-card reveal rd-2" style="--card-color:#8B6F47;--card-color-bg:rgba(139,111,71,.08);--card-color-border:rgba(139,111,71,.22);">
+          <div class="essence-card-glow"></div>
+          <span class="essence-icon">🏔️</span>
+          <span class="essence-family" data-i18n="ess_earth_family">Force</span>
+          <div class="essence-name"><span data-i18n="ess_earth_name">Earth</span> <span style="opacity:.5;font-size:.85em;">· <span data-i18n="ess_earth_sub">Stability</span></span></div>
+          <div class="essence-desc" data-i18n="ess_earth_desc">The deep roots that hold everything upright. Earth protects the foundation — the memory of soil, the patience of mountains, the base upon which civilizations rise.</div>
+          <div class="essence-guardian"><span data-i18n="ess_count">137–138 Guardians</span></div>
         </div>
-        <div class="card essence-card reveal" style="--card-color:#00E5FF;--card-color-bg:rgba(0,229,255,.08);--card-color-border:rgba(0,229,255,.22);">
-          <div class="essence-card-glow"></div><span class="essence-icon">🌬️</span>
-          <span class="essence-family">Element</span>
-          <div class="essence-name" data-i18n="ess_air_name">Guardian of Air</div>
-          <div class="essence-desc" data-i18n="ess_air_desc">Freedom. The breath between words, the wind that carries seeds to distant lands. You protect invisibility itself — the essential things that are felt but never seen.</div>
-          <div class="essence-guardian"><span data-i18n="ess_guardians">100 Guardians</span> · Air Essence</div>
-        </div>
-        <div class="card essence-card reveal rd-1" style="--card-color:#FFE040;--card-color-bg:rgba(255,224,64,.08);--card-color-border:rgba(255,224,64,.22);">
-          <div class="essence-card-glow"></div><span class="essence-icon">✨</span>
-          <span class="essence-family">Element</span>
-          <div class="essence-name" data-i18n="ess_light_name">Guardian of Light</div>
-          <div class="essence-desc" data-i18n="ess_light_desc">Clarity. The first ray that dissolves shadow. You carry the gift of illumination — not just physical light, but the inner light that makes truth visible and darkness bearable.</div>
-          <div class="essence-guardian"><span data-i18n="ess_guardians">100 Guardians</span> · Light Essence</div>
-        </div>
-        <div class="card essence-card reveal rd-2" style="--card-color:#A855F7;--card-color-bg:rgba(168,85,247,.08);--card-color-border:rgba(168,85,247,.22);">
-          <div class="essence-card-glow"></div><span class="essence-icon">🌑</span>
-          <span class="essence-family">Element</span>
-          <div class="essence-name" data-i18n="ess_darkness_name">Guardian of Darkness</div>
-          <div class="essence-desc" data-i18n="ess_darkness_desc">Rest. The sacred silence where light is born. You protect the necessity of night — the darkness that makes stars visible, the stillness that makes music meaningful.</div>
-          <div class="essence-guardian"><span data-i18n="ess_guardians">100 Guardians</span> · Darkness Essence</div>
+        <div class="card essence-card reveal rd-3" style="--card-color:#A8D8EA;--card-color-bg:rgba(168,216,234,.08);--card-color-border:rgba(168,216,234,.22);">
+          <div class="essence-card-glow"></div>
+          <span class="essence-icon">🌬️</span>
+          <span class="essence-family" data-i18n="ess_air_family">Force</span>
+          <div class="essence-name"><span data-i18n="ess_air_name">Air</span> <span style="opacity:.5;font-size:.85em;">· <span data-i18n="ess_air_sub">Freedom</span></span></div>
+          <div class="essence-desc" data-i18n="ess_air_desc">The essential invisibility that is felt but never seen. Air protects freedom — the breath between words, the wind that carries seeds to distant lands, the space that makes thought possible.</div>
+          <div class="essence-guardian"><span data-i18n="ess_count">137–138 Guardians</span></div>
         </div>
       </div>
-
-      <!-- HUMAN EXPRESSIONS -->
       <div class="family-header reveal">
         <div class="family-line"></div>
-        <span class="family-title" style="color:var(--pink);"><span data-i18n="coll_fam_human">💫 Human Expressions · 6 essences</span></span>
+        <span class="family-title" style="color:var(--purple);" data-i18n="coll_fam_emanation">💫 Emanations · 4 essences</span>
         <div class="family-line"></div>
       </div>
       <div class="essences-grid">
         <div class="card essence-card reveal" style="--card-color:#A855F7;--card-color-bg:rgba(168,85,247,.08);--card-color-border:rgba(168,85,247,.22);">
-          <div class="essence-card-glow"></div><span class="essence-icon">🌙</span>
-          <span class="essence-family">Human Expression</span>
-          <div class="essence-name" data-i18n="ess_dreams_name">Guardian of Dreams</div>
-          <div class="essence-desc" data-i18n="ess_dreams_desc">The visions that come in the dark — both the sleeping kind and the waking kind. You protect the impossible made possible, the futures imagined before they exist.</div>
-          <div class="essence-guardian"><span data-i18n="ess_guardians">100 Guardians</span> · Dreams Essence</div>
+          <div class="essence-card-glow"></div>
+          <span class="essence-icon">🌙</span>
+          <span class="essence-family" data-i18n="ess_dream_family">Emanation</span>
+          <div class="essence-name"><span data-i18n="ess_dream_name">Dream</span> <span style="opacity:.5;font-size:.85em;">· <span data-i18n="ess_dream_sub">Possibility</span></span></div>
+          <div class="essence-desc" data-i18n="ess_dream_desc">The visions that come in the dark — sleeping and waking alike. Dream protects the impossible made possible, futures imagined before they exist.</div>
+          <div class="essence-guardian"><span data-i18n="ess_count">137–138 Guardians</span></div>
         </div>
         <div class="card essence-card reveal rd-1" style="--card-color:#FF5FBA;--card-color-bg:rgba(255,95,186,.08);--card-color-border:rgba(255,95,186,.22);">
-          <div class="essence-card-glow"></div><span class="essence-icon">⚔️</span>
-          <span class="essence-family">Human Expression</span>
-          <div class="essence-name" data-i18n="ess_courage_name">Guardian of Courage</div>
-          <div class="essence-desc" data-i18n="ess_courage_desc">The force that moves despite fear. Not the absence of terror, but the decision to act anyway. You carry the warrior spirit — the quiet bravery of ordinary people in extraordinary moments.</div>
-          <div class="essence-guardian"><span data-i18n="ess_guardians">100 Guardians</span> · Courage Essence</div>
+          <div class="essence-card-glow"></div>
+          <span class="essence-icon">⚔️</span>
+          <span class="essence-family" data-i18n="ess_courage_family">Emanation</span>
+          <div class="essence-name"><span data-i18n="ess_courage_name">Courage</span> <span style="opacity:.5;font-size:.85em;">· <span data-i18n="ess_courage_sub">Will</span></span></div>
+          <div class="essence-desc" data-i18n="ess_courage_desc">The force that moves despite fear. Courage protects will — not the absence of terror, but the decision to act anyway. The quiet bravery of ordinary people in extraordinary moments.</div>
+          <div class="essence-guardian"><span data-i18n="ess_count">137–138 Guardians</span></div>
         </div>
-        <div class="card essence-card reveal rd-2" style="--card-color:#A855F7;--card-color-bg:rgba(168,85,247,.08);--card-color-border:rgba(168,85,247,.22);">
-          <div class="essence-card-glow"></div><span class="essence-icon">🎵</span>
-          <span class="essence-family">Human Expression</span>
-          <div class="essence-name" data-i18n="ess_music_name">Guardian of Music</div>
-          <div class="essence-desc" data-i18n="ess_music_desc">Vibrations that bypass thought and reach the soul directly. You protect the universal language — the harmonies that make strangers feel like family, and silence feel like home.</div>
-          <div class="essence-guardian"><span data-i18n="ess_guardians">100 Guardians</span> · Music Essence</div>
+        <div class="card essence-card reveal rd-2" style="--card-color:#FF8C42;--card-color-bg:rgba(255,140,66,.08);--card-color-border:rgba(255,140,66,.22);">
+          <div class="essence-card-glow"></div>
+          <span class="essence-icon">🤝</span>
+          <span class="essence-family" data-i18n="ess_bond_family">Emanation</span>
+          <div class="essence-name"><span data-i18n="ess_bond_name">Bond</span> <span style="opacity:.5;font-size:.85em;">· <span data-i18n="ess_bond_sub">Connection</span></span></div>
+          <div class="essence-desc" data-i18n="ess_bond_desc">The invisible thread that connects all beings. Bond protects connection — belonging, recognition, the fact of never being alone. What makes a stranger become family.</div>
+          <div class="essence-guardian"><span data-i18n="ess_count">137–138 Guardians</span></div>
         </div>
-        <div class="card essence-card reveal" style="--card-color:#FF8C42;--card-color-bg:rgba(255,140,66,.08);--card-color-border:rgba(255,140,66,.22);">
-          <div class="essence-card-glow"></div><span class="essence-icon">🏺</span>
-          <span class="essence-family">Human Expression</span>
-          <div class="essence-name" data-i18n="ess_cultures_name">Guardian of Cultures</div>
-          <div class="essence-desc" data-i18n="ess_cultures_desc">The rituals, dances, languages, and ceremonies that make each people unique. You carry the living memory of humanity — everything that would be lost if a culture were silenced.</div>
-          <div class="essence-guardian"><span data-i18n="ess_guardians">100 Guardians</span> · Cultures Essence</div>
-        </div>
-        <div class="card essence-card reveal rd-1" style="--card-color:#FF5FBA;--card-color-bg:rgba(255,95,186,.08);--card-color-border:rgba(255,95,186,.22);">
-          <div class="essence-card-glow"></div><span class="essence-icon">🐉</span>
-          <span class="essence-family">Human Expression</span>
-          <div class="essence-name" data-i18n="ess_myths_name">Guardian of Myths</div>
-          <div class="essence-desc" data-i18n="ess_myths_desc">The stories that shaped civilizations. Dragons, gods, heroes, and monsters — the tales that are truer than facts. You protect the imagination of our ancestors, alive in every child's wonder.</div>
-          <div class="essence-guardian"><span data-i18n="ess_guardians">100 Guardians</span> · Myths Essence</div>
-        </div>
-        <div class="card essence-card reveal rd-2" style="--card-color:#FFE040;--card-color-bg:rgba(255,224,64,.08);--card-color-border:rgba(255,224,64,.22);">
-          <div class="essence-card-glow"></div><span class="essence-icon">🦸</span>
-          <span class="essence-family">Human Expression</span>
-          <div class="essence-name" data-i18n="ess_heroes_name">Guardian of Heroes</div>
-          <div class="essence-desc" data-i18n="ess_heroes_desc">Those who sacrifice for others. Not the invincible ones — the ordinary people who chose, in one crucial moment, to be extraordinary. You protect the spark that makes humans capable of greatness.</div>
-          <div class="essence-guardian"><span data-i18n="ess_guardians">100 Guardians</span> · Heroes Essence</div>
+        <div class="card essence-card reveal rd-3" style="--card-color:#FFE040;--card-color-bg:rgba(255,224,64,.08);--card-color-border:rgba(255,224,64,.22);">
+          <div class="essence-card-glow"></div>
+          <span class="essence-icon">🎨</span>
+          <span class="essence-family" data-i18n="ess_expression_family">Emanation</span>
+          <div class="essence-name"><span data-i18n="ess_expression_name">Expression</span> <span style="opacity:.5;font-size:.85em;">· <span data-i18n="ess_expression_sub">Creation</span></span></div>
+          <div class="essence-desc" data-i18n="ess_expression_desc">The urge to create, to leave a mark, to say 'I was here'. Expression protects creation in all its forms — art, music, words, gestures — everything that transforms the inner world into something visible.</div>
+          <div class="essence-guardian"><span data-i18n="ess_count">137–138 Guardians</span></div>
         </div>
       </div>
-
-      <!-- TRANSCENDENCES -->
       <div class="family-header reveal">
         <div class="family-line"></div>
-        <span class="family-title" style="color:var(--cyan);"><span data-i18n="coll_fam_trans">🌌 Transcendences · 4 essences</span></span>
+        <span class="family-title" style="color:var(--cyan);" data-i18n="coll_fam_transcendence">🌌 Transcendences · 4 essences</span>
         <div class="family-line"></div>
       </div>
       <div class="essences-grid">
-        <div class="card essence-card reveal" style="--card-color:#FF8C42;--card-color-bg:rgba(255,140,66,.08);--card-color-border:rgba(255,140,66,.22);">
-          <div class="essence-card-glow"></div><span class="essence-icon">🍂</span>
-          <span class="essence-family">Transcendence</span>
-          <div class="essence-name" data-i18n="ess_time_name">Guardian of Time & Cycles</div>
-          <div class="essence-desc" data-i18n="ess_time_desc">The eternal return. Seasons that die and are reborn. The comfort of knowing that endings are always beginnings. You protect the rhythm that gives life its meaning.</div>
-          <div class="essence-guardian"><span data-i18n="ess_guardians">100 Guardians</span> · Time Essence</div>
+        <div class="card essence-card reveal" style="--card-color:#FFF5C0;--card-color-bg:rgba(255,245,192,.08);--card-color-border:rgba(255,245,192,.22);">
+          <div class="essence-card-glow"></div>
+          <span class="essence-icon">✨</span>
+          <span class="essence-family" data-i18n="ess_light_family">Transcendence</span>
+          <div class="essence-name"><span data-i18n="ess_light_name">Light</span> <span style="opacity:.5;font-size:.85em;">· <span data-i18n="ess_light_sub">Revelation</span></span></div>
+          <div class="essence-desc" data-i18n="ess_light_desc">The first ray that dissolves shadow. Light protects revelation — not physical light, but the inner clarity that makes truth visible, that makes us suddenly understand what was hidden.</div>
+          <div class="essence-guardian"><span data-i18n="ess_count">137–138 Guardians</span></div>
         </div>
-        <div class="card essence-card reveal rd-1" style="--card-color:#00E5FF;--card-color-bg:rgba(0,229,255,.08);--card-color-border:rgba(0,229,255,.22);">
-          <div class="essence-card-glow"></div><span class="essence-icon">⭐</span>
-          <span class="essence-family">Transcendence</span>
-          <div class="essence-name" data-i18n="ess_cosmos_name">Guardian of the Cosmos</div>
-          <div class="essence-desc" data-i18n="ess_cosmos_desc">Ancient light crossing impossible distances. The humbling infinity that makes our problems small and our existence miraculous. You carry the perspective that only the stars can give.</div>
-          <div class="essence-guardian"><span data-i18n="ess_guardians">100 Guardians</span> · Cosmos Essence</div>
+        <div class="card essence-card reveal rd-1" style="--card-color:#9B59B6;--card-color-bg:rgba(75,0,130,.08);--card-color-border:rgba(75,0,130,.22);">
+          <div class="essence-card-glow"></div>
+          <span class="essence-icon">🌑</span>
+          <span class="essence-family" data-i18n="ess_darkness_family">Transcendence</span>
+          <div class="essence-name"><span data-i18n="ess_darkness_name">Darkness</span> <span style="opacity:.5;font-size:.85em;">· <span data-i18n="ess_darkness_sub">Mystery</span></span></div>
+          <div class="essence-desc" data-i18n="ess_darkness_desc">The sacred silence where light is born. Darkness protects mystery — the necessity of night, the space of the unknown that makes stars visible, what can only be known in the dark.</div>
+          <div class="essence-guardian"><span data-i18n="ess_count">137–138 Guardians</span></div>
         </div>
-        <div class="card essence-card reveal rd-2" style="--card-color:#4DFFA0;--card-color-bg:rgba(77,255,160,.08);--card-color-border:rgba(77,255,160,.22);">
-          <div class="essence-card-glow"></div><span class="essence-icon">🕊️</span>
-          <span class="essence-family">Transcendence</span>
-          <div class="essence-name" data-i18n="ess_harmony_name">Guardian of Harmony</div>
-          <div class="essence-desc" data-i18n="ess_harmony_desc">The silence between notes that makes music beautiful. The balance between opposites that makes life livable. You carry the deep peace that isn't the absence of conflict, but its resolution.</div>
-          <div class="essence-guardian"><span data-i18n="ess_guardians">100 Guardians</span> · Harmony Essence</div>
+        <div class="card essence-card reveal rd-2" style="--card-color:#C0932F;--card-color-bg:rgba(192,147,47,.08);--card-color-border:rgba(192,147,47,.22);">
+          <div class="essence-card-glow"></div>
+          <span class="essence-icon">🍂</span>
+          <span class="essence-family" data-i18n="ess_time_family">Transcendence</span>
+          <div class="essence-name"><span data-i18n="ess_time_name">Time</span> <span style="opacity:.5;font-size:.85em;">· <span data-i18n="ess_time_sub">Cycle</span></span></div>
+          <div class="essence-desc" data-i18n="ess_time_desc">The eternal return. Seasons that die and are reborn. Time protects the cycle — the comfort of knowing that endings are always beginnings, that nothing truly disappears.</div>
+          <div class="essence-guardian"><span data-i18n="ess_count">137–138 Guardians</span></div>
         </div>
-        <div class="card essence-card reveal rd-3" style="--card-color:#A855F7;--card-color-bg:rgba(168,85,247,.08);--card-color-border:rgba(168,85,247,.22);">
-          <div class="essence-card-glow"></div><span class="essence-icon">🦉</span>
-          <span class="essence-family">Transcendence</span>
-          <div class="essence-name" data-i18n="ess_wisdom_name">Guardian of Wisdom</div>
-          <div class="essence-desc" data-i18n="ess_wisdom_desc">The knowledge earned through lived experience. Not information, but understanding. You protect the lessons of generations — the hard-won truths that only time and suffering can teach.</div>
-          <div class="essence-guardian"><span data-i18n="ess_guardians">100 Guardians</span> · Wisdom Essence</div>
+        <div class="card essence-card reveal rd-3" style="--card-color:#00B4D8;--card-color-bg:rgba(0,180,216,.08);--card-color-border:rgba(0,180,216,.22);">
+          <div class="essence-card-glow"></div>
+          <span class="essence-icon">⭐</span>
+          <span class="essence-family" data-i18n="ess_cosmos_family">Transcendence</span>
+          <div class="essence-name"><span data-i18n="ess_cosmos_name">Cosmos</span> <span style="opacity:.5;font-size:.85em;">· <span data-i18n="ess_cosmos_sub">Infinity</span></span></div>
+          <div class="essence-desc" data-i18n="ess_cosmos_desc">Ancient light crossing impossible distances. Cosmos protects infinity — the humbling perspective that only stars can give, the vertigo of realizing our existence is both tiny and miraculous.</div>
+          <div class="essence-guardian"><span data-i18n="ess_count">137–138 Guardians</span></div>
         </div>
       </div>
 
-      <!-- Counter -->
       <div class="reveal" style="text-align:center;margin-top:60px;">
         <div style="display:inline-flex;align-items:center;gap:20px;padding:20px 40px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-full);flex-wrap:wrap;justify-content:center;">
-          <span style="font-family:'Syne',sans-serif;font-size:1.6rem;font-weight:800;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">2 200</span>
-          <span style="font-size:.85rem;color:var(--muted);">Cubyboo with an essence · 100 per type</span>
-          <span style="font-family:'Syne',sans-serif;font-size:1.6rem;font-weight:800;background:var(--grad2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">22</span>
-          <span style="font-size:.85rem;color:var(--muted);">Unique Essences</span>
+          <span style="font-family:'Syne',sans-serif;font-size:1.6rem;font-weight:800;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;" data-i18n="coll_counter_left">2 200</span>
+          <span style="font-size:.85rem;color:var(--muted);" data-i18n="coll_counter_mid">Cubyboo with an essence · 137–138 per type</span>
+          <span style="font-family:'Syne',sans-serif;font-size:1.6rem;font-weight:800;background:var(--grad2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;" data-i18n="coll_counter_right">16</span>
+          <span style="font-size:.85rem;color:var(--muted);" data-i18n="coll_counter_end">Unique Essences</span>
         </div>
       </div>
     </div>
@@ -289,7 +255,6 @@
 
   <div class="divider"></div>
 
-  <!-- FAQ -->
   <section class="faq-section">
     <div class="container">
       <div class="section-header reveal">
@@ -300,14 +265,13 @@
     </div>
   </section>
 
-  <!-- FINAL CTA -->
   <div class="final-cta">
     <div class="container--sm reveal">
-      <span class="eyebrow eyebrow--pink" style="margin-bottom:20px;display:inline-flex;"><span class="eyebrow-dot"></span><span data-i18n="final_eyebrow">Limited Spots — Act Now</span></span>
+      <span class="eyebrow eyebrow--pink" style="margin-bottom:20px;display:inline-flex;"><span class="eyebrow-dot"></span><span data-i18n="final_eyebrow">Limited Spots</span></span>
       <h2 class="h-lg" data-i18n="final_title">Ready to become<br>a <span class="grad-text">Guardian?</span></h2>
       <p data-i18n="final_sub">200 Whitelist spots available this session.</p>
       <div class="cta-cluster" id="final-cta-btns">
-        <a href="home.html" class="btn btn-primary btn-xl" data-i18n="final_btn1">⚔️ Accept the Oath</a>
+        <a href="home.html" class="btn btn-primary btn-xl" data-i18n="final_btn1">Accept the Oath</a>
       </div>
     </div>
   </div>
@@ -316,7 +280,7 @@
     <div class="divider" style="margin-bottom:36px;"></div>
     <div class="container">
       <ul class="social-list" style="margin-bottom:22px;">
-        <li><a href="https://twitter.com/Cubyboo_NFT" class="social-link" target="_blank" rel="noopener">𝕏</a></li>
+        <li><a href="https://twitter.com/Cubyboo_NFT" class="social-link" target="_blank" rel="noopener">&#x1D54F;</a></li>
         <li><a href="#" class="social-link" data-soon onclick="return false;"><img src="discord-icon.png" alt="Discord"></a></li>
         <li><a href="#" class="social-link" data-soon onclick="return false;"><img src="opensea-icon.png" alt="OpenSea"></a></li>
       </ul>
@@ -338,12 +302,12 @@ const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 function buildFAQ(){
   const keys=[['faq_q1','faq_a1'],['faq_q2','faq_a2'],['faq_q3','faq_a3'],['faq_q4','faq_a4'],['faq_q5','faq_a5'],['faq_q6','faq_a6'],['faq_q7','faq_a7'],['faq_q8','faq_a8']];
-  document.getElementById('js-faq-list').innerHTML=keys.map(([q,a])=>`<div class="faq-item"><button class="faq-q">${LangManager.get(q)} <span class="faq-arrow">▾</span></button><div class="faq-a">${LangManager.get(a)}</div></div>`).join('');
+  document.getElementById('js-faq-list').innerHTML=keys.map(([q,a])=>`<div class="faq-item"><button class="faq-q">${LangManager.get(q)} <span class="faq-arrow">&#9662;</span></button><div class="faq-a">${LangManager.get(a)}</div></div>`).join('');
   document.querySelectorAll('.faq-q').forEach(btn=>{btn.addEventListener('click',function(){const item=this.closest('.faq-item');const wasOpen=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));if(!wasOpen)item.classList.add('open');});});
 }
 LangManager.init();buildFAQ();
 const _s=LangManager.set.bind(LangManager);LangManager.set=function(l){_s(l);buildFAQ();};
-if(localStorage.getItem('cubyboo_oath_signed')==='true'){
+if(localStorage.getItem('cubyboo_oath_signed')=='true'){
   document.getElementById('nav-wl').style.display='';
   document.getElementById('mob-wl').style.display='';
   document.getElementById('nav-cta').href='whitelist.html';
